@@ -1,7 +1,7 @@
 
 'use client';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -11,6 +11,7 @@ import Link from 'next/link';
 export default function DashboardPage() {
   const { user, clearUser } = useAuthStore();
   const router = useRouter();
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -43,9 +44,9 @@ export default function DashboardPage() {
                   { href: '/wishlist', icon: <Heart size={18} />, label: 'My Wishlist' },
                   { href: '/cart', icon: <ShoppingBag size={18} />, label: 'My Cart' },
                 ].map((item) => (
-                  <Link key={item.href} href={item.href} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, textDecoration: 'none', color: router.pathname === item.href ? 'var(--gold)' : '#475569', background: router.pathname === item.href ? 'var(--beige)' : 'transparent', fontWeight: 600, transition: 'all 0.2s' }}
+                  <Link key={item.href} href={item.href} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, textDecoration: 'none', color: pathname === item.href ? 'var(--gold)' : '#475569', background: pathname === item.href ? 'var(--beige)' : 'transparent', fontWeight: 600, transition: 'all 0.2s' }}
                     onMouseEnter={e => { e.currentTarget.style.background = 'var(--beige)'; e.currentTarget.style.color = 'var(--gold)'; }}
-                    onMouseLeave={e => { if(router.pathname !== item.href) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#475569'; } }}>
+                    onMouseLeave={e => { if(pathname !== item.href) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#475569'; } }}>
                     {item.icon} {item.label}
                   </Link>
                 ))}
