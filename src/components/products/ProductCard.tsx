@@ -72,72 +72,72 @@ export default function ProductCard({ product }: { product: Product }) {
           className="product-card"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          style={{ 
+            background: 'white', 
+            borderRadius: '12px', 
+            overflow: 'hidden', 
+            border: '1px solid var(--border)', 
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'all 0.3s ease'
+          }}
         >
-          {/* Image */}
-          <div className="image-wrapper" style={{ height: 280, position: 'relative' }}>
+          {/* Image Wrapper */}
+          <div className="image-wrapper" style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--beige)' }}>
             <img
               src={imgError ? placeholder : (product.images[0] || placeholder)}
               alt={product.name}
               onError={() => setImgError(true)}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease', transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)', transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
             />
-            <div className="overlay" style={{ opacity: hovered ? 1 : 0, transition: 'opacity 0.3s' }} />
-
-            {/* Badges */}
-            <div style={{ position: 'absolute', top: 10, left: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
-              {discount > 0 && <span className="badge badge-red">{discount}% OFF</span>}
-              {product.stock === 0 && <span className="badge" style={{ background: '#1f2937', color: 'white' }}>Sold Out</span>}
-            </div>
-
-            {/* Actions */}
-            <div style={{ position: 'absolute', top: 12, right: 12, display: 'flex', flexDirection: 'column', gap: 8, opacity: hovered ? 1 : 0, transform: hovered ? 'translateX(0)' : 'translateX(10px)', transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)', zIndex: 10 }}>
+            
+            {/* Quick Actions (Floating) */}
+            <div className="product-actions" style={{ position: 'absolute', top: 12, right: 12, display: 'flex', flexDirection: 'column', gap: 8, zIndex: 10 }}>
               <button 
                 onClick={handleWishlist} 
                 type="button"
-                style={{ width: 38, height: 38, borderRadius: '50%', background: 'white', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.12)', transition: 'all 0.2s' }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                className="hover-glow"
+                style={{ width: 40, height: 40, borderRadius: '50%', background: 'white', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
               >
                 <Heart size={18} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#374151'} />
               </button>
-              <button 
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/products/${product.slug || product.id}`); }}
-                type="button"
-                style={{ width: 38, height: 38, borderRadius: '50%', background: 'white', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.12)', transition: 'all 0.2s' }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-              >
-                <Eye size={18} color="#374151" />
-              </button>
             </div>
 
-            {/* Add to Cart */}
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(135deg, var(--dark), var(--dark2))', color: 'white', padding: '12px', textAlign: 'center', transform: hovered ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 0.3s ease', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.5px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-              onClick={handleAddToCart}>
-              <ShoppingBag size={16} /> Add to Cart
+            {/* Badges */}
+            <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {discount > 0 && <span style={{ background: 'var(--red)', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>{discount}% OFF</span>}
+              {product.stock === 0 && <span style={{ background: '#1a1a2e', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>SOLD OUT</span>}
+            </div>
+
+            {/* Desktop Add to Cart Overlay */}
+            <div className="hidden-mobile" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(26,26,46,0.95), transparent)', padding: '24px 12px 12px', transform: hovered ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+              <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.8rem', padding: '10px' }}>
+                <ShoppingBag size={14} style={{ marginRight: 8 }} /> Add to Cart
+              </button>
             </div>
           </div>
 
-          {/* Info */}
-          <div style={{ padding: '14px 16px' }}>
-            {product.category && <p style={{ fontSize: '0.72rem', color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 4 }}>{product.category.name}</p>}
-            <h3 style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{product.name}</h3>
+          {/* Info Section */}
+          <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ marginBottom: 8 }}>
+              {product.category && <p style={{ fontSize: '0.65rem', color: 'var(--gold)', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: 4 }}>{product.category.name}</p>}
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--dark)', lineHeight: 1.4, margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{product.name}</h3>
+            </div>
 
-            {/* Rating */}
-            {product.numReviews > 0 && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 8 }}>
-                <div style={{ display: 'flex', gap: 1 }}>
-                  {[1,2,3,4,5].map(s => <Star key={s} size={11} fill={s <= Math.round(product.rating) ? '#f59e0b' : 'none'} color={s <= Math.round(product.rating) ? '#f59e0b' : '#d1d5db'} />)}
-                </div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>({product.numReviews})</span>
+            {/* Pricing & Rating */}
+            <div style={{ marginTop: 'auto' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                <span style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--dark)' }}>₹{product.price.toLocaleString()}</span>
+                {product.comparePrice && <span style={{ textDecoration: 'line-through', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>₹{product.comparePrice.toLocaleString()}</span>}
               </div>
-            )}
-
-            {/* Price */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-              <span className="price">₹{product.price.toLocaleString()}</span>
-              {product.comparePrice && <span className="price-compare">₹{product.comparePrice.toLocaleString()}</span>}
-              {discount > 0 && <span className="discount-label">{discount}% off</span>}
+              
+              {/* Mobile Add to Cart Button (Visible) */}
+              <div className="show-mobile" style={{ marginTop: 12 }}>
+                <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.75rem', padding: '8px', minHeight: 44 }}>
+                  <ShoppingBag size={14} style={{ marginRight: 6 }} /> Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>

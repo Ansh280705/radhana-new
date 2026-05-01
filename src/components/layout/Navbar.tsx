@@ -77,12 +77,12 @@ export default function Navbar() {
         position: 'fixed', top: 0, left: 0, height: '3px',
         background: 'linear-gradient(90deg, var(--gold), var(--gold-light))',
         width: scrolled ? '100%' : '0%',
-        zIndex: 1001, transition: 'width 0.2s ease-out',
+        zIndex: 2001, transition: 'width 0.2s ease-out',
         display: scrolled ? 'block' : 'none'
       }} />
 
-      {/* Top Bar */}
-      <div style={{ background: 'var(--dark)', color: 'white', padding: '10px 0', fontSize: '0.78rem', textAlign: 'center', letterSpacing: '0.5px' }}>
+      {/* Top Bar - Hidden on Mobile */}
+      <div className="hidden-mobile" style={{ background: 'var(--dark)', color: 'white', padding: '10px 0', fontSize: '0.78rem', textAlign: 'center', letterSpacing: '0.5px' }}>
         <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>SAVARIA10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
       </div>
 
@@ -96,23 +96,28 @@ export default function Navbar() {
         boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.05)' : 'none',
       }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 64 : 85, transition: 'height 0.5s ease' }}>
+          {/* Left: Hamburger (Mobile Only) */}
+          <button onClick={() => setMenuOpen(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, marginLeft: -8 }} className="show-mobile">
+            <Menu size={24} />
+          </button>
+
           {/* Logo */}
           <Link href="/" style={{ textDecoration: 'none' }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05) rotate(-1deg)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Center: Desktop Nav Links */}
           <div style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="hidden-mobile">
             {categories.map((cat, i) => (
               <Link
                 key={cat.slug}
                 href={`/products?category=${cat.slug}`}
-                className="hover-glow animate-scaleIn"
+                className="hover-glow"
                 style={{
                   textDecoration: 'none',
                   color: 'var(--text-primary)',
@@ -120,30 +125,22 @@ export default function Navbar() {
                   fontSize: '0.94rem',
                   transition: 'all 0.3s ease',
                   position: 'relative',
-                  animationDelay: `${i * 0.1}s`,
-                  opacity: 0,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 {cat.name}
               </Link>
             ))}
           </div>
 
-          {/* Right Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {/* Right: Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(4px, 1vw, 12px)' }}>
             {/* Search */}
-            <button onClick={() => setSearchOpen(!searchOpen)} className="hover-glow" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, borderRadius: 8, color: 'var(--text-primary)', transition: 'all 0.3s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--beige)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-primary)'; }}>
+            <button onClick={() => setSearchOpen(!searchOpen)} className="hover-glow" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, borderRadius: 8, color: 'var(--text-primary)' }}>
               <Search size={20} />
             </button>
 
             {/* Wishlist */}
-            <Link href="/wishlist" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex', transition: 'all 0.3s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--beige)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-primary)'; }}>
+            <Link href="/wishlist" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
               <Heart size={20} />
               {mounted && wishlistIds.length > 0 && (
                 <span style={{ position: 'absolute', top: 2, right: 2, background: 'var(--red)', color: 'white', borderRadius: '50%', width: 16, height: 16, fontSize: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
@@ -153,9 +150,7 @@ export default function Navbar() {
             </Link>
 
             {/* Cart */}
-            <Link href="/cart" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex', transition: 'all 0.3s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--beige)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-primary)'; }}>
+            <Link href="/cart" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
               <ShoppingBag size={20} />
               {mounted && totalItems() > 0 && (
                 <span style={{ position: 'absolute', top: 2, right: 2, background: 'var(--gold)', color: 'var(--dark)', borderRadius: '50%', width: 16, height: 16, fontSize: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
@@ -167,9 +162,7 @@ export default function Navbar() {
             {/* User */}
             {user ? (
               <div ref={userMenuRef} style={{ position: 'relative' }}>
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: '2px solid var(--border)', borderRadius: 50, padding: '6px 14px', cursor: 'pointer', fontSize: '0.88rem', fontWeight: 500, transition: 'all 0.2s' }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--gold)'}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: '2px solid var(--border)', borderRadius: 50, padding: '6px 12px', cursor: 'pointer', fontSize: '0.88rem', fontWeight: 500 }}>
                   <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'linear-gradient(135deg, var(--gold), var(--gold-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)', fontWeight: 700, fontSize: '0.8rem' }}>
                     {user.name[0].toUpperCase()}
                   </div>
@@ -177,7 +170,7 @@ export default function Navbar() {
                   <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: userMenuOpen ? 'rotate(180deg)' : 'none' }} />
                 </button>
                 {userMenuOpen && (
-                  <div style={{ position: 'absolute', right: 0, top: 'calc(100% + 8px)', background: 'white', borderRadius: 16, border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.12)', minWidth: 200, overflow: 'hidden', zIndex: 100 }}>
+                  <div style={{ position: 'absolute', right: 0, top: 'calc(100% + 8px)', background: 'white', borderRadius: 12, border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.12)', minWidth: 200, overflow: 'hidden', zIndex: 100 }}>
                     <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--border)', background: 'var(--beige)' }}>
                       <p style={{ fontWeight: 700, fontSize: '0.95rem' }}>{user.name}</p>
                       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{user.email}</p>
@@ -188,30 +181,21 @@ export default function Navbar() {
                       { href: '/wishlist', icon: <Heart size={16} />, label: 'Wishlist' },
                       ...(user.role === 'ADMIN' ? [{ href: '/admin', icon: <LayoutDashboard size={16} />, label: 'Admin Panel' }] : []),
                     ].map((item) => (
-                      <Link key={item.href} href={item.href} onClick={() => setUserMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', textDecoration: 'none', color: 'var(--text-primary)', fontSize: '0.9rem', transition: 'background 0.2s' }}
-                        onMouseEnter={e => e.currentTarget.style.background = 'var(--beige)'}
-                        onMouseLeave={e => e.currentTarget.style.background = 'none'}>
+                      <Link key={item.href} href={item.href} onClick={() => setUserMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', textDecoration: 'none', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
                         <span style={{ color: 'var(--gold)' }}>{item.icon}</span> {item.label}
                       </Link>
                     ))}
-                    <button onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', width: '100%', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--red)', fontSize: '0.9rem', borderTop: '1px solid var(--border)', transition: 'background 0.2s' }}
-                      onMouseEnter={e => e.currentTarget.style.background = '#fee2e2'}
-                      onMouseLeave={e => e.currentTarget.style.background = 'none'}>
+                    <button onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 20px', width: '100%', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--red)', fontSize: '0.9rem', borderTop: '1px solid var(--border)' }}>
                       <LogOut size={16} /> Logout
                     </button>
                   </div>
                 )}
               </div>
             ) : (
-              <Link href="/login" style={{ textDecoration: 'none' }}>
-                <button className="btn-gold" style={{ padding: '8px 20px', fontSize: '0.85rem' }}>Login</button>
+              <Link href="/login" className="hidden-mobile" style={{ textDecoration: 'none' }}>
+                <button className="btn-gold" style={{ padding: '8px 20px', fontSize: '0.85rem', minHeight: 40 }}>Login</button>
               </Link>
             )}
-
-            {/* Mobile Menu */}
-            <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'none' }} className="show-mobile">
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
           </div>
         </div>
 
@@ -220,34 +204,55 @@ export default function Navbar() {
           <div style={{ borderTop: '1px solid var(--border)', padding: '12px 0', background: 'var(--beige)' }}>
             <div className="container">
               <form onSubmit={handleSearch} style={{ display: 'flex', gap: 8 }}>
-                <input ref={searchRef} className="input-field" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search for dresses, shirts, kurtas..." style={{ flex: 1 }} />
-                <button type="submit" className="btn-gold" style={{ padding: '12px 24px' }}>Search</button>
+                <input ref={searchRef} className="input-field" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search for collections..." style={{ flex: 1 }} />
+                <button type="submit" className="btn-gold" style={{ padding: '0 24px', minHeight: 44 }}>Search</button>
               </form>
             </div>
           </div>
         )}
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div style={{ borderTop: '1px solid var(--border)', background: 'white', padding: '16px 0' }}>
-            <div className="container">
-              {categories.map((cat) => (
-                <Link key={cat.slug} href={`/products?category=${cat.slug}`} onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '12px 0', textDecoration: 'none', color: 'var(--text-primary)', fontWeight: 500, borderBottom: '1px solid var(--border)' }}>
-                  {cat.name}
-                </Link>
-              ))}
+        {/* Mobile Slide-in Drawer */}
+        <div className={`drawer-overlay ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)} />
+        <div className={`drawer ${menuOpen ? 'open' : ''}`}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--dark)' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic' }}>Fashion</span>
+            </div>
+            <button onClick={() => setMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
+              <X size={24} />
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <p style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '2px', color: 'var(--gold)', textTransform: 'uppercase' }}>Collections</p>
+            {categories.map((cat) => (
+              <Link key={cat.slug} href={`/products?category=${cat.slug}`} onClick={() => setMenuOpen(false)} style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--dark)', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                {cat.name}
+                <ChevronRight size={18} opacity={0.5} />
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 'auto', paddingTop: 40, borderTop: '1px solid var(--border)' }}>
+            {!user && (
+              <Link href="/login" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none' }}>
+                <button className="btn-gold" style={{ width: '100%', marginBottom: 16 }}>Login / Register</button>
+              </Link>
+            )}
+            <div style={{ display: 'flex', gap: 16, color: 'var(--text-secondary)' }}>
+              <Link href="/dashboard" style={{ color: 'inherit' }}><User size={20} /></Link>
+              <Link href="/wishlist" style={{ color: 'inherit' }}><Heart size={20} /></Link>
+              <Link href="/cart" style={{ color: 'inherit' }}><ShoppingBag size={20} /></Link>
             </div>
           </div>
-        )}
+        </div>
       </nav>
 
       <style jsx global>{`
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
         }
       `}</style>
     </>
