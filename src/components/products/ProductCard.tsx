@@ -74,71 +74,88 @@ export default function ProductCard({ product }: { product: Product }) {
           onMouseLeave={() => setHovered(false)}
           style={{ 
             background: 'white', 
-            borderRadius: '12px', 
+            borderRadius: '6px', 
             overflow: 'hidden', 
-            border: '1px solid var(--border)', 
+            border: '1px solid #d0d7de', 
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            transition: 'all 0.3s ease'
+            transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+            boxShadow: hovered ? '0 8px 24px rgba(149,157,165,0.2)' : 'none'
           }}
         >
           {/* Image Wrapper */}
-          <div className="image-wrapper" style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--beige)' }}>
+          <div className="image-wrapper" style={{ position: 'relative', aspectRatio: '1.2/1', overflow: 'hidden', background: '#f6f8fa', borderBottom: '1px solid #d0d7de' }}>
             <img
               src={imgError ? placeholder : (product.images[0] || placeholder)}
               alt={product.name}
               onError={() => setImgError(true)}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)', transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9, transition: 'opacity 0.3s' }}
             />
             
             {/* Quick Actions (Floating) */}
-            <div className="product-actions" style={{ position: 'absolute', top: 12, right: 12, display: 'flex', flexDirection: 'column', gap: 8, zIndex: 10 }}>
+            <div className="product-actions" style={{ position: 'absolute', top: 8, right: 8, display: 'flex', flexDirection: 'column', gap: 4, zIndex: 10 }}>
               <button 
                 onClick={handleWishlist} 
                 type="button"
-                className="hover-glow"
-                style={{ width: 40, height: 40, borderRadius: '50%', background: 'white', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
+                style={{ width: 32, height: 32, borderRadius: '6px', background: 'white', border: '1px solid #d0d7de', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 0 rgba(27,31,35,0.04)' }}
               >
-                <Heart size={18} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#374151'} />
+                <Heart size={14} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#57606a'} />
               </button>
             </div>
 
             {/* Badges */}
-            <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {discount > 0 && <span style={{ background: 'var(--red)', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>{discount}% OFF</span>}
-              {product.stock === 0 && <span style={{ background: '#1a1a2e', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>SOLD OUT</span>}
-            </div>
-
-            {/* Desktop Add to Cart Overlay */}
-            <div className="hidden-mobile" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(26,26,46,0.95), transparent)', padding: '24px 12px 12px', transform: hovered ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}>
-              <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.8rem', padding: '10px' }}>
-                <ShoppingBag size={14} style={{ marginRight: 8 }} /> Add to Cart
-              </button>
+            <div style={{ position: 'absolute', top: 8, left: 8, display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {discount > 0 && <span style={{ background: '#cf222e', color: 'white', padding: '2px 8px', borderRadius: 12, fontSize: '0.65rem', fontWeight: 600 }}>{discount}% OFF</span>}
             </div>
           </div>
 
           {/* Info Section */}
-          <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <div style={{ marginBottom: 8 }}>
-              {product.category && <p style={{ fontSize: '0.65rem', color: 'var(--gold)', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: 4 }}>{product.category.name}</p>}
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--dark)', lineHeight: 1.4, margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{product.name}</h3>
+          <div style={{ padding: '12px', flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div>
+              <h3 style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0969da', lineHeight: 1.4, margin: 0, display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden', cursor: 'pointer' }}>
+                <span style={{ textDecoration: hovered ? 'underline' : 'none' }}>{product.name}</span>
+              </h3>
+              
+              {product.category && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)', border: '1px solid rgba(0,0,0,0.1)' }}></span>
+                  <p style={{ fontSize: '0.75rem', color: '#57606a', margin: 0 }}>{product.category.name}</p>
+                </div>
+              )}
             </div>
 
-            {/* Pricing & Rating */}
-            <div style={{ marginTop: 'auto' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                <span style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--dark)' }}>₹{product.price.toLocaleString()}</span>
-                {product.comparePrice && <span style={{ textDecoration: 'line-through', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>₹{product.comparePrice.toLocaleString()}</span>}
-              </div>
-              
-              {/* Mobile Add to Cart Button (Visible) */}
-              <div className="show-mobile" style={{ marginTop: 12 }}>
-                <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.75rem', padding: '8px', minHeight: 44 }}>
-                  <ShoppingBag size={14} style={{ marginRight: 6 }} /> Add to Cart
-                </button>
-              </div>
+            {/* Pricing */}
+            <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'baseline', gap: 6 }}>
+              <span style={{ fontWeight: 600, fontSize: '0.95rem', color: '#24292f' }}>₹{product.price.toLocaleString()}</span>
+              {product.comparePrice && <span style={{ textDecoration: 'line-through', color: '#57606a', fontSize: '0.8rem', opacity: 0.7 }}>₹{product.comparePrice.toLocaleString()}</span>}
             </div>
+
+            {/* Action Button (GitHub "Star" style) */}
+            <button 
+              onClick={handleAddToCart} 
+              style={{ 
+                width: '100%', 
+                fontSize: '0.75rem', 
+                padding: '6px 12px', 
+                background: '#f6f8fa', 
+                border: '1px solid #d0d7de', 
+                borderRadius: '6px', 
+                color: '#24292f',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 6,
+                boxShadow: '0 1px 0 rgba(27,31,35,0.04)',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f6f8fa'}
+            >
+              <ShoppingBag size={14} /> Add to Cart
+            </button>
           </div>
         </div>
       </Link>

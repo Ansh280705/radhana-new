@@ -96,23 +96,17 @@ export default function Navbar() {
         boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.05)' : 'none',
       }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 64 : 85, transition: 'height 0.5s ease' }}>
-          {/* Left: Hamburger (Mobile Only) */}
-          <button onClick={() => setMenuOpen(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, marginLeft: -8 }} className="show-mobile">
-            <Menu size={24} />
-          </button>
 
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }} 
-              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05) rotate(-1deg)'} 
-              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
+          <Link href="/" style={{ textDecoration: 'none', zIndex: 10, flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s' }}>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
             </div>
           </Link>
 
           {/* Center: Desktop Nav Links */}
-          <div style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="hidden-mobile">
+          <div style={{ display: 'flex', gap: 24, alignItems: 'center' }} className="hidden-mobile">
             {categories.map((cat, i) => (
               <Link
                 key={cat.slug}
@@ -124,7 +118,6 @@ export default function Navbar() {
                   fontWeight: 500,
                   fontSize: '1.1rem',
                   transition: 'all 0.3s ease',
-                  position: 'relative',
                 }}
               >
                 {cat.name}
@@ -133,27 +126,27 @@ export default function Navbar() {
           </div>
 
           {/* Right: Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(4px, 1vw, 12px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(2px, 1vw, 10px)' }}>
             {/* Search */}
-            <button onClick={() => setSearchOpen(!searchOpen)} className="hover-glow" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, borderRadius: 8, color: 'var(--text-primary)' }}>
-              <Search size={20} />
+            <button onClick={() => setSearchOpen(!searchOpen)} className="hover-glow" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 6, borderRadius: 8, color: 'var(--text-primary)' }}>
+              <Search size={18} />
             </button>
 
             {/* Wishlist */}
-            <Link href="/wishlist" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
-              <Heart size={20} />
+            <Link href="/wishlist" className="hover-glow" style={{ textDecoration: 'none', padding: 6, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
+              <Heart size={18} />
               {mounted && wishlistIds.length > 0 && (
-                <span style={{ position: 'absolute', top: 2, right: 2, background: 'var(--red)', color: 'white', borderRadius: '50%', width: 16, height: 16, fontSize: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
+                <span style={{ position: 'absolute', top: 0, right: 0, background: 'var(--red)', color: 'white', borderRadius: '50%', width: 14, height: 14, fontSize: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
                   {wishlistIds.length}
                 </span>
               )}
             </Link>
 
             {/* Cart */}
-            <Link href="/cart" className="hover-glow" style={{ textDecoration: 'none', padding: 8, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
-              <ShoppingBag size={20} />
+            <Link href="/cart" className="hover-glow" style={{ textDecoration: 'none', padding: 6, borderRadius: 8, color: 'var(--text-primary)', position: 'relative', display: 'flex' }}>
+              <ShoppingBag size={18} />
               {mounted && totalItems() > 0 && (
-                <span style={{ position: 'absolute', top: 2, right: 2, background: 'var(--gold)', color: 'var(--dark)', borderRadius: '50%', width: 16, height: 16, fontSize: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
+                <span style={{ position: 'absolute', top: 0, right: 0, background: 'var(--gold)', color: 'var(--dark)', borderRadius: '50%', width: 14, height: 14, fontSize: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
                   {totalItems()}
                 </span>
               )}
@@ -166,8 +159,7 @@ export default function Navbar() {
                   <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'linear-gradient(135deg, var(--gold), var(--gold-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)', fontWeight: 700, fontSize: '0.8rem' }}>
                     {user.name[0].toUpperCase()}
                   </div>
-                  <span className="hidden-mobile">{user.name.split(' ')[0]}</span>
-                  <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: userMenuOpen ? 'rotate(180deg)' : 'none' }} />
+                  <ChevronDown size={12} style={{ transition: 'transform 0.2s', transform: userMenuOpen ? 'rotate(180deg)' : 'none' }} />
                 </button>
                 {userMenuOpen && (
                   <div style={{ position: 'absolute', right: 0, top: 'calc(100% + 8px)', background: 'white', borderRadius: 12, border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.12)', minWidth: 200, overflow: 'hidden', zIndex: 100 }}>
@@ -196,6 +188,15 @@ export default function Navbar() {
                 <button className="btn-gold" style={{ padding: '8px 20px', fontSize: '1rem', minHeight: 40 }}>Login</button>
               </Link>
             )}
+
+            {/* Hamburger */}
+            <button 
+              className="show-mobile"
+              onClick={() => setMenuOpen(true)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'var(--text-primary)', marginLeft: 4 }}
+            >
+              <Menu size={20} />
+            </button>
           </div>
         </div>
 

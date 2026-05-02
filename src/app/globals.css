@@ -26,12 +26,12 @@
   --s12: 96px;
 
   /* Viewport Padding */
-  --container-padding: 24px;
+  --container-padding: 20px;
 }
 
 @media (max-width: 480px) {
   :root {
-    --container-padding: 16px;
+    --container-padding: 12px;
   }
 }
 
@@ -216,7 +216,7 @@ p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.7; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
 }
 @media (max-width: 480px) {
-  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 
 /* Container */
@@ -225,6 +225,18 @@ p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.7; }
   margin: 0 auto;
   padding: 0 var(--container-padding);
   width: 100%;
+  box-sizing: border-box;
+}
+
+/* Base Layout Fixes */
+html, body {
+  overflow-x: hidden;
+  width: 100vw;
+  position: relative;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 /* Sections */

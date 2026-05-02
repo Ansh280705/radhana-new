@@ -72,31 +72,31 @@ export default function HomePage() {
           <div style={{ position: 'absolute', top: '-15%', right: '-5%', width: '45%', height: '70%', background: 'var(--gold)', filter: 'blur(160px)', opacity: 0.12, borderRadius: '50%', animation: 'softFloat 12s infinite ease-in-out' }} />
           <div style={{ position: 'absolute', bottom: '-15%', left: '-10%', width: '35%', height: '60%', background: '#4a3aff', filter: 'blur(160px)', opacity: 0.08, borderRadius: '50%', animation: 'softFloat 15s infinite ease-in-out reverse' }} />
 
-          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-            <div className="hero-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', alignItems: 'center', gap: 40 }}>
-              <div key={heroIdx} className="animate-fadeIn">
+          <div className="container" style={{ position: 'relative', zIndex: 2, padding: 'var(--s10) var(--container-padding)' }}>
+            <div className="hero-content" style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+              <div key={heroIdx} className="animate-fadeIn" style={{ maxWidth: 650 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }} className="animate-scaleIn">
                   <div style={{ width: 40, height: 1, background: 'var(--gold)' }} />
-                  <span style={{ color: 'var(--gold-light)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '3px', textTransform: 'uppercase' }}>{slide.badge}</span>
+                  <span style={{ color: 'var(--gold-light)', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '3px', textTransform: 'uppercase' }}>{slide.badge}</span>
                 </div>
-                <h1 className="animate-scaleIn font-serif" style={{ fontWeight: 700, lineHeight: 1.05, marginBottom: 28, color: 'white' }}>
+                <h1 className="animate-scaleIn font-serif" style={{ fontWeight: 700, lineHeight: 1.1, marginBottom: 24, color: 'white', fontSize: 'clamp(2.2rem, 10vw, 4.5rem)' }}>
                   {slide.title}
                 </h1>
-                <p className="animate-fadeIn" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 40, maxWidth: 520, lineHeight: 1.8 }}>
+                <p className="animate-fadeIn" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 36, maxWidth: 520, lineHeight: 1.7, fontSize: 'clamp(1rem, 3vw, 1.15rem)' }}>
                   {slide.subtitle}
                 </p>
                 <div className="hero-actions" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Link href={slide.ctaLink} style={{ textDecoration: 'none', flex: '1 1 auto' }}>
-                    <button className="btn-gold hover-glow" style={{ width: '100%', padding: '18px 32px' }}>{slide.cta}</button>
+                  <Link href={slide.ctaLink} style={{ textDecoration: 'none', flex: '1 1 auto', minWidth: 200 }}>
+                    <button className="btn-gold hover-glow" style={{ width: '100%', padding: '16px 32px' }}>{slide.cta}</button>
                   </Link>
-                  <Link href="/products" style={{ textDecoration: 'none', flex: '1 1 auto' }}>
-                    <button className="btn-outline hover-glow" style={{ width: '100%', padding: '18px 32px', color: 'white', borderColor: 'rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
+                  <Link href="/products" style={{ textDecoration: 'none', flex: '1 1 auto', minWidth: 200 }}>
+                    <button className="btn-outline hover-glow" style={{ width: '100%', padding: '16px 32px', color: 'white', borderColor: 'rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
                       Explore More
                     </button>
                   </Link>
                 </div>
               </div>
-              <div className="hidden-mobile animate-scaleIn" style={{ perspective: '1200px' }}>
+              <div className="hidden-mobile animate-scaleIn" style={{ perspective: '1200px', maxWidth: 500 }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1' }}>
                   <img src={slide.img} alt={slide.title} onError={e => { e.currentTarget.style.display = 'none'; }} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px', opacity: 0.95, boxShadow: '30px 30px 60px rgba(0,0,0,0.4)', transform: 'rotateY(-8deg) rotateX(2deg)', transition: 'transform 1s cubic-bezier(0.23, 1, 0.32, 1)' }} 
@@ -195,7 +195,21 @@ export default function HomePage() {
                 <h2 className="section-title" style={{ marginBottom: 0 }}>Featured Products</h2>
               </div>
               <Link href="/products?featured=true" style={{ textDecoration: 'none' }}>
-                <button className="btn-outline">Explore All</button>
+                <button 
+                  style={{ 
+                    background: '#f6f8fa', 
+                    border: '1px solid #d0d7de', 
+                    borderRadius: '6px', 
+                    padding: '8px 16px', 
+                    fontSize: '0.85rem', 
+                    fontWeight: 600, 
+                    color: '#24292f',
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 0 rgba(27,31,35,0.04)'
+                  }}
+                >
+                  Explore All
+                </button>
               </Link>
             </div>
             {loading ? (
@@ -234,7 +248,21 @@ export default function HomePage() {
                 <h2 className="section-title" style={{ marginBottom: 0 }}>New Arrivals</h2>
               </div>
               <Link href="/products?newArrival=true" style={{ textDecoration: 'none' }}>
-                <button className="btn-outline">View Latest</button>
+                <button 
+                  style={{ 
+                    background: '#f6f8fa', 
+                    border: '1px solid #d0d7de', 
+                    borderRadius: '6px', 
+                    padding: '8px 16px', 
+                    fontSize: '0.85rem', 
+                    fontWeight: 600, 
+                    color: '#24292f',
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 0 rgba(27,31,35,0.04)'
+                  }}
+                >
+                  View Latest
+                </button>
               </Link>
             </div>
             {loading ? (

@@ -85,8 +85,8 @@ export default function Footer() {
         .footer-link:hover { color: var(--gold) !important; padding-left: 4px; }
         @media (max-width: 640px) {
           .newsletter-form { flex-direction: column; border-radius: 12px !important; background: none !important; backdrop-filter: none !important; padding: 0 !important; }
-          .newsletter-form input { border-radius: 8px !important; margin-bottom: 12px; width: 100%; }
-          .newsletter-form button { border-radius: 8px !important; width: 100%; }
+          .newsletter-form input { border-radius: 8px !important; margin-bottom: 8px; width: 100%; font-size: 0.9rem !important; }
+          .newsletter-form button { border-radius: 8px !important; width: 100%; min-height: 44px !important; font-size: 0.9rem !important; }
         }
       `}</style>
     </footer>

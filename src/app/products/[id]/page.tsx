@@ -90,10 +90,10 @@ export default function ProductDetailPage() {
             <ChevronLeft size={18} /> Back to Products
           </Link>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, marginBottom: 60 }}>
+          <div className="product-detail-grid" style={{ display: 'grid', gap: 'clamp(24px, 5vw, 48px)', marginBottom: 60 }}>
             {/* Image Gallery */}
-            <div>
-              <div style={{ borderRadius: 20, overflow: 'hidden', background: 'var(--beige)', marginBottom: 12, height: 500, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="product-gallery">
+              <div style={{ borderRadius: 12, overflow: 'hidden', background: '#f6f8fa', border: '1px solid #d0d7de', marginBottom: 12, aspectRatio: '4/5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={imgErrors[selectedImage] ? placeholder(product.name) : images[selectedImage]} alt={product.name} onError={() => setImgErrors(prev => ({ ...prev, [selectedImage]: true }))} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 0.3s' }} />
               </div>
               {images.length > 1 && (
@@ -172,20 +172,36 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Actions */}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 20 }}>
-                <button className="btn-gold" onClick={handleAddToCart} disabled={product.stock === 0} style={{ flex: 1, minWidth: 160, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: '1rem' }}>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>
+                <button className="btn-gold" onClick={handleAddToCart} disabled={product.stock === 0} style={{ flex: 1, minWidth: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: '0.95rem', borderRadius: 6 }}>
                   <ShoppingBag size={18} /> Add to Cart
                 </button>
-                <button className="btn-dark" onClick={handleBuyNow} disabled={product.stock === 0} style={{ flex: 1, minWidth: 160, fontSize: '1rem' }}>Buy Now</button>
-                <button onClick={() => { if (!user) { toast.error('Login to wishlist'); return; } toggle(product.id); toast.success(isWishlisted(product.id) ? 'Removed' : 'Added to wishlist!'); }} style={{ padding: '12px 16px', borderRadius: 50, border: '2px solid var(--border)', background: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                  <Heart size={20} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#374151'} />
-                </button>
+                <div style={{ display: 'flex', gap: 12, width: '100%' }}>
+                  <button className="btn-dark" onClick={handleBuyNow} disabled={product.stock === 0} style={{ flex: 1, fontSize: '0.95rem', borderRadius: 6 }}>Buy Now</button>
+                  <button 
+                    onClick={() => { if (!user) { toast.error('Login to wishlist'); return; } toggle(product.id); toast.success(isWishlisted(product.id) ? 'Removed' : 'Added to wishlist!'); }} 
+                    style={{ 
+                      padding: '12px', 
+                      borderRadius: 6, 
+                      border: '1px solid #d0d7de', 
+                      background: '#f6f8fa', 
+                      cursor: 'pointer', 
+                      display: 'flex', 
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minWidth: 48,
+                      boxShadow: '0 1px 0 rgba(27,31,35,0.04)'
+                    }}
+                  >
+                    <Heart size={20} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#57606a'} />
+                  </button>
+                </div>
               </div>
 
               {/* Description */}
-              <div style={{ padding: 20, background: 'var(--beige)', borderRadius: 16 }}>
-                <p style={{ fontWeight: 700, marginBottom: 8 }}>Description</p>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.95rem' }}>{product.description}</p>
+              <div style={{ padding: 20, background: '#f6f8fa', border: '1px solid #d0d7de', borderRadius: 6 }}>
+                <p style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: 8, color: '#24292f' }}>Description</p>
+                <p style={{ color: '#57606a', lineHeight: 1.6, fontSize: '0.9rem', margin: 0 }}>{product.description}</p>
               </div>
             </div>
           </div>
@@ -241,6 +257,13 @@ export default function ProductDetailPage() {
         </div>
       </main>
       <Footer />
+      <style jsx>{`
+        .product-detail-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 991px) {
+          .product-detail-grid { grid-template-columns: 1fr; }
+          .product-gallery { max-width: 600px; margin: 0 auto 32px; width: 100%; }
+        }
+      `}</style>
     </>
   );
 }
