@@ -97,6 +97,15 @@ export default function Navbar() {
       }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 64 : 85, transition: 'height 0.5s ease' }}>
 
+          {/* Left: Hamburger (Mobile) */}
+          <button 
+            className="show-mobile"
+            onClick={() => setMenuOpen(true)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'var(--text-primary)', marginRight: 16 }}
+          >
+            <Menu size={24} />
+          </button>
+
           {/* Logo */}
           <Link href="/" style={{ textDecoration: 'none', zIndex: 10, flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s' }}>
@@ -189,14 +198,7 @@ export default function Navbar() {
               </Link>
             )}
 
-            {/* Hamburger */}
-            <button 
-              className="show-mobile"
-              onClick={() => setMenuOpen(true)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'var(--text-primary)', marginLeft: 4 }}
-            >
-              <Menu size={20} />
-            </button>
+
           </div>
         </div>
 
