@@ -108,6 +108,22 @@ p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.7; }
   transform: translateY(-3px);
 }
 
+.input-field {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  width: 100%;
+  outline: none;
+  transition: all 0.3s;
+}
+.input-field:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+}
+
 /* Buttons */
 .btn-gold {
   display: inline-flex;
