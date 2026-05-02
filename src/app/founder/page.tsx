@@ -8,13 +8,13 @@ export default function FounderPage() {
   const founders = [
     {
       name: 'Shubham Chouhan',
-      role: 'Co-Founder',
+      role: 'Founder',
       location: 'Ratlam',
       image: '/team/co-founder.jpg',
     },
     {
       name: 'Piyush Rathore',
-      role: 'Founder',
+      role: 'Co-Founder',
       location: 'Ratlam',
       image: '/team/founder.jpg',
     }
