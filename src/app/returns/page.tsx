@@ -35,8 +35,11 @@ export default function ReturnsPage() {
           </p>
           <div style={{ width: 60, height: 2, background: 'var(--gold)' }} />
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-            All sales are final. We encourage our customers to check the sizing guide and product details carefully before placing an order.
+            All sales are final. We encourage our customers to check the product details carefully before placing an order.
           </p>
+          <a href="/sizing" style={{ color: 'var(--gold)', fontWeight: 700, textDecoration: 'underline', fontSize: '1rem' }}>
+            You can refer to our size chart here
+          </a>
         </div>
       </div>
       <Footer />
