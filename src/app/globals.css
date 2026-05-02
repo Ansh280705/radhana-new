@@ -285,6 +285,47 @@ p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.7; }
   .show-mobile { display: flex !important; }
 }
 
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  .mobile-text-center {
+    text-align: center !important;
+  }
+}
+
+.products-layout, .cart-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+}
+
+.cart-layout {
+  grid-template-columns: 1fr 360px;
+}
+
+@media (max-width: 1024px) {
+  .products-layout, .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cart-summary {
+    position: static !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .cart-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .cart-item > div {
+    width: 100% !important;
+  }
+}
+
 /* Feature Cards Grid */
 .features-grid {
   display: grid;

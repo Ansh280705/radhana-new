@@ -25,6 +25,7 @@ function ProductsContent() {
     featured: searchParams.get('featured') || '',
     newArrival: searchParams.get('newArrival') || '',
   });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => { categoriesAPI.getAll().then(r => setCategories(r.data)).catch(() => {}); }, []);
 
@@ -77,9 +78,28 @@ function ProductsContent() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: 28 }}>
+          <div className="products-layout">
+            {/* Mobile Filter Toggle */}
+            <button 
+              className="show-mobile btn-outline" 
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{ width: '100%', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            >
+              <SlidersHorizontal size={18} /> {menuOpen ? 'Hide Filters' : 'Show Filters'}
+            </button>
+
             {/* Sidebar */}
-            <div className="hidden-mobile" style={{ position: 'sticky', top: 90, height: 'fit-content', background: 'white', borderRadius: 16, border: '1px solid var(--border)', padding: 24 }}>
+            <div className={`${menuOpen ? 'show' : 'hidden-mobile'}`} style={{ 
+              position: 'sticky', 
+              top: 90, 
+              height: 'fit-content', 
+              background: 'white', 
+              borderRadius: 16, 
+              border: '1px solid var(--border)', 
+              padding: 24,
+              zIndex: 50,
+              transition: 'all 0.3s ease'
+            }}>
               <h3 style={{ fontWeight: 700, marginBottom: 20 }}>Filters</h3>
               <div style={{ marginBottom: 20 }}>
                 <p style={{ fontWeight: 600, marginBottom: 10, fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Category</p>

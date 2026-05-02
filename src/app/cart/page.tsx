@@ -53,12 +53,12 @@ export default function CartPage() {
       <Navbar />
       <main style={{ padding: '32px 0 60px' }}>
         <div className="container">
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, marginBottom: 32 }}>Shopping Cart <span style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', fontWeight: 400 }}>({totalItems()} items)</span></h1>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 28, alignItems: 'start' }}>
+          <h1 className="font-serif" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 700, marginBottom: 32 }}>Shopping Cart <span style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', fontWeight: 400 }}>({totalItems()} items)</span></h1>
+          <div className="cart-layout">
             {/* Cart Items */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {items.map(item => (
-                <div key={item.id} style={{ background: 'white', borderRadius: 16, border: '1px solid var(--border)', padding: 20, display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div key={item.id} className="cart-item" style={{ background: 'white', borderRadius: 16, border: '1px solid var(--border)', padding: 20, display: 'flex', gap: 16, alignItems: 'center', position: 'relative' }}>
                   <div style={{ width: 90, height: 110, borderRadius: 12, overflow: 'hidden', background: 'var(--beige)', flexShrink: 0 }}>
                     <img src={imgErrors[item.id] ? `https://placehold.co/90x110/faf8f4/c9a84c?text=Item` : (item.image || `https://placehold.co/90x110/faf8f4/c9a84c?text=Item`)} onError={() => setImgErrors(p => ({ ...p, [item.id]: true }))} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>

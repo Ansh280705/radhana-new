@@ -106,8 +106,8 @@ export default function Navbar() {
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05) rotate(-1deg)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 5vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.5px' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 5vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '-2px' }}>Fashion</span>
             </div>
           </Link>
 

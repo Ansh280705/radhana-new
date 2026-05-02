@@ -99,8 +99,8 @@ function CheckoutContent() {
       <Navbar />
       <main style={{ padding: '32px 0 60px' }}>
         <div className="container">
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, marginBottom: 32 }}>Checkout</h1>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 28, alignItems: 'start' }}>
+          <h1 className="font-serif" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 700, marginBottom: 32 }}>Checkout</h1>
+          <div className="cart-layout">
             {/* Left: Delivery Address */}
             <div>
               <div style={{ background: 'white', borderRadius: 20, border: '1px solid var(--border)', padding: 28, marginBottom: 20 }}>
