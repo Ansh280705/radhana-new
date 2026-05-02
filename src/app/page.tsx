@@ -125,7 +125,7 @@ export default function HomePage() {
                   <span style={{ color: 'var(--gold)', background: 'var(--beige)', padding: 14, borderRadius: '4px', display: 'flex' }}>{icon}</span>
                   <div>
                     <p style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 2, letterSpacing: '0.5px', color: 'var(--dark)' }}>{title}</p>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{desc}</p>
+                    <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{desc}</p>
                   </div>
                 </div>
               ))}
@@ -142,7 +142,7 @@ export default function HomePage() {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
               <div style={{ width: 40, height: 1, background: 'var(--gold)' }} />
-              <p style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>Aria Savaria, Founder</p>
+              <p style={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>Aria Savaria, Founder</p>
             </div>
           </div>
         </section>
@@ -169,7 +169,7 @@ export default function HomePage() {
                     </div>
                     <div style={{ padding: '20px', textAlign: 'center' }}>
                       <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 4 }}>{cat.name}</h3>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--gold)', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 700 }}>{cat.subtitle}</p>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--gold)', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 700 }}>{cat.subtitle}</p>
                     </div>
                   </div>
                 </Link>

@@ -122,7 +122,7 @@ export default function Navbar() {
                   textDecoration: 'none',
                   color: 'var(--text-primary)',
                   fontWeight: 500,
-                  fontSize: '0.94rem',
+                  fontSize: '1.1rem',
                   transition: 'all 0.3s ease',
                   position: 'relative',
                 }}
@@ -162,7 +162,7 @@ export default function Navbar() {
             {/* User */}
             {user ? (
               <div ref={userMenuRef} style={{ position: 'relative' }}>
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: '2px solid var(--border)', borderRadius: 50, padding: '6px 12px', cursor: 'pointer', fontSize: '0.88rem', fontWeight: 500 }}>
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: '2px solid var(--border)', borderRadius: 50, padding: '6px 12px', cursor: 'pointer', fontSize: '1rem', fontWeight: 500 }}>
                   <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'linear-gradient(135deg, var(--gold), var(--gold-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)', fontWeight: 700, fontSize: '0.8rem' }}>
                     {user.name[0].toUpperCase()}
                   </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
               </div>
             ) : (
               <Link href="/login" className="hidden-mobile" style={{ textDecoration: 'none' }}>
-                <button className="btn-gold" style={{ padding: '8px 20px', fontSize: '0.85rem', minHeight: 40 }}>Login</button>
+                <button className="btn-gold" style={{ padding: '8px 20px', fontSize: '1rem', minHeight: 40 }}>Login</button>
               </Link>
             )}
           </div>
