@@ -60,21 +60,23 @@ export default function AboutPage() {
       </section>
 
       {/* Content Section */}
-      <section style={{ padding: '100px 0', position: 'relative' }}>
-        <div className="container" style={{ maxWidth: 800 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+      <section style={{ padding: '120px 0', position: 'relative' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: 80, alignItems: 'center' }}>
             
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
+              <h2 className="font-serif" style={{ fontSize: '3.5rem', marginBottom: 32, color: 'var(--dark)', lineHeight: 1.1 }}>
+                A Vision of <span style={{ color: 'var(--gold)' }}>Elegance</span>
+              </h2>
               <p style={{ 
-                fontSize: '1.4rem', 
+                fontSize: '1.25rem', 
                 lineHeight: 1.8, 
-                color: 'var(--dark)', 
-                fontStyle: 'italic',
+                color: 'var(--text-primary)', 
                 fontFamily: "'Playfair Display', serif",
                 marginBottom: 40,
                 borderLeft: '4px solid var(--gold)',
@@ -85,55 +87,68 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              style={{ position: 'relative' }}
             >
-              <p style={{ fontSize: '1.1rem', lineHeight: 2, color: 'var(--text-secondary)', marginBottom: 24 }}>
-                From the very beginning, our focus has been clear: to create garments that blend modern aesthetics with refined craftsmanship. Each collection is thoughtfully designed, each fabric carefully selected, and every stitch perfected to deliver an experience of true luxury.
-              </p>
-              
-              <p style={{ fontSize: '1.1rem', lineHeight: 2, color: 'var(--text-secondary)', marginBottom: 24 }}>
-                Today, Savaria Fashion proudly extends its presence across Ratlam, Dhar, and Manasa, with each store reflecting our commitment to excellence and our journey of growth.
-              </p>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <p style={{ fontSize: '1.15rem', lineHeight: 2, color: 'var(--text-secondary)', marginBottom: 32 }}>
+                  From the very beginning, our focus has been clear: to create garments that blend modern aesthetics with refined craftsmanship. Each collection is thoughtfully designed, each fabric carefully selected, and every stitch perfected to deliver an experience of true luxury.
+                </p>
+                <p style={{ fontSize: '1.15rem', lineHeight: 2, color: 'var(--text-secondary)' }}>
+                  Today, Savaria Fashion proudly extends its presence across Ratlam, Dhar, and Manasa, with each store reflecting our commitment to excellence and our journey of growth.
+                </p>
+              </div>
+              <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'var(--beige)', borderRadius: '50%', zIndex: 0, opacity: 0.5 }} />
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              style={{ background: 'var(--beige)', padding: 60, borderRadius: 20, textAlign: 'center' }}
-            >
-              <h2 className="font-serif" style={{ fontSize: '2.2rem', marginBottom: 24, color: 'var(--dark)' }}>A Statement of Individuality</h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: 2, color: 'var(--text-secondary)' }}>
-                More than a fashion label, Savaria Fashion is a statement — of confidence, grace, and individuality. We believe style is not just worn, but experienced.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              style={{ textAlign: 'center', paddingTop: 40 }}
-            >
-              <p style={{ 
-                fontSize: '1.5rem', 
-                color: 'var(--gold)', 
-                fontWeight: 600,
-                letterSpacing: '1px',
-                textTransform: 'uppercase'
-              }}>
-                Elegance, Redefined.
-              </p>
-              <p style={{ marginTop: 16, color: 'var(--text-secondary)', maxWidth: 600, margin: '16px auto 0' }}>
-                And as we continue to grow, our promise remains the same — to bring you elegance, redefined.
-              </p>
-            </motion.div>
-
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{ 
+              marginTop: 120, 
+              background: 'var(--dark)', 
+              color: 'white', 
+              padding: '80px clamp(24px, 5vw, 100px)', 
+              borderRadius: 30, 
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            <div style={{ position: 'absolute', top: '-50%', left: '-10%', width: '40%', height: '200%', background: 'var(--gold)', opacity: 0.1, filter: 'blur(100px)', borderRadius: '50%' }} />
+            <h2 className="font-serif" style={{ fontSize: '2.8rem', marginBottom: 24, position: 'relative', zIndex: 1 }}>A Statement of Individuality</h2>
+            <p style={{ fontSize: '1.2rem', lineHeight: 2, opacity: 0.8, maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+              More than a fashion label, Savaria Fashion is a statement — of confidence, grace, and individuality. We believe style is not just worn, but experienced.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            style={{ textAlign: 'center', marginTop: 100 }}
+          >
+            <p style={{ 
+              fontSize: '1.8rem', 
+              color: 'var(--gold)', 
+              fontWeight: 700,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              marginBottom: 16
+            }}>
+              Elegance, Redefined.
+            </p>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: 700, margin: '0 auto' }}>
+              And as we continue to grow, our promise remains the same — to bring you elegance, redefined.
+            </p>
+          </motion.div>
         </div>
       </section>
 
