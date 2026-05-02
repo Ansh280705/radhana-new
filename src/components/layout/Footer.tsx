@@ -43,8 +43,8 @@ export default function Footer() {
           {/* Quick Links */}
           {[
             { title: 'Collections', links: [{ label: "Women", href: '/products?category=women' }, { label: "Men", href: '/products?category=men' }, { label: "Kids", href: '/products?category=kids' }, { label: "Ethnic", href: '/products?category=ethnic-wear' }, { label: "New", href: '/products?newArrival=true' }] },
-            { title: 'Support', links: [{ label: "Order Status", href: '/dashboard/orders' }, { label: "Shipping", href: '#' }, { label: "Returns", href: '#' }, { label: "Sizing", href: '#' }, { label: "Contact", href: '#' }] },
-            { title: 'Company', links: [{ label: "Our Story", href: '/about' }, { label: "Sustainability", href: '#' }, { label: "Stores", href: '#' }, { label: "Careers", href: '#' }, { label: "Media", href: '#' }] },
+            { title: 'Support', links: [{ label: "Order Status", href: '/dashboard/orders' }, { label: "Shipping", href: '/shipping' }, { label: "Returns", href: '/returns' }, { label: "Sizing", href: '/sizing' }, { label: "Contact", href: '/contact' }] },
+            { title: 'Company', links: [{ label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }, { label: "Stores", href: '/stores' }, { label: "Careers", href: '/careers' }, { label: "Media", href: '/media' }] },
           ].map(({ title, links }) => (
             <div key={title} className="animate-fadeIn">
               <h4 style={{ fontWeight: 700, marginBottom: 24, color: 'white', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>{title}</h4>
@@ -69,8 +69,12 @@ export default function Footer() {
             <p className="hidden-mobile" style={{ color: '#718096', fontSize: '0.8rem', fontStyle: 'italic' }}>Handcrafted with ❤️</p>
           </div>
           <div style={{ display: 'flex', gap: 24 }}>
-            {['Privacy', 'Terms', 'Cookies'].map(t => (
-              <a key={t} href="#" style={{ color: '#718096', textDecoration: 'none', fontSize: '0.95rem' }}>{t}</a>
+            {[
+              { t: 'Privacy', h: '/privacy' },
+              { t: 'Terms', h: '/terms' },
+              { t: 'Cookies', h: '/cookies' }
+            ].map(({ t, h }) => (
+              <Link key={t} href={h} style={{ color: '#718096', textDecoration: 'none', fontSize: '0.95rem' }}>{t}</Link>
             ))}
           </div>
         </div>
