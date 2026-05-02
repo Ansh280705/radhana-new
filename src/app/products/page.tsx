@@ -91,8 +91,8 @@ function ProductsContent() {
               <div style={{ marginBottom: 20 }}>
                 <p style={{ fontWeight: 600, marginBottom: 10, fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>Price Range</p>
                 <div style={{ display: 'flex', gap: 8 }}>
-                  <input className="input-field" type="number" placeholder="Min" value={filters.minPrice} onChange={e => setFilters(f => ({ ...f, minPrice: e.target.value, page: 1 }))} style={{ padding: '8px 10px', fontSize: '0.82rem' }} />
-                  <input className="input-field" type="number" placeholder="Max" value={filters.maxPrice} onChange={e => setFilters(f => ({ ...f, maxPrice: e.target.value, page: 1 }))} style={{ padding: '8px 10px', fontSize: '0.82rem' }} />
+                  <input className="input-field" type="number" placeholder="Min" value={filters.minPrice} onChange={e => setFilters(f => ({ ...f, minPrice: e.target.value, page: 1 }))} style={{ flex: 1, minWidth: 0, padding: '8px 10px', fontSize: '0.82rem' }} />
+                  <input className="input-field" type="number" placeholder="Max" value={filters.maxPrice} onChange={e => setFilters(f => ({ ...f, maxPrice: e.target.value, page: 1 }))} style={{ flex: 1, minWidth: 0, padding: '8px 10px', fontSize: '0.82rem' }} />
                 </div>
               </div>
               <div>

@@ -28,7 +28,7 @@ export default function Footer() {
               <span style={{ color: 'white' }}>Savaria</span>
               <span style={{ color: 'var(--gold)', fontStyle: 'italic', marginLeft: 4 }}>Fashion</span>
             </div>
-            <p style={{ color: '#a0aec0', fontSize: '0.9rem', lineHeight: 1.8, marginBottom: 32 }}>
+            <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: 32 }}>
               Redefining contemporary style with premium quality clothing crafted for the modern soul. Elegance in every stitch.
             </p>
             <div style={{ display: 'flex', gap: 16 }}>
@@ -43,15 +43,15 @@ export default function Footer() {
           {/* Quick Links */}
           {[
             { title: 'Collections', links: [{ label: "Women", href: '/products?category=women' }, { label: "Men", href: '/products?category=men' }, { label: "Kids", href: '/products?category=kids' }, { label: "Ethnic", href: '/products?category=ethnic-wear' }, { label: "New", href: '/products?newArrival=true' }] },
-            { title: 'Support', links: [{ label: "Order Status", href: '/dashboard/orders' }, { label: "Shipping", href: '#' }, { label: "Returns", href: '#' }, { label: "Sizing", href: '#' }, { label: "Contact", href: '#' }] },
-            { title: 'Company', links: [{ label: "Our Story", href: '#' }, { label: "Sustainability", href: '#' }, { label: "Stores", href: '#' }, { label: "Careers", href: '#' }, { label: "Media", href: '#' }] },
+            { title: 'Support', links: [{ label: "Order Status", href: '/dashboard/orders' }, { label: "Shipping", href: '/shipping' }, { label: "Returns", href: '/returns' }, { label: "Sizing", href: '/sizing' }, { label: "Contact", href: '/contact' }] },
+            { title: 'Company', links: [{ label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }, { label: "Stores", href: '/stores' }, { label: "Founder", href: '/founder' }] },
           ].map(({ title, links }) => (
             <div key={title} className="animate-fadeIn">
-              <h4 style={{ fontWeight: 700, marginBottom: 24, color: 'white', fontSize: '0.9rem', letterSpacing: '1px', textTransform: 'uppercase' }}>{title}</h4>
+              <h4 style={{ fontWeight: 700, marginBottom: 24, color: 'white', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>{title}</h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {links.map(({ label, href }) => (
                   <li key={label}>
-                    <Link href={href} style={{ color: '#a0aec0', textDecoration: 'none', fontSize: '0.9rem', transition: 'all 0.3s' }} className="footer-link">
+                    <Link href={href} style={{ color: '#a0aec0', textDecoration: 'none', fontSize: '1rem', transition: 'all 0.3s' }} className="footer-link">
                       {label}
                     </Link>
                   </li>
@@ -64,13 +64,17 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <p style={{ color: '#718096', fontSize: '0.85rem' }}>© 2026 Savaria Fashion.</p>
+            <p style={{ color: '#718096', fontSize: '0.95rem' }}>© 2026 Savaria Fashion.</p>
             <div className="hidden-mobile" style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--gold)', opacity: 0.5 }} />
             <p className="hidden-mobile" style={{ color: '#718096', fontSize: '0.8rem', fontStyle: 'italic' }}>Handcrafted with ❤️</p>
           </div>
           <div style={{ display: 'flex', gap: 24 }}>
-            {['Privacy', 'Terms', 'Cookies'].map(t => (
-              <a key={t} href="#" style={{ color: '#718096', textDecoration: 'none', fontSize: '0.85rem' }}>{t}</a>
+            {[
+              { t: 'Privacy', h: '/privacy' },
+              { t: 'Terms', h: '/terms' },
+              { t: 'Cookies', h: '/cookies' }
+            ].map(({ t, h }) => (
+              <Link key={t} href={h} style={{ color: '#718096', textDecoration: 'none', fontSize: '0.95rem' }}>{t}</Link>
             ))}
           </div>
         </div>
