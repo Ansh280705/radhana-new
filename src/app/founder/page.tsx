@@ -7,16 +7,16 @@ import { MapPin, Quote } from 'lucide-react';
 export default function FounderPage() {
   const founders = [
     {
-      name: 'Piyush Rathore',
-      role: 'Founder',
-      location: 'Ratlam',
-      image: '/team/founder.jpg', // User should save the first photo here
-    },
-    {
       name: 'Shubham Chouhan',
       role: 'Co-Founder',
       location: 'Ratlam',
-      image: '/team/co-founder.jpg', // User should save the second photo here
+      image: '/team/co-founder.jpg',
+    },
+    {
+      name: 'Piyush Rathore',
+      role: 'Founder',
+      location: 'Ratlam',
+      image: '/team/founder.jpg',
     }
   ];
 
