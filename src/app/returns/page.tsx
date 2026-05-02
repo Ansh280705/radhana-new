@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { AlertTriangle } from 'lucide-react';
 
 export default function ReturnsPage() {
   return (
@@ -7,19 +8,35 @@ export default function ReturnsPage() {
       <Navbar />
       <div className="container" style={{ padding: '100px 20px', maxWidth: 800 }}>
         <h1 className="font-serif" style={{ marginBottom: 40, borderBottom: '2px solid var(--gold)', paddingBottom: 20 }}>Returns & Exchanges</h1>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
-          <section>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: 16 }}>7-Day Return Policy</h2>
-            <p style={{ color: 'var(--text-secondary)' }}>We offer a hassle-free 7-day return policy. If you are not satisfied with your purchase, you can initiate a return within 7 days of delivery.</p>
-          </section>
-          <section>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: 16 }}>Conditions for Return</h2>
-            <p style={{ color: 'var(--text-secondary)' }}>Items must be unused, unwashed, and in their original packaging with all tags intact. Items on clearance or special sales may not be eligible for returns.</p>
-          </section>
-          <section>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: 16 }}>Refund Process</h2>
-            <p style={{ color: 'var(--text-secondary)' }}>Once we receive and inspect the returned item, the refund will be processed to your original payment method within 5-7 business days.</p>
-          </section>
+        
+        <div style={{ 
+          background: 'var(--cream)', 
+          padding: '40px', 
+          borderRadius: '16px', 
+          border: '1px solid var(--border)',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 24
+        }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: 'var(--red)', padding: 16, borderRadius: '50%' }}>
+            <AlertTriangle size={40} />
+          </div>
+          <h2 className="font-serif" style={{ fontSize: '2rem', color: 'var(--dark)' }}>Policy Update</h2>
+          <p style={{ 
+            fontSize: '1.25rem', 
+            color: 'var(--text-primary)', 
+            fontWeight: 600,
+            maxWidth: 500,
+            lineHeight: 1.6
+          }}>
+            Please note that we do not give any return or exchange policy.
+          </p>
+          <div style={{ width: 60, height: 2, background: 'var(--gold)' }} />
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
+            All sales are final. We encourage our customers to check the sizing guide and product details carefully before placing an order.
+          </p>
         </div>
       </div>
       <Footer />
