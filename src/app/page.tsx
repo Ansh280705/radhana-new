@@ -368,13 +368,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <style jsx>{`
-            .founder-card:hover .portrait-img { transform: scale(1.08); filter: grayscale(0%); }
-            .founder-card:hover h3 { color: var(--gold); transition: color 0.4s ease; }
-            @media (max-width: 768px) {
-              .founder-card { margin-top: 0 !important; margin-bottom: 60px; }
-            }
-          `}</style>
         </section>
 
         {/* Founder's Note */}
@@ -513,6 +506,8 @@ export default function HomePage() {
         .hover-scale { transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .hover-scale:hover { transform: scale(1.05); }
         .stores-grid { transition: all 0.4s ease; }
+        .founder-card:hover .portrait-img { transform: scale(1.08); filter: grayscale(0%); }
+        .founder-card:hover h3 { color: var(--gold); transition: color 0.4s ease; }
         @media (max-width: 1024px) {
           .category-grid, .products-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
@@ -521,6 +516,7 @@ export default function HomePage() {
         }
         @media (max-width: 768px) {
           .stores-grid { grid-template-columns: 1fr !important; }
+          .founder-card { margin-top: 0 !important; margin-bottom: 60px; }
         }
         @media (max-width: 480px) {
           .category-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
