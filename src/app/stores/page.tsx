@@ -19,7 +19,7 @@ export default function StoresPage() {
     { 
       city: 'Manasa', 
       address: 'Station Road, Manasa, MP', 
-      phone: '+91 9131394539',
+      phone: '+91 9993309453',
       map: 'https://share.google/gLAN0sQx1iuYNM8Ko'
     },
   ];

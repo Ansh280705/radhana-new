@@ -195,7 +195,7 @@ export default function HomePage() {
               {[
                 { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 9993309453', map: 'https://share.google/IfJM3Ie13VfwqhWUe' },
                 { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 9993309453', map: 'https://share.google/C2xAbe7nstMekZ0gz' },
-                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 9131394539', map: 'https://share.google/gLAN0sQx1iuYNM8Ko' },
+                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 9993309453', map: 'https://share.google/gLAN0sQx1iuYNM8Ko' },
               ].map((store, i) => (
                 <a key={i} href={store.map} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }} className="store-link">
                   <div style={{ padding: 'clamp(24px, 5vw, 48px)', background: '#f5f0e8', borderRadius: 24, textAlign: 'center', transition: 'all 0.4s ease', height: '100%', border: '1px solid transparent' }} className="hover-lift">
