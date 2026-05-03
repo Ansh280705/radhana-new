@@ -224,6 +224,23 @@ export default function HomePage() {
           </section>
         )}
 
+        {/* Premium Static CTA Banner */}
+        <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '40%', height: '80%', background: 'var(--gold)', filter: 'blur(120px)', opacity: 0.1, borderRadius: '50%' }} />
+          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--gold)', padding: '8px 24px', borderRadius: 0, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '4px', marginBottom: 32, textTransform: 'uppercase' }}>
+              <Sparkles size={14} /> Season Finale
+            </span>
+            <h2 style={{ color: 'white', marginBottom: 24, fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>The Summer Collection Sale</h2>
+            <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48, maxWidth: 600, margin: '0 auto 48px', fontSize: '1.1rem' }}>
+              Exceptional silhouettes for a refined wardrobe. Now available with curated seasonal pricing.
+            </p>
+            <Link href="/products" style={{ textDecoration: 'none' }}>
+              <button className="btn-gold" style={{ padding: '18px 48px', borderRadius: 0 }}>Shop the Sale</button>
+            </Link>
+          </div>
+        </section>
+
         {/* Trust Factors */}
         <section style={{ padding: 'var(--s10) 0' }}>
           <div className="container">
