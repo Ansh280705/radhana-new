@@ -43,7 +43,7 @@ export default function AdminOrdersPage() {
       <div style={{ display: 'grid', gridTemplateColumns: selectedOrder ? '1fr 400px' : '1fr', gap: 24, alignItems: 'start' }}>
         <div style={{ background: 'white', borderRadius: 20, border: '1px solid var(--border)', overflow: 'hidden' }}>
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <table style={{ width: '100%', minWidth: 800, borderCollapse: 'collapse' }}>
               <thead style={{ background: 'var(--cream)' }}>
                 <tr>
                   <th style={{ textAlign: 'left', padding: '14px 20px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>ORDER</th>
