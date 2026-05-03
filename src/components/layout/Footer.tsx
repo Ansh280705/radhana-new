@@ -28,7 +28,7 @@ export default function Footer() {
           {[
             { title: 'The Collections', links: [{ label: "New Arrivals", href: '/products?newArrival=true' }, { label: "Women", href: '/products?category=women' }, { label: "Men", href: '/products?category=men' }, { label: "Accessories", href: '/products?category=accessories' }] },
             { title: 'The House', links: [{ label: "About Us", href: '/#about-us' }, { label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }, { label: "Artisanry", href: '/artisanry' }, { label: "Careers", href: '/careers' }] },
-            { title: 'Client Service', links: [{ label: "Contact Us", href: '/contact' }, { label: "Shipping & Returns", href: '/shipping' }, { label: "Size Guide", href: '/sizing' }, { label: "Privacy Policy", href: '/privacy' }] },
+            { title: 'Client Service', links: [{ label: "Contact Us", href: '/contact' }, { label: "Shipping Policy", href: '/shipping' }, { label: "No Returns Policy", href: '/returns' }, { label: "Size Guide", href: '/sizing' }, { label: "Privacy Policy", href: '/privacy' }] },
           ].map(({ title, links }) => (
             <div key={title}>
               <h4 style={{ color: 'white', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: 32 }}>{title}</h4>

@@ -7,7 +7,7 @@ export default function ReturnsPage() {
     <main style={{ background: 'var(--white)', minHeight: '100vh' }}>
       <Navbar />
       <div className="container" style={{ padding: '100px 20px', maxWidth: 800 }}>
-        <h1 className="font-serif" style={{ marginBottom: 40, borderBottom: '2px solid var(--gold)', paddingBottom: 20 }}>Returns & Exchanges</h1>
+        <h1 className="font-serif" style={{ marginBottom: 40, borderBottom: '2px solid var(--gold)', paddingBottom: 20 }}>No Returns Policy</h1>
         
         <div style={{ 
           background: 'var(--cream)', 

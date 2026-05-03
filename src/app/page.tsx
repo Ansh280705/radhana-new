@@ -39,7 +39,7 @@ const CATEGORIES = [
 const FEATURES = [
   { icon: <Truck size={20} strokeWidth={1.5} />, title: 'Complimentary Delivery', desc: 'On all orders above ₹999' },
   { icon: <Shield size={20} strokeWidth={1.5} />, title: 'Authenticated', desc: 'Guaranteed genuine quality' },
-  { icon: <RefreshCw size={20} strokeWidth={1.5} />, title: 'Seamless Returns', desc: '7-day boutique returns' },
+  { icon: <RefreshCw size={20} strokeWidth={1.5} />, title: 'No Returns Policy', desc: 'Please note we do not provide returns' },
 ];
 
 export default function HomePage() {
