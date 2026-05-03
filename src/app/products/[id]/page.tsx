@@ -162,7 +162,10 @@ export default function ProductDetailPage() {
                       return (
                         <button 
                           key={c} 
-                          onClick={() => setSelectedColor(c)} 
+                          onClick={() => {
+                            setSelectedColor(c);
+                            if (index < images.length) setSelectedImage(index);
+                          }} 
                           title={c} 
                           style={{ 
                             width: 64, 
