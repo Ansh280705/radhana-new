@@ -193,15 +193,14 @@ export default function AdminProductsPage() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 1000, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-          <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'white', flexShrink: 0, boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 1000, overflowY: 'auto', display: 'block' }}>
+          <div style={{ position: 'sticky', top: 0, background: 'white', zIndex: 10, padding: '20px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0 }}>{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
-            <button type="button" onClick={() => setIsModalOpen(false)} style={{ background: '#f6f8fa', border: '1px solid #d0d7de', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text-primary)', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = '#e1e4e8'} onMouseLeave={e => e.currentTarget.style.background = '#f6f8fa'}><X size={24} /></button>
+            <button type="button" onClick={() => setIsModalOpen(false)} style={{ background: '#f6f8fa', border: '1px solid #d0d7de', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text-primary)' }}><X size={24} /></button>
           </div>
           
-          <div style={{ padding: '24px', overflowY: 'auto', flex: 1, background: '#f9f9f9' }}>
-            <div style={{ maxWidth: 800, margin: '0 auto', background: 'white', padding: 32, borderRadius: 24, border: '1px solid var(--border)' }}>
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ padding: '32px 20px', maxWidth: 800, margin: '0 auto' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Name</label>
@@ -286,9 +285,8 @@ export default function AdminProductsPage() {
                 </label>
               </div>
 
-              <button type="submit" className="btn-gold" style={{ marginTop: 10, padding: 14 }}>{editingProduct ? 'Update Product' : 'Create Product'}</button>
-              </form>
-            </div>
+              <button type="submit" className="btn-gold" style={{ marginTop: 20, padding: 16, fontSize: '1rem' }}>{editingProduct ? 'Update Product' : 'Create Product'}</button>
+            </form>
           </div>
         </div>
       )}
