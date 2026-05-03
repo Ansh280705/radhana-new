@@ -92,8 +92,9 @@ export default function AdminProductsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { sizesInput, colorsInput, ...restForm } = form;
     const data = {
-      ...form,
+      ...restForm,
       price: parseFloat(form.price),
       comparePrice: form.comparePrice ? parseFloat(form.comparePrice) : null,
       stock: parseInt(form.stock),
