@@ -274,6 +274,80 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* The Minds Behind Savaria */}
+        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: 80 }}>
+              <h2 style={{ fontSize: '3rem', marginBottom: 20 }}>The Minds Behind <span style={{ color: 'var(--gold)' }}>Savaria</span></h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: 600, margin: '0 auto' }}>
+                Meet the visionaries who brought Savaria Fashion to life from the heart of Ratlam.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 40 }} className="mobile-stack">
+              {/* Piyush Rathore */}
+              <div style={{ position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 20 }}>
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="Piyush Rathore" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)' }} />
+                  <div style={{ position: 'absolute', bottom: 32, left: 32 }}>
+                    <h3 style={{ color: 'white', fontSize: '1.8rem', marginBottom: 4 }}>Piyush Rathore</h3>
+                    <p style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>Founder</p>
+                  </div>
+                </div>
+                <div style={{ padding: '20px 0 0 8px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                   <div style={{ width: 14, height: 14, borderRadius: '50%', border: '1px solid var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '8px', color: 'var(--gold)' }}>●</div>
+                   <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Ratlam, India</span>
+                </div>
+              </div>
+
+              {/* Shubham Chouhan */}
+              <div style={{ position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 20 }}>
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" alt="Shubham Chouhan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)' }} />
+                  <div style={{ position: 'absolute', bottom: 32, left: 32 }}>
+                    <h3 style={{ color: 'white', fontSize: '1.8rem', marginBottom: 4 }}>Shubham Chouhan</h3>
+                    <p style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>Co-Founder</p>
+                  </div>
+                </div>
+                <div style={{ padding: '20px 0 0 8px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                   <div style={{ width: 14, height: 14, borderRadius: '50%', border: '1px solid var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '8px', color: 'var(--gold)' }}>●</div>
+                   <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Ratlam, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Founder's Note */}
+        <section style={{ padding: 'var(--s12) 0', background: '#0a0a0b', color: 'white' }}>
+          <div className="container" style={{ maxWidth: 800 }}>
+            <div style={{ textAlign: 'center', marginBottom: 60 }}>
+              <span style={{ color: 'var(--gold)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 20, display: 'block' }}>A Personal Message</span>
+              <h2 style={{ color: 'white', fontSize: '3rem' }}>Founder's Note</h2>
+            </div>
+            
+            <div style={{ fontSize: '1.1rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.7)', textAlign: 'center' }}>
+              <p style={{ marginBottom: 32 }}>
+                Savaria Fashion was founded with a vision to bring refined elegance and modern style to everyday fashion. What started as a small initiative has grown into a trusted name, built on dedication, craftsmanship, and a deep understanding of style.
+              </p>
+              <p style={{ marginBottom: 32 }}>
+                Our journey began from the ground up, driven by passion and a commitment to quality. Today, with our presence in Ratlam, Dhar, and Manasa, we continue to evolve while staying true to our roots.
+              </p>
+              <p style={{ marginBottom: 60 }}>
+                Every collection we create reflects our belief — that fashion is not just about clothing, but about confidence, identity, and expression.
+              </p>
+              
+              <div style={{ height: '1px', width: '100px', background: 'rgba(255,255,255,0.1)', margin: '0 auto 40px' }} />
+              
+              <p style={{ color: 'var(--gold)', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '1.2rem' }}>
+                — Founder, Savaria Fashion
+              </p>
+            </div>
+          </div>
+        </section>
+
 
         {/* Real Client Experiences: Reviews */}
         <section style={{ padding: 'var(--s12) 0', background: 'var(--cream)', textAlign: 'center' }}>
@@ -342,6 +416,29 @@ export default function HomePage() {
               <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
                 <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Concierge" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Stores */}
+        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: 60 }}>
+              <h2 style={{ fontSize: '3rem' }}>Our Stores</h2>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }} className="mobile-stack">
+              {[
+                { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 7412 234567' },
+                { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 7292 234567' },
+                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 7421 234567' },
+              ].map((store, i) => (
+                <div key={i} style={{ padding: 48, background: '#f5f0e8', borderRadius: 24, textAlign: 'center' }} className="hover-lift">
+                  <h3 style={{ fontSize: '2.2rem', color: 'var(--gold)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif" }}>{store.name}</h3>
+                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 12, lineHeight: 1.6 }}>{store.addr}</p>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{store.phone}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
