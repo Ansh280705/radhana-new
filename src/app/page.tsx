@@ -84,7 +84,7 @@ export default function HomePage() {
       <Navbar />
       <main className="no-overflow" style={{ background: 'var(--cream)' }}>
         {/* Hero Section */}
-        <section style={{ position: 'relative', minHeight: '90vh', background: slide.bg, display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+        <section style={{ position: 'relative', minHeight: '75vh', background: slide.bg, display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.6 }}>
             <img 
               key={heroIdx}
@@ -245,9 +245,9 @@ export default function HomePage() {
         </section>
 
         {/* The House of Savaria: Editorial Story */}
-        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
+        <section style={{ padding: 'var(--s10) 0', background: 'white' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }} className="mobile-stack">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="mobile-stack">
               <div style={{ position: 'relative' }}>
                 <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative', zIndex: 2 }}>
                   <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1200" alt="Craftsmanship" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -368,9 +368,9 @@ export default function HomePage() {
         </section>
 
         {/* Boutique Services */}
-        <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', color: 'white' }}>
+        <section style={{ padding: 'var(--s10) 0', background: 'var(--dark)', color: 'white' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 100, alignItems: 'center' }} className="mobile-stack">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="mobile-stack">
               <div>
                 <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Concierge</span>
                 <h2 style={{ color: 'white', marginBottom: 32 }}>The Boutique Experience</h2>
