@@ -73,33 +73,33 @@ export default function HomePage() {
           <div style={{ position: 'absolute', bottom: '-15%', left: '-10%', width: '35%', height: '60%', background: '#4a3aff', filter: 'blur(160px)', opacity: 0.08, borderRadius: '50%', animation: 'softFloat 15s infinite ease-in-out reverse' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 2, padding: 'var(--s10) var(--container-padding)' }}>
-            <div className="hero-content" style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
-              <div key={heroIdx} className="animate-fadeIn" style={{ maxWidth: 650 }}>
+            <div className="hero-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 60 }}>
+              <div key={heroIdx} className="animate-fadeIn" style={{ flex: 1, maxWidth: 650 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }} className="animate-scaleIn">
                   <div style={{ width: 40, height: 1, background: 'var(--gold)' }} />
                   <span style={{ color: 'var(--gold-light)', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '3px', textTransform: 'uppercase' }}>{slide.badge}</span>
                 </div>
-                <h1 className="animate-scaleIn font-serif" style={{ fontWeight: 700, lineHeight: 1.1, marginBottom: 24, color: 'white', fontSize: 'clamp(2.2rem, 10vw, 4.5rem)' }}>
+                <h1 className="animate-scaleIn font-serif" style={{ fontWeight: 700, lineHeight: 1.1, marginBottom: 24, color: 'white', fontSize: 'clamp(2.2rem, 8vw, 4.2rem)' }}>
                   {slide.title}
                 </h1>
-                <p className="animate-fadeIn" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 36, maxWidth: 520, lineHeight: 1.7, fontSize: 'clamp(1rem, 3vw, 1.15rem)' }}>
+                <p className="animate-fadeIn" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 36, maxWidth: 520, lineHeight: 1.7, fontSize: 'clamp(1rem, 2vw, 1.1rem)' }}>
                   {slide.subtitle}
                 </p>
-                <div className="hero-actions" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Link href={slide.ctaLink} style={{ textDecoration: 'none', flex: '1 1 auto', minWidth: 200 }}>
-                    <button className="btn-gold hover-glow" style={{ width: '100%', padding: '16px 32px' }}>{slide.cta}</button>
+                <div className="hero-actions" style={{ display: 'flex', gap: 16 }}>
+                  <Link href={slide.ctaLink} style={{ textDecoration: 'none' }}>
+                    <button className="btn-gold hover-glow" style={{ padding: '16px 40px' }}>{slide.cta}</button>
                   </Link>
-                  <Link href="/products" style={{ textDecoration: 'none', flex: '1 1 auto', minWidth: 200 }}>
-                    <button className="btn-outline hover-glow" style={{ width: '100%', padding: '16px 32px', color: 'white', borderColor: 'rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
+                  <Link href="/products" style={{ textDecoration: 'none' }}>
+                    <button className="btn-outline hover-glow" style={{ padding: '16px 40px', color: 'white', borderColor: 'rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
                       Explore More
                     </button>
                   </Link>
                 </div>
               </div>
-              <div className="hidden-mobile animate-scaleIn" style={{ perspective: '1200px', maxWidth: 500 }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1' }}>
+              <div className="hidden-mobile animate-scaleIn" style={{ perspective: '1200px', flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{ position: 'relative', width: '100%', maxWidth: 500, aspectRatio: '1/1' }}>
                   <img src={slide.img} alt={slide.title} onError={e => { e.currentTarget.style.display = 'none'; }} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px', opacity: 0.95, boxShadow: '30px 30px 60px rgba(0,0,0,0.4)', transform: 'rotateY(-8deg) rotateX(2deg)', transition: 'transform 1s cubic-bezier(0.23, 1, 0.32, 1)' }} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', opacity: 0.95, boxShadow: '30px 30px 60px rgba(0,0,0,0.4)', transform: 'rotateY(-8deg) rotateX(2deg)', transition: 'transform 1s cubic-bezier(0.23, 1, 0.32, 1)' }} 
                     onMouseEnter={e => e.currentTarget.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1.02)'}
                     onMouseLeave={e => e.currentTarget.style.transform = 'rotateY(-8deg) rotateX(2deg) scale(1)'}
                   />

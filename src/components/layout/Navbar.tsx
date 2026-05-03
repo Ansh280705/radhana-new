@@ -107,7 +107,7 @@ export default function Navbar() {
           </button>
 
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', zIndex: 10, flex: 1 }}>
+          <Link href="/" className="navbar-logo-link" style={{ textDecoration: 'none', zIndex: 10 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05) rotate(-1deg)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
@@ -118,7 +118,7 @@ export default function Navbar() {
 
 
           {/* Center: Desktop Nav Links */}
-          <div style={{ display: 'flex', gap: 24, alignItems: 'center' }} className="hidden-mobile">
+          <div style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="hidden-mobile">
             {categories.map((cat, i) => (
               <Link
                 key={cat.slug}
@@ -259,6 +259,7 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
+          .navbar-logo-link { flex: 1; }
         }
       `}</style>
     </>
