@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: 'Savaria Fashion — Premium Clothing & Style',
   description: 'Discover the latest fashion trends at Savaria Fashion. Shop premium clothing, accessories and more with fast delivery across India.',
   keywords: 'fashion, clothing, premium, online shopping, savaria',
+  icons: {
+    icon: '/logo-icon.png',
+    apple: '/logo-icon.png',
+  },
   openGraph: {
     title: 'Savaria Fashion',
     description: 'Premium Clothing & Style',
