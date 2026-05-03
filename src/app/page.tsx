@@ -15,7 +15,7 @@ const HERO_SLIDES = [
     ctaLink: '/products?newArrival=true', 
     badge: 'EST. 2026', 
     bg: '#0a0a0b', 
-    img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1200' 
+    img: '/hero-2026.png' 
   },
   { 
     title: 'The Art of Style', 
@@ -29,10 +29,10 @@ const HERO_SLIDES = [
 ];
 
 const CATEGORIES = [
-  { name: "Women", slug: 'women', subtitle: 'Elegance Redefined', img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=600&h=800' },
-  { name: "Men", slug: 'men', subtitle: 'Refined Classics', img: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&q=80&w=600&h=800' },
-  { name: "Accessories", slug: 'accessories', subtitle: 'Subtle Accents', img: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&q=80&w=600&h=800' },
-  { name: "Ethnic", slug: 'ethnic-wear', subtitle: 'Heritage', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600&h=800' },
+  { name: "Women", slug: 'women', subtitle: 'Elegance Redefined', img: '/cat-women.png' },
+  { name: "Men", slug: 'men', subtitle: 'Refined Classics', img: '/cat-men.png' },
+  { name: "Accessories", slug: 'accessories', subtitle: 'Subtle Accents', img: '/cat-accessories.png' },
+  { name: "Ethnic", slug: 'ethnic-wear', subtitle: 'Heritage', img: '/cat-ethnic.png' },
 ];
 
 const FEATURES = [
