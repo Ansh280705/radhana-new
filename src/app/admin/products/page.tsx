@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Plus, Search, Edit2, Trash2, Package, Filter, X } from 'lucide-react';
 import { productsAPI, categoriesAPI } from '@/lib/api';
 import toast from 'react-hot-toast';
@@ -191,9 +192,9 @@ export default function AdminProductsPage() {
         </div>
       </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 1000, overflowY: 'auto', display: 'block' }}>
+      {/* Modal - portaled to body to escape admin sidebar layout */}
+      {isModalOpen && typeof window !== 'undefined' && createPortal(
+        <div style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 9999, overflowY: 'auto', display: 'block' }}>
           <div style={{ position: 'sticky', top: 0, background: 'white', zIndex: 10, padding: '20px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0 }}>{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
             <button type="button" onClick={() => setIsModalOpen(false)} style={{ background: '#f6f8fa', border: '1px solid #d0d7de', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text-primary)' }}><X size={24} /></button>
@@ -288,7 +289,8 @@ export default function AdminProductsPage() {
               <button type="submit" className="btn-gold" style={{ marginTop: 20, padding: 16, fontSize: '1rem' }}>{editingProduct ? 'Update Product' : 'Create Product'}</button>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
