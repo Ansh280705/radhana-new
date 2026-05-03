@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!user || user.role !== 'ADMIN') return null;
 
   return (
-    <div className="admin-wrapper" style={{ display: 'flex', minHeight: '100vh', background: '#f8fafc' }}>
+    <div className="admin-wrapper" style={{ display: 'flex', width: '100%', minHeight: '100vh', background: '#f8fafc' }}>
       {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div 
@@ -84,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main */}
-      <main className="admin-main" style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh', transition: 'margin-left 0.3s' }}>
+      <main className="admin-main" style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', minHeight: '100vh', transition: 'margin-left 0.3s' }}>
         {/* Topbar */}
         <div style={{ background: 'white', borderBottom: '1px solid var(--border)', padding: '0 28px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 100 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
