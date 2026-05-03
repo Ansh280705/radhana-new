@@ -78,7 +78,7 @@ export default function ProductCard({ product }: { product: Product }) {
           }}
         >
           {/* Image Wrapper */}
-          <div style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', background: 'var(--cream)' }}>
+          <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--cream)' }}>
             <img
               src={imgError ? placeholder : (product.images[0] || placeholder)}
               alt={product.name}
@@ -99,26 +99,26 @@ export default function ProductCard({ product }: { product: Product }) {
             <button 
               onClick={handleWishlist} 
               style={{ 
-                position: 'absolute', top: 12, right: 12, 
+                position: 'absolute', top: 16, right: 16, 
                 background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)',
-                border: 'none', borderRadius: '50%', width: 32, height: 32,
+                border: 'none', borderRadius: '50%', width: 36, height: 36,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 cursor: 'pointer', transition: 'all 0.3s',
-                opacity: hovered ? 1 : 0, transform: hovered ? 'translateY(0)' : 'translateY(-5px)'
+                opacity: hovered ? 1 : 0, transform: hovered ? 'translateY(0)' : 'translateY(-10px)'
               }}
             >
-              <Heart size={16} fill={isWishlisted(product.id) ? 'var(--red)' : 'none'} color={isWishlisted(product.id) ? 'var(--red)' : 'var(--dark)'} />
+              <Heart size={18} fill={isWishlisted(product.id) ? 'var(--red)' : 'none'} color={isWishlisted(product.id) ? 'var(--red)' : 'var(--dark)'} />
             </button>
           </div>
 
           {/* Info Section */}
-          <div style={{ padding: '16px 12px', flex: 1, display: 'flex', flexDirection: 'column', gap: 4, textAlign: 'center' }}>
-            <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 2 }}>
+          <div style={{ padding: '20px 16px', flex: 1, display: 'flex', flexDirection: 'column', gap: 6, textAlign: 'center' }}>
+            <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 2 }}>
               {product.category?.name || 'New Arrival'}
             </p>
             <h3 style={{ 
               fontFamily: "'Playfair Display', serif", 
-              fontSize: '0.95rem', 
+              fontSize: '1.1rem', 
               fontWeight: 600, 
               color: 'var(--dark)',
               margin: 0,
@@ -129,7 +129,7 @@ export default function ProductCard({ product }: { product: Product }) {
             }}>
               {product.name}
             </h3>
-            <p style={{ fontWeight: 400, fontSize: '0.85rem', color: 'var(--text-primary)', margin: 0 }}>
+            <p style={{ fontWeight: 400, fontSize: '1rem', color: 'var(--text-primary)', margin: 0 }}>
               ₹{product.price.toLocaleString()}
             </p>
 
@@ -138,14 +138,14 @@ export default function ProductCard({ product }: { product: Product }) {
               onClick={handleAddToCart}
               className="font-sans"
               style={{ 
-                marginTop: '8px',
+                marginTop: '12px',
                 background: 'transparent',
                 border: '1px solid var(--dark)',
                 color: 'var(--dark)',
-                padding: '8px 0',
-                fontSize: '0.65rem',
+                padding: '10px 0',
+                fontSize: '0.75rem',
                 fontWeight: 700,
-                letterSpacing: '1px',
+                letterSpacing: '2px',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
                 transition: 'all 0.3s',
