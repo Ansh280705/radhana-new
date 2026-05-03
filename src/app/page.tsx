@@ -205,14 +205,6 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <style jsx>{`
-            @media (max-width: 991px) {
-              .stores-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            }
-            @media (max-width: 768px) {
-              .stores-grid { grid-template-columns: 1fr !important; }
-            }
-          `}</style>
         </section>
 
         {/* Newsletter: Exclusive Access */}
@@ -499,8 +491,15 @@ export default function HomePage() {
       <style jsx>{`
         .hover-scale { transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .hover-scale:hover { transform: scale(1.05); }
+        .stores-grid { transition: all 0.4s ease; }
         @media (max-width: 1024px) {
           .category-grid, .products-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 991px) {
+          .stores-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+          .stores-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 480px) {
           .category-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
