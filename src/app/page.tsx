@@ -211,7 +211,7 @@ export default function HomePage() {
         <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', color: 'white', textAlign: 'center', position: 'relative' }}>
           <div className="container" style={{ maxWidth: 600 }}>
             <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Membership</span>
-            <h2 style={{ color: 'white', marginBottom: 24 }}>Join the Savaria Inner Circle</h2>
+            <h2 style={{ color: 'white', marginBottom: 24 }}>Join the Sawariya Inner Circle</h2>
             <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48 }}>
               Receive exclusive access to private sales, new arrivals, and editorial content.
             </p>
@@ -283,7 +283,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* The House of Savaria: Editorial Story */}
+        {/* The House of Sawariya: Editorial Story */}
         <section style={{ padding: 'var(--s10) 0', background: 'white' }}>
           <div className="container">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="mobile-stack">
@@ -300,7 +300,7 @@ export default function HomePage() {
                   "We believe that fashion is a dialogue between the artisan and the individual. Our Indian ateliers preserve centuries of textile heritage."
                 </p>
                 <p style={{ marginBottom: 40, color: 'var(--text-secondary)' }}>
-                  From the intricate hand-embroidery of Lucknow to the timeless silks of Varanasi, Savaria represents the pinnacle of Indian artisanal excellence.
+                  From the intricate hand-embroidery of Lucknow to the timeless silks of Varanasi, Sawariya represents the pinnacle of Indian artisanal excellence.
                 </p>
                 <Link href="/about" style={{ textDecoration: 'none', color: 'var(--dark)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid var(--gold)', paddingBottom: 4 }}>
                   The Artisan Story
@@ -310,13 +310,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* The Minds Behind Savaria: High Editorial Version */}
+        {/* The Minds Behind Sawariya: High Editorial Version */}
         <section id="about-us" style={{ padding: 'var(--s14) 0', background: '#fff' }}>
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: 100, position: 'relative' }}>
               <span style={{ color: 'var(--gold)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '6px', textTransform: 'uppercase', display: 'block', marginBottom: 24 }}>The Visionaries</span>
               <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: 24, fontWeight: 300, fontFamily: "'Cormorant Garamond', serif" }}>
-                The Minds Behind <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Savaria</span>
+                The Minds Behind <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Sawariya</span>
               </h2>
               <div style={{ width: 60, height: 1, background: 'var(--gold)', margin: '0 auto 32px' }} />
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto', lineHeight: 1.8, fontStyle: 'italic' }}>
@@ -380,7 +380,7 @@ export default function HomePage() {
             
             <div style={{ fontSize: '1.1rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.7)', textAlign: 'center' }}>
               <p style={{ marginBottom: 32 }}>
-                Savaria Fashion was founded with a vision to bring refined elegance and modern style to everyday fashion. What started as a small initiative has grown into a trusted name, built on dedication, craftsmanship, and a deep understanding of style.
+                Sawariya Fashion was founded with a vision to bring refined elegance and modern style to everyday fashion. What started as a small initiative has grown into a trusted name, built on dedication, craftsmanship, and a deep understanding of style.
               </p>
               <p style={{ marginBottom: 32 }}>
                 Our journey began from the ground up, driven by passion and a commitment to quality. Today, with our presence in Ratlam, Dhar, and Manasa, we continue to evolve while staying true to our roots.
@@ -392,7 +392,7 @@ export default function HomePage() {
               <div style={{ height: '1px', width: '100px', background: 'rgba(255,255,255,0.1)', margin: '0 auto 40px' }} />
               
               <p style={{ color: 'var(--gold)', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '1.2rem' }}>
-                — Founder, Savaria Fashion
+                — Founder, Sawariya Fashion
               </p>
             </div>
           </div>
@@ -403,7 +403,7 @@ export default function HomePage() {
         <section style={{ padding: 'var(--s12) 0', background: 'var(--cream)', textAlign: 'center' }}>
           <div className="container">
             <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Client Voices</span>
-            <h2 style={{ marginBottom: 24 }}>The Savaria Experience</h2>
+            <h2 style={{ marginBottom: 24 }}>The Sawariya Experience</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 64, maxWidth: 600, margin: '0 auto 64px' }}>
               Real perspectives from our global community of discerning clients.
             </p>
@@ -448,7 +448,7 @@ export default function HomePage() {
                 <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Concierge</span>
                 <h2 style={{ color: 'white', marginBottom: 32 }}>The Boutique Experience</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48, fontSize: '1.1rem' }}>
-                  Enjoy a personalized journey with our exclusive client services designed to bring the Savaria atelier to your doorstep.
+                  Enjoy a personalized journey with our exclusive client services designed to bring the Sawariya atelier to your doorstep.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                   {[

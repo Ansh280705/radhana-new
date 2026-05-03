@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const uploadResponse = await cloudinary.uploader.upload(image, {
-      folder: 'savaria_products',
+      folder: 'Sawariya_products',
     });
 
     return NextResponse.json({ url: uploadResponse.secure_url });

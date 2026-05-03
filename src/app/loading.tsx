@@ -21,7 +21,7 @@ export default function Loading() {
         style={{ textAlign: 'center' }}
       >
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 24 }}>
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.03em' }}>Savaria</span>
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.03em' }}>Sawariya</span>
           <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '4px' }}>Fashion</span>
         </div>
         

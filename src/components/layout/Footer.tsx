@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 24 }}>
-              Savaria<span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>Fashion</span>
+              Sawariya<span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>Fashion</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: 32 }}>
               Redefining contemporary style with premium quality clothing crafted for the modern soul.
@@ -48,7 +48,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', letterSpacing: '1px' }}>
-            © 2026 SAVARIA FASHION. ALL RIGHTS RESERVED.
+            © 2026 Sawariya FASHION. ALL RIGHTS RESERVED.
           </p>
           <div style={{ display: 'flex', gap: 32 }}>
             <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', letterSpacing: '1px', cursor: 'pointer' }}>INDIA / EN</span>

@@ -41,7 +41,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside style={{ width: 240, background: 'var(--dark)', display: 'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, height: '100vh', zIndex: 200, transition: 'transform 0.3s', transform: sidebarOpen || true ? 'translateX(0)' : 'translateX(-100%)' }}>
         <div style={{ padding: '28px 24px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', color: 'white', marginBottom: 4 }}>
-            Savaria <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
+            Sawariya <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
           </div>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem' }}>Control Panel</p>
         </div>

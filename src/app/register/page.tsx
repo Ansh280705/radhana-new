@@ -23,7 +23,7 @@ export default function RegisterPage() {
     try {
       const res = await authAPI.register(form);
       setUser(res.data.user, res.data.token);
-      toast.success(`Welcome to Savaria Fashion, ${res.data.user.name}!`);
+      toast.success(`Welcome to Sawariya Fashion, ${res.data.user.name}!`);
       router.push('/');
     } catch (err: any) {
       toast.error(err.response?.data?.error || 'Registration failed');
@@ -37,11 +37,11 @@ export default function RegisterPage() {
         <div style={{ width: '100%', maxWidth: 480, background: 'white', borderRadius: 24, padding: 40, boxShadow: '0 20px 60px rgba(0,0,0,0.08)', border: '1px solid var(--border)' }}>
           <div style={{ textAlign: 'center', marginBottom: 32 }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: 8 }}>
-              <span style={{ color: 'var(--dark)' }}>Savaria</span>
+              <span style={{ color: 'var(--dark)' }}>Sawariya</span>
               <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}> Fashion</span>
             </div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 6 }}>Create Account</h1>
-            <p style={{ color: 'var(--text-secondary)' }}>Join the Savaria community</p>
+            <p style={{ color: 'var(--text-secondary)' }}>Join the Sawariya community</p>
           </div>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {[

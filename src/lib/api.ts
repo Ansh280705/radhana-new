@@ -9,7 +9,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
     try {
-      const auth = JSON.parse(localStorage.getItem('savaria-auth') || '{}');
+      const auth = JSON.parse(localStorage.getItem('Sawariya-auth') || '{}');
       const token = auth?.state?.token;
       if (token) config.headers.Authorization = `Bearer ${token}`;
     } catch {}

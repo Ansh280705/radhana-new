@@ -83,7 +83,7 @@ export default function Navbar() {
 
       {/* Top Bar - Hidden on Mobile */}
       <div className="hidden-mobile" style={{ background: 'var(--dark)', color: 'white', padding: '10px 0', fontSize: '0.78rem', textAlign: 'center', letterSpacing: '0.5px' }}>
-        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>SAVARIA10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
+        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>Sawariya10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
       </div>
 
       {/* Main Navbar */}
@@ -110,7 +110,7 @@ export default function Navbar() {
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.02)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.03em' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.03em' }}>Sawariya</span>
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '2px' }}>Fashion</span>
             </div>
           </Link>
@@ -225,7 +225,7 @@ export default function Navbar() {
         <div className={`drawer ${menuOpen ? 'open' : ''}`}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--dark)' }}>Savaria</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--dark)' }}>Sawariya</span>
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic' }}>Fashion</span>
             </div>
             <button onClick={() => setMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
