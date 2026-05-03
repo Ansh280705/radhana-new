@@ -257,7 +257,7 @@ export default function HomePage() {
               <div>
                 <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>The Atelier India</span>
                 <h2 style={{ marginBottom: 32 }}>Legacy of the Loom</h2>
-                <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-primary)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}>
+                <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-primary)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic' }}>
                   "We believe that fashion is a dialogue between the artisan and the individual. Our Indian ateliers preserve centuries of textile heritage."
                 </p>
                 <p style={{ marginBottom: 40, color: 'var(--text-secondary)' }}>
@@ -289,7 +289,7 @@ export default function HomePage() {
                         <Sparkles key={idx} size={12} fill={idx < r.rating ? 'var(--gold)' : 'transparent'} opacity={idx < r.rating ? 1 : 0.2} />
                       ))}
                     </div>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', minHeight: '80px' }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', minHeight: '80px' }}>
                       "{r.comment}"
                     </p>
                     <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20 }}>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 /* Responsive Breakpoints & Tokens */
 :root {
   /* Luxury Palette */
@@ -49,7 +51,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--cream);
   color: var(--text-primary);
   line-height: 1.6;
@@ -61,7 +63,7 @@ body {
 
 /* Typography Scaling (Premium Contrast) */
 h1, h2, h3, .font-serif { 
-  font-family: 'Playfair Display', serif; 
+  font-family: 'Cormorant Garamond', serif; 
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.15;
@@ -72,7 +74,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: var(--s2); letter-spa
 h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); letter-spacing: -0.01em; }
 p { font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary); letter-spacing: 0.01em; }
 
-.font-sans { font-family: 'Inter', sans-serif; }
+.font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
