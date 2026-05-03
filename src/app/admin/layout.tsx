@@ -21,11 +21,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { user, clearUser } = useAuthStore();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return;
     if (!user) { router.push('/login'); return; }
     if (user.role !== 'ADMIN') { router.push('/'); toast.error('Admin access only'); }
-  }, [user]);
+  }, [user, isHydrated]);
 
   const handleLogout = async () => {
     try { await authAPI.logout(); } catch {}
@@ -33,6 +39,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push('/');
   };
 
+  if (!isHydrated) return <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center' }}><div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)' }} /></div>;
   if (!user || user.role !== 'ADMIN') return null;
 
   return (
