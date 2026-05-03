@@ -45,6 +45,7 @@ export default function HomePage() {
   const [heroIdx, setHeroIdx] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
   const [newArrivals, setNewArrivals] = useState<any[]>([]);
+  const [banners, setBanners] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -65,9 +66,11 @@ export default function HomePage() {
     Promise.all([
       productsAPI.getAll({ featured: 'true', limit: 8 }),
       productsAPI.getAll({ newArrival: 'true', limit: 8 }),
-    ]).then(([feat, newArr]) => {
+      bannersAPI.getAll(),
+    ]).then(([feat, newArr, bannerRes]) => {
       setProducts(feat.data.products || []);
       setNewArrivals(newArr.data.products || []);
+      setBanners(bannerRes.data || []);
     }).catch(() => {}).finally(() => setLoading(false));
   }, []);
 
@@ -182,6 +185,44 @@ export default function HomePage() {
             </form>
           </div>
         </section>
+
+        {/* Dynamic Promotional Banners */}
+        {banners.length > 0 && (
+          <section style={{ padding: 'var(--s10) 0' }}>
+            <div className="container">
+              {banners.map((banner, i) => (
+                <div key={banner.id || i} style={{ 
+                  position: 'relative', 
+                  borderRadius: 0, 
+                  overflow: 'hidden', 
+                  minHeight: 400, 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  background: 'var(--dark)',
+                  marginBottom: i === banners.length - 1 ? 0 : 40
+                }}>
+                  <img 
+                    src={banner.image} 
+                    alt={banner.title} 
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }}
+                  />
+                  <div style={{ position: 'relative', zIndex: 2, padding: '60px', maxWidth: 600 }}>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', marginBottom: 16, display: 'block' }}>
+                      Limited Collection
+                    </span>
+                    <h2 style={{ color: 'white', fontSize: '2.5rem', marginBottom: 16 }}>{banner.title}</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem', marginBottom: 32 }}>{banner.subtitle}</p>
+                    {banner.link && (
+                      <Link href={banner.link} style={{ textDecoration: 'none' }}>
+                        <button className="btn-gold" style={{ padding: '14px 40px' }}>Explore Now</button>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Trust Factors */}
         <section style={{ padding: 'var(--s10) 0' }}>
