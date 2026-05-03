@@ -9,22 +9,22 @@ import { productsAPI, categoriesAPI, bannersAPI, reviewsAPI } from '@/lib/api';
 
 const HERO_SLIDES = [
   { 
-    title: 'Modern Elegance', 
-    subtitle: 'A curated collection of timeless silhouettes crafted for the discerning individual.', 
-    cta: 'Discover Collection', 
-    ctaLink: '/products?newArrival=true', 
-    badge: 'EST. 2026', 
+    title: 'Heritage Revived', 
+    subtitle: 'A contemporary tribute to Indian craftsmanship. Hand-finished silhouettes for the modern soul.', 
+    cta: 'Explore The Atelier', 
+    ctaLink: '/products?category=ethnic-wear', 
+    badge: 'HANDCRAFTED IN INDIA', 
     bg: '#0a0a0b', 
-    img: '/hero-2026.png' 
+    img: '/cat-ethnic.png' 
   },
   { 
-    title: 'The Art of Style', 
-    subtitle: 'Experience the intersection of tradition and contemporary fashion.', 
+    title: 'Modern Festive', 
+    subtitle: 'Celebrate tradition with our exclusive range of contemporary ethnic wear.', 
     cta: 'Shop Now', 
     ctaLink: '/products?sort=price_asc', 
     badge: 'NEW SEASON', 
     bg: '#0a0a0b', 
-    img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1200' 
+    img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=1200' 
   },
 ];
 
@@ -255,16 +255,16 @@ export default function HomePage() {
                 <div style={{ position: 'absolute', top: -30, left: -30, width: '100%', height: '100%', border: '1px solid var(--gold)', zIndex: 1 }} />
               </div>
               <div>
-                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>The House</span>
-                <h2 style={{ marginBottom: 32 }}>Excellence in Every Stitch</h2>
+                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>The Atelier India</span>
+                <h2 style={{ marginBottom: 32 }}>Legacy of the Loom</h2>
                 <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-primary)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}>
-                  "We believe that fashion is the ultimate expression of the soul. Our artisans meticulously craft each piece to ensure it carries the legacy of elegance."
+                  "We believe that fashion is a dialogue between the artisan and the individual. Our Indian ateliers preserve centuries of textile heritage."
                 </p>
                 <p style={{ marginBottom: 40, color: 'var(--text-secondary)' }}>
-                  From the selection of premium fabrics to the final hand-finished details, Savaria Fashion represents a commitment to timeless quality and modern sophistication.
+                  From the intricate hand-embroidery of Lucknow to the timeless silks of Varanasi, Savaria represents the pinnacle of Indian artisanal excellence.
                 </p>
                 <Link href="/about" style={{ textDecoration: 'none', color: 'var(--dark)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid var(--gold)', paddingBottom: 4 }}>
-                  Explore Our Story
+                  The Artisan Story
                 </Link>
               </div>
             </div>
@@ -320,12 +320,12 @@ export default function HomePage() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mobile-stack">
               {[
-                'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1529139513075-3a936d559868?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600',
+                '/cat-ethnic.png',
+                'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1599459183200-59c7687a03ad?auto=format&fit=crop&q=80&w=600',
               ].map((img, i) => (
                 <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }} className="hover-lift">
                   <img src={img} alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
