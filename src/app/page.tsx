@@ -193,15 +193,18 @@ export default function HomePage() {
             
             <div className="stores-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
               {[
-                { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 7412 234567' },
-                { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 7292 234567' },
-                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 7421 234567' },
+                { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 9993309453', map: 'https://share.google/IfJM3Ie13VfwqhWUe' },
+                { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 9993309453', map: 'https://share.google/C2xAbe7nstMekZ0gz' },
+                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 9131394539', map: 'https://share.google/gLAN0sQx1iuYNM8Ko' },
               ].map((store, i) => (
-                <div key={i} style={{ padding: 'clamp(24px, 5vw, 48px)', background: '#f5f0e8', borderRadius: 24, textAlign: 'center' }} className="hover-lift">
-                  <h3 style={{ fontSize: '2.2rem', color: 'var(--gold)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif" }}>{store.name}</h3>
-                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 12, lineHeight: 1.6 }}>{store.addr}</p>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{store.phone}</p>
-                </div>
+                <a key={i} href={store.map} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }} className="store-link">
+                  <div style={{ padding: 'clamp(24px, 5vw, 48px)', background: '#f5f0e8', borderRadius: 24, textAlign: 'center', transition: 'all 0.4s ease', height: '100%', border: '1px solid transparent' }} className="hover-lift">
+                    <h3 style={{ fontSize: '2.2rem', color: 'var(--gold)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif" }}>{store.name}</h3>
+                    <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 12, lineHeight: 1.6 }}>{store.addr}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{store.phone}</p>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--gold)', fontWeight: 800, letterSpacing: '2px', marginTop: 24, textTransform: 'uppercase' }}>Directions →</div>
+                  </div>
+                </a>
               ))}
             </div>
           </div>
@@ -506,6 +509,7 @@ export default function HomePage() {
         .hover-scale { transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .hover-scale:hover { transform: scale(1.05); }
         .stores-grid { transition: all 0.4s ease; }
+        .store-link:hover .hover-lift { transform: translateY(-10px); background: white !important; border-color: var(--gold) !important; box-shadow: 0 20px 40px rgba(201,168,76,0.15) !important; }
         .founder-card:hover .portrait-img { transform: scale(1.08); filter: grayscale(0%); }
         .founder-card:hover h3 { color: var(--gold); transition: color 0.4s ease; }
         @media (max-width: 1024px) {
