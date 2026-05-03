@@ -132,12 +132,17 @@ export default function ProductDetailPage() {
               {/* Size */}
               {product.sizes?.length > 0 && (
                 <div style={{ marginBottom: 28 }}>
-                  <p style={{ fontWeight: 700, marginBottom: 12, fontSize: '0.9rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Select Size: <span style={{ color: 'var(--gold)', marginLeft: 8 }}>{selectedSize}</span>
-                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
+                    <p style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', margin: 0 }}>
+                      Select Size
+                    </p>
+                    <button style={{ background: 'none', border: 'none', color: '#2563eb', fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer', padding: 0 }}>
+                      Size Chart
+                    </button>
+                  </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                     {product.sizes.map((s: string) => (
-                      <button key={s} onClick={() => setSelectedSize(s)} style={{ minWidth: 48, height: 48, borderRadius: 8, border: `2px solid ${selectedSize === s ? 'var(--gold)' : 'var(--border)'}`, background: selectedSize === s ? 'var(--gold)' : 'white', color: selectedSize === s ? 'var(--dark)' : 'var(--text-primary)', fontWeight: 700, cursor: 'pointer', fontSize: '0.9rem', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <button key={s} onClick={() => setSelectedSize(s)} style={{ minWidth: 52, height: 52, borderRadius: 12, border: `1px solid ${selectedSize === s ? 'var(--dark)' : '#d1d5db'}`, background: 'white', color: 'var(--dark)', fontWeight: 400, cursor: 'pointer', fontSize: '1rem', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: selectedSize === s ? '0 0 0 1px var(--dark)' : 'none' }}>
                         {s}
                       </button>
                     ))}
@@ -148,25 +153,25 @@ export default function ProductDetailPage() {
               {/* Color */}
               {product.colors?.length > 0 && (
                 <div style={{ marginBottom: 32 }}>
-                  <p style={{ fontWeight: 700, marginBottom: 12, fontSize: '0.9rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Color: <span style={{ color: 'var(--gold)', marginLeft: 8 }}>{selectedColor}</span>
+                  <p style={{ fontWeight: 700, marginBottom: 12, fontSize: '1rem', color: 'var(--text-primary)', margin: '0 0 16px 0' }}>
+                    Selected Color: <span style={{ fontWeight: 400, color: 'var(--text-secondary)', marginLeft: 4, textTransform: 'capitalize' }}>{selectedColor}</span>
                   </p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-                    {product.colors.map((c: string) => {
-                      const isHex = c.startsWith('#');
-                      const displayColor = c.toLowerCase();
+                    {product.colors.map((c: string, index: number) => {
+                      const swatchImg = product.images?.[index] || product.images?.[0] || placeholder(product.name);
                       return (
                         <button 
                           key={c} 
                           onClick={() => setSelectedColor(c)} 
                           title={c} 
                           style={{ 
-                            width: 38, 
-                            height: 38, 
-                            borderRadius: '50%', 
-                            background: displayColor, 
-                            border: `2px solid ${selectedColor === c ? 'var(--gold)' : 'white'}`, 
-                            boxShadow: selectedColor === c ? '0 0 0 2px var(--gold)' : '0 0 0 1px var(--border)',
+                            width: 64, 
+                            height: 80, 
+                            borderRadius: 10, 
+                            overflow: 'hidden',
+                            padding: 4,
+                            background: 'white',
+                            border: `2px solid ${selectedColor === c ? 'var(--dark)' : '#e5e7eb'}`, 
                             cursor: 'pointer', 
                             transition: 'all 0.2s',
                             position: 'relative',
@@ -175,7 +180,15 @@ export default function ProductDetailPage() {
                             justifyContent: 'center'
                           }}
                         >
-                          {selectedColor === c && <Check size={14} color="white" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))' }} />}
+                          <img src={swatchImg} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 6, background: '#f6f8fa' }} alt={c} />
+                          {/* Out of stock mock if stock is 0 */}
+                          {product.stock === 0 && (
+                            <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                              <div style={{ background: 'rgba(255,255,255,0.9)', padding: '4px 0', width: '100%', textAlign: 'center' }}>
+                                <span style={{ color: '#ea580c', fontSize: '0.65rem', fontWeight: 500 }}>Out of stock</span>
+                              </div>
+                            </div>
+                          )}
                         </button>
                       );
                     })}

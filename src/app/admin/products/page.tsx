@@ -13,7 +13,7 @@ export default function AdminProductsPage() {
   const [form, setForm] = useState({
     name: '', price: '', comparePrice: '', description: '', 
     categoryId: '', stock: '', images: [] as string[], 
-    sizes: [] as string[], colors: [] as string[], brand: '',
+    sizesInput: '', colorsInput: '', brand: '',
     isFeatured: false, isNewArrival: false
   });
   const [uploading, setUploading] = useState(false);
@@ -40,14 +40,14 @@ export default function AdminProductsPage() {
         comparePrice: product.comparePrice?.toString() || '', 
         description: product.description, categoryId: product.categoryId, 
         stock: product.stock.toString(), images: product.images,
-        sizes: product.sizes, colors: product.colors, brand: product.brand || '',
+        sizesInput: product.sizes?.join(', ') || '', colorsInput: product.colors?.join(', ') || '', brand: product.brand || '',
         isFeatured: product.isFeatured, isNewArrival: product.isNewArrival
       });
     } else {
       setEditingProduct(null);
       setForm({
         name: '', price: '', comparePrice: '', description: '', 
-        categoryId: '', stock: '0', images: [], sizes: [], colors: [], 
+        categoryId: '', stock: '0', images: [], sizesInput: '', colorsInput: '', 
         brand: '', isFeatured: false, isNewArrival: false
       });
     }
@@ -96,7 +96,9 @@ export default function AdminProductsPage() {
       ...form,
       price: parseFloat(form.price),
       comparePrice: form.comparePrice ? parseFloat(form.comparePrice) : null,
-      stock: parseInt(form.stock)
+      stock: parseInt(form.stock),
+      sizes: form.sizesInput.split(',').map(s => s.trim()).filter(Boolean),
+      colors: form.colorsInput.split(',').map(s => s.trim()).filter(Boolean)
     };
 
     try {
@@ -234,11 +236,11 @@ export default function AdminProductsPage() {
                 </div>
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Sizes (Comma separated)</label>
-                  <input className="input-field" value={form.sizes.join(', ')} onChange={e => setForm({...form, sizes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} placeholder="e.g. S, M, L, XL" />
+                  <input className="input-field" value={form.sizesInput} onChange={e => setForm({...form, sizesInput: e.target.value})} placeholder="e.g. S, M, L, XL" />
                 </div>
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Colors (Comma separated)</label>
-                  <input className="input-field" value={form.colors.join(', ')} onChange={e => setForm({...form, colors: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} placeholder="e.g. Red, Blue, Black" />
+                  <input className="input-field" value={form.colorsInput} onChange={e => setForm({...form, colorsInput: e.target.value})} placeholder="e.g. Red, Blue, Black" />
                 </div>
               </div>
 
