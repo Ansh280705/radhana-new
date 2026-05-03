@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Link Columns */}
           {[
             { title: 'The Collections', links: [{ label: "New Arrivals", href: '/products?newArrival=true' }, { label: "Women", href: '/products?category=women' }, { label: "Men", href: '/products?category=men' }, { label: "Accessories", href: '/products?category=accessories' }] },
-            { title: 'The House', links: [{ label: "About Us", href: '/#about-us' }, { label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }, { label: "Artisanry", href: '/artisanry' }, { label: "Careers", href: '/careers' }] },
+            { title: 'The House', links: [{ label: "About Us", href: '/#about-us' }, { label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }] },
             { title: 'Client Service', links: [{ label: "Contact Us", href: '/contact' }, { label: "Shipping Policy", href: '/shipping' }, { label: "No Returns Policy", href: '/returns' }, { label: "Size Guide", href: '/sizing' }, { label: "Privacy Policy", href: '/privacy' }] },
           ].map(({ title, links }) => (
             <div key={title}>
