@@ -21,11 +21,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { user, clearUser } = useAuthStore();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return;
     if (!user) { router.push('/login'); return; }
     if (user.role !== 'ADMIN') { router.push('/'); toast.error('Admin access only'); }
-  }, [user]);
+  }, [user, isHydrated]);
 
   const handleLogout = async () => {
     try { await authAPI.logout(); } catch {}
@@ -33,21 +39,36 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push('/');
   };
 
+  if (!isHydrated) return <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center' }}><div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)' }} /></div>;
   if (!user || user.role !== 'ADMIN') return null;
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8fafc' }}>
+    <div className="admin-wrapper" style={{ display: 'flex', width: '100%', minHeight: '100vh', background: '#f8fafc' }}>
+      {/* Sidebar Overlay */}
+      {sidebarOpen && (
+        <div 
+          onClick={() => setSidebarOpen(false)}
+          className="sidebar-overlay"
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 199 }}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside style={{ width: 240, background: 'var(--dark)', display: 'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, height: '100vh', zIndex: 200, transition: 'transform 0.3s', transform: sidebarOpen || true ? 'translateX(0)' : 'translateX(-100%)' }}>
-        <div style={{ padding: '28px 24px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', color: 'white', marginBottom: 4 }}>
-            Savaria <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
+      <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`} style={{ width: 240, background: 'var(--dark)', display: 'flex', flexDirection: 'column', position: 'fixed', top: 0, left: 0, height: '100vh', zIndex: 200, transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+        <div style={{ padding: '28px 24px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', color: 'white', marginBottom: 4 }}>
+              Sawariya <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
+            </div>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem' }}>Control Panel</p>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem' }}>Control Panel</p>
+          <button className="mobile-only" onClick={() => setSidebarOpen(false)} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
+            <X size={20} />
+          </button>
         </div>
         <nav style={{ flex: 1, padding: '16px 0', overflowY: 'auto' }}>
           {NAV_ITEMS.map(({ href, icon, label }) => (
-            <Link key={href} href={href} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', textDecoration: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', transition: 'all 0.2s', borderLeft: '3px solid transparent' }}
+            <Link key={href} href={href} onClick={() => setSidebarOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', textDecoration: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', transition: 'all 0.2s', borderLeft: '3px solid transparent' }}
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; e.currentTarget.style.color = 'var(--gold)'; e.currentTarget.style.borderLeftColor = 'var(--gold)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderLeftColor = 'transparent'; }}>
               <span style={{ color: 'var(--gold)' }}>{icon}</span> {label}
@@ -63,19 +84,40 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main */}
-      <main style={{ marginLeft: 240, flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <main className="admin-main" style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', minHeight: '100vh', transition: 'margin-left 0.3s' }}>
         {/* Topbar */}
         <div style={{ background: 'white', borderBottom: '1px solid var(--border)', padding: '0 28px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 100 }}>
-          <p style={{ fontWeight: 600, color: 'var(--text-secondary)', fontSize: '0.88rem' }}>Welcome back, <span style={{ color: 'var(--dark)' }}>{user.name}</span> 👋</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <button className="mobile-only" onClick={() => setSidebarOpen(true)} style={{ background: 'none', border: 'none', color: 'var(--dark)', cursor: 'pointer', padding: 0 }}>
+              <Menu size={24} />
+            </button>
+            <p style={{ fontWeight: 600, color: 'var(--text-secondary)', fontSize: '0.88rem' }} className="desktop-only">Welcome back, <span style={{ color: 'var(--dark)' }}>{user.name}</span> 👋</p>
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, var(--gold), var(--gold-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, color: 'var(--dark)', fontSize: '0.9rem' }}>
               {user.name[0].toUpperCase()}
             </div>
-            <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{user.name}</span>
+            <span style={{ fontWeight: 600, fontSize: '0.9rem' }} className="desktop-only">{user.name}</span>
           </div>
         </div>
-        <div style={{ flex: 1, padding: 28 }}>{children}</div>
+        <div style={{ flex: 1, padding: 'clamp(16px, 4vw, 28px)' }}>{children}</div>
       </main>
+
+      <style jsx>{`
+        .admin-sidebar { transform: translateX(0); }
+        .admin-main { margin-left: 240px; }
+        .mobile-only { display: none; }
+        .sidebar-overlay { display: none; }
+
+        @media (max-width: 1024px) {
+          .admin-sidebar { transform: translateX(-100%); }
+          .admin-sidebar.open { transform: translateX(0); }
+          .admin-main { margin-left: 0; }
+          .mobile-only { display: block; }
+          .desktop-only { display: none; }
+          .sidebar-overlay { display: block; }
+        }
+      `}</style>
     </div>
   );
 }

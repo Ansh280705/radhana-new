@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { NextRequest } from 'next/server';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'savaria-secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'Sawariya-secret';
 
 export interface JWTPayload {
   userId: string;

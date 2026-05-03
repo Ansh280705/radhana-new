@@ -2,6 +2,22 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { authenticateRequest } from '@/lib/auth';
 
+export async function GET() {
+  try {
+    const reviews = await prisma.review.findMany({
+      take: 6,
+      orderBy: { createdAt: 'desc' },
+      include: {
+        user: { select: { name: true } },
+        product: { select: { name: true, images: true } }
+      }
+    });
+    return NextResponse.json(reviews);
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const user = authenticateRequest(req);

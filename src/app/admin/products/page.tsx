@@ -142,7 +142,7 @@ export default function AdminProductsPage() {
         </div>
         
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table style={{ width: '100%', minWidth: 800, borderCollapse: 'collapse' }}>
             <thead style={{ background: 'var(--cream)' }}>
               <tr>
                 <th style={{ textAlign: 'left', padding: '12px 20px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>PRODUCT</th>
@@ -216,6 +216,21 @@ export default function AdminProductsPage() {
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Stock</label>
                   <input className="input-field" type="number" required value={form.stock} onChange={e => setForm({...form, stock: e.target.value})} />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+                <div>
+                  <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Brand</label>
+                  <input className="input-field" value={form.brand} onChange={e => setForm({...form, brand: e.target.value})} placeholder="e.g. Sawariya" />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Sizes (Comma separated)</label>
+                  <input className="input-field" value={form.sizes.join(', ')} onChange={e => setForm({...form, sizes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} placeholder="e.g. S, M, L, XL" />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Colors (Comma separated)</label>
+                  <input className="input-field" value={form.colors.join(', ')} onChange={e => setForm({...form, colors: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} placeholder="e.g. Red, Blue, Black" />
                 </div>
               </div>
 

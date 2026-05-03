@@ -1,11 +1,10 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Heart, ShoppingBag, Star, Eye } from 'lucide-react';
+import { Heart, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useAuthStore } from '@/store/authStore';
-import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 
@@ -30,11 +29,6 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCartStore();
   const { toggle, isWishlisted } = useWishlistStore();
   const { user } = useAuthStore();
-  const router = useRouter();
-
-  const discount = product.comparePrice
-    ? Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100)
-    : 0;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,97 +42,120 @@ export default function ProductCard({ product }: { product: Product }) {
       quantity: 1,
       stock: product.stock,
     });
-    toast.success('Added to cart!');
+    toast.success('Added to cart');
   };
 
   const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (!user) { toast.error('Login to add to wishlist'); return; }
+    if (!user) { toast.error('Login to wishlist'); return; }
     toggle(product.id);
-    toast.success(isWishlisted(product.id) ? 'Removed from wishlist' : 'Added to wishlist!');
   };
 
-  const placeholder = `https://placehold.co/400x500/faf8f4/c9a84c?text=${encodeURIComponent(product.name.slice(0, 10))}`;
+  const placeholder = `https://placehold.co/600x800/fdfaf6/c9a84c?text=${encodeURIComponent(product.name)}`;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Link href={`/products/${product.slug || product.id}`} style={{ textDecoration: 'none', display: 'block' }}>
+      <Link href={`/products/${product.slug || product.id}`} style={{ textDecoration: 'none' }}>
         <div
-          className="product-card"
+          className="luxury-card"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{ 
             background: 'white', 
-            borderRadius: '12px', 
+            borderRadius: '0px', 
             overflow: 'hidden', 
-            border: '1px solid var(--border)', 
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            transition: 'all 0.3s ease'
+            position: 'relative',
+            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+            boxShadow: hovered ? '0 30px 60px -15px rgba(0,0,0,0.1)' : '0 10px 30px -15px rgba(0,0,0,0.05)'
           }}
         >
           {/* Image Wrapper */}
-          <div className="image-wrapper" style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--beige)' }}>
+          <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: 'var(--cream)' }}>
             <img
               src={imgError ? placeholder : (product.images[0] || placeholder)}
               alt={product.name}
               onError={() => setImgError(true)}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)', transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'cover', 
+                transition: 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                transform: hovered ? 'scale(1.08)' : 'scale(1)'
+              }}
             />
             
-            {/* Quick Actions (Floating) */}
-            <div className="product-actions" style={{ position: 'absolute', top: 12, right: 12, display: 'flex', flexDirection: 'column', gap: 8, zIndex: 10 }}>
-              <button 
-                onClick={handleWishlist} 
-                type="button"
-                className="hover-glow"
-                style={{ width: 40, height: 40, borderRadius: '50%', background: 'white', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
-              >
-                <Heart size={18} fill={isWishlisted(product.id) ? '#ef4444' : 'none'} color={isWishlisted(product.id) ? '#ef4444' : '#374151'} />
-              </button>
-            </div>
+            {/* Overlay Gradient */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 40%)', opacity: hovered ? 1 : 0, transition: 'opacity 0.6s' }} />
 
-            {/* Badges */}
-            <div style={{ position: 'absolute', top: 12, left: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {discount > 0 && <span style={{ background: 'var(--red)', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>{discount}% OFF</span>}
-              {product.stock === 0 && <span style={{ background: '#1a1a2e', color: 'white', padding: '4px 10px', borderRadius: 4, fontSize: '0.65rem', fontWeight: 800 }}>SOLD OUT</span>}
-            </div>
-
-            {/* Desktop Add to Cart Overlay */}
-            <div className="hidden-mobile" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(26,26,46,0.95), transparent)', padding: '24px 12px 12px', transform: hovered ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}>
-              <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.8rem', padding: '10px' }}>
-                <ShoppingBag size={14} style={{ marginRight: 8 }} /> Add to Cart
-              </button>
-            </div>
+            {/* Wishlist Icon */}
+            <button 
+              onClick={handleWishlist} 
+              style={{ 
+                position: 'absolute', top: 16, right: 16, 
+                background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)',
+                border: 'none', borderRadius: '50%', width: 36, height: 36,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', transition: 'all 0.3s',
+                opacity: hovered ? 1 : 0, transform: hovered ? 'translateY(0)' : 'translateY(-10px)'
+              }}
+            >
+              <Heart size={18} fill={isWishlisted(product.id) ? 'var(--red)' : 'none'} color={isWishlisted(product.id) ? 'var(--red)' : 'var(--dark)'} />
+            </button>
           </div>
 
           {/* Info Section */}
-          <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <div style={{ marginBottom: 8 }}>
-              {product.category && <p style={{ fontSize: '0.65rem', color: 'var(--gold)', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: 4 }}>{product.category.name}</p>}
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--dark)', lineHeight: 1.4, margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{product.name}</h3>
-            </div>
+          <div style={{ padding: '20px 16px', flex: 1, display: 'flex', flexDirection: 'column', gap: 6, textAlign: 'center' }}>
+            <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 2 }}>
+              {product.category?.name || 'New Arrival'}
+            </p>
+            <h3 style={{ 
+              fontFamily: "'Playfair Display', serif", 
+              fontSize: '1.1rem', 
+              fontWeight: 600, 
+              color: 'var(--dark)',
+              margin: 0,
+              display: '-webkit-box',
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden'
+            }}>
+              {product.name}
+            </h3>
+            <p style={{ fontWeight: 400, fontSize: '1rem', color: 'var(--text-primary)', margin: 0 }}>
+              ₹{product.price.toLocaleString()}
+            </p>
 
-            {/* Pricing & Rating */}
-            <div style={{ marginTop: 'auto' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                <span style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--dark)' }}>₹{product.price.toLocaleString()}</span>
-                {product.comparePrice && <span style={{ textDecoration: 'line-through', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>₹{product.comparePrice.toLocaleString()}</span>}
-              </div>
-              
-              {/* Mobile Add to Cart Button (Visible) */}
-              <div className="show-mobile" style={{ marginTop: 12 }}>
-                <button onClick={handleAddToCart} className="btn-gold" style={{ width: '100%', fontSize: '0.75rem', padding: '8px', minHeight: 44 }}>
-                  <ShoppingBag size={14} style={{ marginRight: 6 }} /> Add to Cart
-                </button>
-              </div>
-            </div>
+            {/* Subtle Add to Cart */}
+            <button 
+              onClick={handleAddToCart}
+              className="font-sans"
+              style={{ 
+                marginTop: '12px',
+                background: 'transparent',
+                border: '1px solid var(--dark)',
+                color: 'var(--dark)',
+                padding: '10px 0',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                opacity: hovered ? 1 : 0.7
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--dark)'; e.currentTarget.style.color = 'white'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--dark)'; }}
+            >
+              Add to Bag
+            </button>
           </div>
         </div>
       </Link>

@@ -30,7 +30,7 @@ export default function AdminUsersPage() {
 
       <div style={{ background: 'white', borderRadius: 20, border: '1px solid var(--border)', overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table style={{ width: '100%', minWidth: 700, borderCollapse: 'collapse' }}>
             <thead style={{ background: 'var(--cream)' }}>
               <tr>
                 <th style={{ textAlign: 'left', padding: '14px 20px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>USER</th>

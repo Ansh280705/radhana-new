@@ -83,7 +83,7 @@ function ProductsContent() {
             <button 
               className="show-mobile btn-outline" 
               onClick={() => setMenuOpen(!menuOpen)}
-              style={{ width: '100%', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+              style={{ width: '100%', marginBottom: 16, alignItems: 'center', justifyContent: 'center', gap: 8 }}
             >
               <SlidersHorizontal size={18} /> {menuOpen ? 'Hide Filters' : 'Show Filters'}
             </button>
