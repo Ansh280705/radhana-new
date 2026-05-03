@@ -288,6 +288,63 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* The Lookbook: Curated Style Grid */}
+        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: 64 }}>
+              <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 16, display: 'block' }}>Lookbook</span>
+              <h2>Bespoke Moments</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mobile-stack">
+              {[
+                'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1529139513075-3a936d559868?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&q=80&w=600',
+                'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600',
+              ].map((img, i) => (
+                <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }} className="hover-lift">
+                  <img src={img} alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div className="overlay-subtle" style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,11,0.2)', opacity: 0, transition: 'opacity 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ color: 'white', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '2px', border: '1px solid white', padding: '8px 16px' }}>SHOP THE LOOK</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Boutique Services */}
+        <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', color: 'white' }}>
+          <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 100, alignItems: 'center' }} className="mobile-stack">
+              <div>
+                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Concierge</span>
+                <h2 style={{ color: 'white', marginBottom: 32 }}>The Boutique Experience</h2>
+                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48, fontSize: '1.1rem' }}>
+                  Enjoy a personalized journey with our exclusive client services designed to bring the Savaria atelier to your doorstep.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+                  {[
+                    { title: 'Private Styling', desc: 'Book a session with our master stylists for a curated wardrobe update.' },
+                    { title: 'Virtual Consultation', desc: 'Experience the collection from anywhere with our digital atelier services.' },
+                    { title: 'Tailoring & Alterations', desc: 'Ensure the perfect fit with our bespoke hand-finishing services.' },
+                  ].map((s, i) => (
+                    <div key={i} style={{ borderLeft: '2px solid var(--gold)', paddingLeft: 32 }}>
+                      <h4 style={{ color: 'white', fontSize: '1rem', marginBottom: 8 }}>{s.title}</h4>
+                      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>{s.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Concierge" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Trust Factors */}
         <section style={{ padding: 'var(--s12) 0', borderTop: '1px solid var(--border)' }}>
           <div className="container">
