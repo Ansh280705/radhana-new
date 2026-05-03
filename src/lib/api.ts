@@ -82,6 +82,7 @@ export const couponsAPI = {
 
 // Reviews
 export const reviewsAPI = {
+  getAll: () => api.get('/reviews'),
   create: (data: any) => api.post('/reviews', data),
 };
 

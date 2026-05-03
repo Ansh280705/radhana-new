@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Sparkles, Tag, Truck, Shield, RefreshCw } fr
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
-import { productsAPI, categoriesAPI, bannersAPI } from '@/lib/api';
+import { productsAPI, categoriesAPI, bannersAPI, reviewsAPI } from '@/lib/api';
 
 const HERO_SLIDES = [
   { 
@@ -46,6 +46,7 @@ export default function HomePage() {
   const [products, setProducts] = useState<any[]>([]);
   const [newArrivals, setNewArrivals] = useState<any[]>([]);
   const [banners, setBanners] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -67,10 +68,12 @@ export default function HomePage() {
       productsAPI.getAll({ featured: 'true', limit: 8 }),
       productsAPI.getAll({ newArrival: 'true', limit: 8 }),
       bannersAPI.getAll(),
-    ]).then(([feat, newArr, bannerRes]) => {
+      reviewsAPI.getAll(),
+    ]).then(([feat, newArr, bannerRes, reviewRes]) => {
       setProducts(feat.data.products || []);
       setNewArrivals(newArr.data.products || []);
       setBanners(bannerRes.data || []);
+      setReviews(reviewRes.data || []);
     }).catch(() => {}).finally(() => setLoading(false));
   }, []);
 
@@ -268,23 +271,43 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Client Perspectives: Testimonials */}
+        {/* Real Client Experiences: Reviews */}
         <section style={{ padding: 'var(--s12) 0', background: 'var(--cream)', textAlign: 'center' }}>
           <div className="container">
-            <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Perspectives</span>
-            <h2 style={{ marginBottom: 64 }}>Client Experiences</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }} className="mobile-stack">
-              {[
-                { name: 'SOPHIA R.', quote: 'The quality of the silk is unparalleled. A truly transformative addition to my wardrobe.' },
-                { name: 'MARCUS V.', quote: 'Exceptional tailoring and a flawless fit. Savaria has redefined my approach to style.' },
-                { name: 'ELENA K.', quote: 'The attention to detail in the ethnic collection is breathtaking. Pure artistry.' },
-              ].map((t, i) => (
-                <div key={i} style={{ padding: 40, background: 'white', position: 'relative' }}>
-                  <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}>"{t.quote}"</p>
-                  <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)' }}>{t.name}</p>
-                </div>
-              ))}
-            </div>
+            <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Client Voices</span>
+            <h2 style={{ marginBottom: 24 }}>The Savaria Experience</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 64, maxWidth: 600, margin: '0 auto 64px' }}>
+              Real perspectives from our global community of discerning clients.
+            </p>
+            
+            {reviews.length > 0 ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, marginBottom: 64 }} className="mobile-stack">
+                {reviews.map((r, i) => (
+                  <div key={r.id || i} style={{ padding: 40, background: 'white', textAlign: 'left', position: 'relative' }}>
+                    <div style={{ display: 'flex', gap: 4, color: 'var(--gold)', marginBottom: 20 }}>
+                      {[...Array(5)].map((_, idx) => (
+                        <Sparkles key={idx} size={12} fill={idx < r.rating ? 'var(--gold)' : 'transparent'} opacity={idx < r.rating ? 1 : 0.2} />
+                      ))}
+                    </div>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', minHeight: '80px' }}>
+                      "{r.comment}"
+                    </p>
+                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20 }}>
+                      <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)', marginBottom: 4 }}>{r.user?.name?.toUpperCase()}</p>
+                      <p style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>RE: {r.product?.name}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ padding: '60px 0', color: 'var(--text-secondary)', fontStyle: 'italic' }}>
+                <p>No reviews yet. Be the first to share your experience.</p>
+              </div>
+            )}
+
+            <Link href="/products" style={{ textDecoration: 'none' }}>
+              <button className="btn-gold" style={{ padding: '16px 48px', borderRadius: 0 }}>Share Your Experience</button>
+            </Link>
           </div>
         </section>
 
