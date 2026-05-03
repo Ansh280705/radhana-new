@@ -14,6 +14,7 @@ function ProductsContent() {
   const [products, setProducts] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [initialLoad, setInitialLoad] = useState(true);
   const [pagination, setPagination] = useState({ page: 1, total: 0, pages: 1 });
   const [filters, setFilters] = useState({
     category: searchParams.get('category') || '',
@@ -39,6 +40,7 @@ function ProductsContent() {
       search: searchParams.get('search') || '',
       page: 1
     }));
+    setInitialLoad(true);
   }, [searchParams]);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ function ProductsContent() {
     productsAPI.getAll(params).then(r => {
       setProducts(r.data.products || []);
       setPagination(r.data.pagination || { page: 1, total: 0, pages: 1 });
-    }).catch(() => {}).finally(() => setLoading(false));
+    }).catch(() => {}).finally(() => { setLoading(false); setInitialLoad(false); });
   }, [filters]);
 
   const toggleSize = (s: string) => setFilters(f => ({ ...f, sizes: f.sizes.includes(s) ? f.sizes.filter(x => x !== s) : [...f.sizes, s], page: 1 }));
@@ -56,6 +58,12 @@ function ProductsContent() {
     <>
       <Navbar />
       <main style={{ minHeight: '80vh', padding: '32px 0 60px' }}>
+        {initialLoad ? (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+            <div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)', marginBottom: 16 }} />
+            <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', fontSize: '0.9rem', textTransform: 'uppercase' }}>Loading...</p>
+          </div>
+        ) : (
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
             <div>
@@ -158,6 +166,7 @@ function ProductsContent() {
             </div>
           </div>
         </div>
+        )}
       </main>
       <Footer />
     </>
