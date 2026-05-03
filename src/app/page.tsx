@@ -184,6 +184,37 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Our Stores */}
+        <section id="our-stores" style={{ padding: 'var(--s12) 0', background: 'white' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: 60 }}>
+              <h2 style={{ fontSize: '3rem' }}>Our Stores</h2>
+            </div>
+            
+            <div className="stores-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
+              {[
+                { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 7412 234567' },
+                { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 7292 234567' },
+                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 7421 234567' },
+              ].map((store, i) => (
+                <div key={i} style={{ padding: 'clamp(24px, 5vw, 48px)', background: '#f5f0e8', borderRadius: 24, textAlign: 'center' }} className="hover-lift">
+                  <h3 style={{ fontSize: '2.2rem', color: 'var(--gold)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif" }}>{store.name}</h3>
+                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 12, lineHeight: 1.6 }}>{store.addr}</p>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{store.phone}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <style jsx>{`
+            @media (max-width: 991px) {
+              .stores-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            }
+            @media (max-width: 768px) {
+              .stores-grid { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </section>
+
         {/* Newsletter: Exclusive Access */}
         <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', color: 'white', textAlign: 'center', position: 'relative' }}>
           <div className="container" style={{ maxWidth: 600 }}>
@@ -301,7 +332,7 @@ export default function HomePage() {
               {/* Shubham Chouhan */}
               <div style={{ position: 'relative', overflow: 'hidden' }} className="hover-lift">
                 <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 20 }}>
-                  <img src="/founders/shubham.png" alt="Shubham Chouhan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/team/founder.jpg" alt="Shubham Chouhan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)' }} />
                   <div style={{ position: 'absolute', bottom: 32, left: 32 }}>
                     <h3 style={{ color: 'white', fontSize: '1.8rem', marginBottom: 4 }}>Shubham Chouhan</h3>
@@ -317,7 +348,7 @@ export default function HomePage() {
               {/* Piyush Rathore */}
               <div style={{ position: 'relative', overflow: 'hidden' }} className="hover-lift">
                 <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 20 }}>
-                  <img src="/founders/piyush.png" alt="Piyush Rathore" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/team/co-founder.jpg" alt="Piyush Rathore" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)' }} />
                   <div style={{ position: 'absolute', bottom: 32, left: 32 }}>
                     <h3 style={{ color: 'white', fontSize: '1.8rem', marginBottom: 4 }}>Piyush Rathore</h3>
@@ -433,28 +464,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Our Stores */}
-        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
-          <div className="container">
-            <div style={{ textAlign: 'center', marginBottom: 60 }}>
-              <h2 style={{ fontSize: '3rem' }}>Our Stores</h2>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }} className="mobile-stack">
-              {[
-                { name: 'Ratlam', addr: 'Main Bazaar, Ratlam, MP', phone: '+91 7412 234567' },
-                { name: 'Dhar', addr: 'City Center Mall, Dhar, MP', phone: '+91 7292 234567' },
-                { name: 'Manasa', addr: 'Station Road, Manasa, MP', phone: '+91 7421 234567' },
-              ].map((store, i) => (
-                <div key={i} style={{ padding: 48, background: '#f5f0e8', borderRadius: 24, textAlign: 'center' }} className="hover-lift">
-                  <h3 style={{ fontSize: '2.2rem', color: 'var(--gold)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif" }}>{store.name}</h3>
-                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--dark)', marginBottom: 12, lineHeight: 1.6 }}>{store.addr}</p>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{store.phone}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Trust Factors */}
         <section style={{ padding: 'var(--s12) 0', borderTop: '1px solid var(--border)' }}>
