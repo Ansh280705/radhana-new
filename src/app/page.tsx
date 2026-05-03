@@ -241,8 +241,55 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* The House of Savaria: Editorial Story */}
+        <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
+          <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }} className="mobile-stack">
+              <div style={{ position: 'relative' }}>
+                <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative', zIndex: 2 }}>
+                  <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1200" alt="Craftsmanship" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ position: 'absolute', top: -30, left: -30, width: '100%', height: '100%', border: '1px solid var(--gold)', zIndex: 1 }} />
+              </div>
+              <div>
+                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>The House</span>
+                <h2 style={{ marginBottom: 32 }}>Excellence in Every Stitch</h2>
+                <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-primary)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}>
+                  "We believe that fashion is the ultimate expression of the soul. Our artisans meticulously craft each piece to ensure it carries the legacy of elegance."
+                </p>
+                <p style={{ marginBottom: 40, color: 'var(--text-secondary)' }}>
+                  From the selection of premium fabrics to the final hand-finished details, Savaria Fashion represents a commitment to timeless quality and modern sophistication.
+                </p>
+                <Link href="/about" style={{ textDecoration: 'none', color: 'var(--dark)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid var(--gold)', paddingBottom: 4 }}>
+                  Explore Our Story
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Client Perspectives: Testimonials */}
+        <section style={{ padding: 'var(--s12) 0', background: 'var(--cream)', textAlign: 'center' }}>
+          <div className="container">
+            <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Perspectives</span>
+            <h2 style={{ marginBottom: 64 }}>Client Experiences</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }} className="mobile-stack">
+              {[
+                { name: 'SOPHIA R.', quote: 'The quality of the silk is unparalleled. A truly transformative addition to my wardrobe.' },
+                { name: 'MARCUS V.', quote: 'Exceptional tailoring and a flawless fit. Savaria has redefined my approach to style.' },
+                { name: 'ELENA K.', quote: 'The attention to detail in the ethnic collection is breathtaking. Pure artistry.' },
+              ].map((t, i) => (
+                <div key={i} style={{ padding: 40, background: 'white', position: 'relative' }}>
+                  <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}>"{t.quote}"</p>
+                  <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)' }}>{t.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Trust Factors */}
-        <section style={{ padding: 'var(--s10) 0' }}>
+        <section style={{ padding: 'var(--s12) 0', borderTop: '1px solid var(--border)' }}>
           <div className="container">
             <div style={{ display: 'flex', justifyContent: 'center', gap: 80, flexWrap: 'wrap' }}>
               {FEATURES.map((f, i) => (
