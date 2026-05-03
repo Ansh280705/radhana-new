@@ -311,29 +311,58 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* The Lookbook: Curated Style Grid */}
+        {/* The Lookbook: Asymmetrical Editorial Grid */}
         <section style={{ padding: 'var(--s12) 0', background: 'white' }}>
           <div className="container">
-            <div style={{ textAlign: 'center', marginBottom: 64 }}>
-              <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 16, display: 'block' }}>Lookbook</span>
-              <h2>Bespoke Moments</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 80 }}>
+              <div>
+                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '5px', textTransform: 'uppercase', marginBottom: 16, display: 'block' }}>Lookbook</span>
+                <h2 style={{ fontSize: '3.5rem', marginBottom: 0 }}>Bespoke Moments</h2>
+              </div>
+              <p style={{ maxWidth: 300, color: 'var(--text-secondary)', fontSize: '0.9rem', textAlign: 'right' }}>
+                A visual journey through the soul of our latest collection. Capturing the essence of modern Indian luxury.
+              </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="mobile-stack">
-              {[
-                'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600',
-                '/cat-ethnic.png',
-                'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600',
-                'https://images.unsplash.com/photo-1599459183200-59c7687a03ad?auto=format&fit=crop&q=80&w=600',
-              ].map((img, i) => (
-                <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }} className="hover-lift">
-                  <img src={img} alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div className="overlay-subtle" style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,11,0.2)', opacity: 0, transition: 'opacity 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: 'white', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '2px', border: '1px solid white', padding: '8px 16px' }}>SHOP THE LOOK</span>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 32, gridAutoRows: 'minmax(200px, auto)' }} className="mobile-stack">
+              {/* Image 1: Large Feature */}
+              <div style={{ gridColumn: 'span 7', gridRow: 'span 2', position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1000" alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', bottom: 32, left: 32, color: 'white', zIndex: 2 }}>
+                  <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.8 }}>Atelier Series</p>
+                  <p style={{ fontSize: '1.2rem', fontFamily: "'Playfair Display', serif" }}>The Varanasi Silk Saree</p>
+                </div>
+              </div>
+
+              {/* Image 2: Tall Slim */}
+              <div style={{ gridColumn: 'span 5', gridRow: 'span 3', position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <img src="/cat-ethnic.png" alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', top: 32, right: 32, color: 'white', textAlign: 'right', zIndex: 2 }}>
+                  <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.8 }}>Heritage Craft</p>
+                  <p style={{ fontSize: '1.2rem', fontFamily: "'Playfair Display', serif" }}>Embroidered Elegance</p>
+                </div>
+              </div>
+
+              {/* Image 3: Small Square */}
+              <div style={{ gridColumn: 'span 4', gridRow: 'span 2', position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=600" alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+
+              {/* Image 4: Horizontal */}
+              <div style={{ gridColumn: 'span 3', gridRow: 'span 2', position: 'relative', overflow: 'hidden' }} className="hover-lift">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600" alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+
+              {/* Image 5: Medium Feature */}
+              <div style={{ gridColumn: 'span 12', gridRow: 'span 2', position: 'relative', overflow: 'hidden', marginTop: 32 }} className="hover-lift">
+                <img src="https://images.unsplash.com/photo-1599459183200-59c7687a03ad?auto=format&fit=crop&q=80&w=1200" alt="Lookbook" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ textAlign: 'center', color: 'white' }}>
+                    <h3 style={{ fontSize: '2.5rem', marginBottom: 16 }}>Crafted with Soul</h3>
+                    <button className="btn-gold" style={{ background: 'transparent', border: '1px solid white' }}>View The Lookbook</button>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
