@@ -23,8 +23,17 @@ export default function AdminDashboard() {
     { label: 'Total Products', value: data?.stats?.totalProducts || 0, icon: <Package size={22} />, color: '#f59e0b', bg: '#fef3c7' },
   ];
 
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)', marginBottom: 16 }} />
+        <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', fontSize: '0.9rem', textTransform: 'uppercase' }}>Loading Dashboard...</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className="animate-fadeIn">
       <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: 8 }}>Dashboard</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 28 }}>Overview of your store performance</p>
 
@@ -33,10 +42,10 @@ export default function AdminDashboard() {
         {stats.map(({ label, value, icon, color, bg }) => (
           <div key={label} style={{ background: 'white', borderRadius: 16, border: '1px solid var(--border)', padding: 24, display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ width: 52, height: 52, borderRadius: 14, background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', color }}>
-              {loading ? <div className="skeleton" style={{ width: 22, height: 22, borderRadius: '50%' }} /> : icon}
+              {icon}
             </div>
             <div>
-              {loading ? <div className="skeleton" style={{ height: 28, width: 80, borderRadius: 6, marginBottom: 6 }} /> : <p style={{ fontWeight: 800, fontSize: '1.6rem', lineHeight: 1 }}>{value}</p>}
+              <p style={{ fontWeight: 800, fontSize: '1.6rem', lineHeight: 1 }}>{value}</p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: 4 }}>{label}</p>
             </div>
           </div>
@@ -46,9 +55,7 @@ export default function AdminDashboard() {
       {/* Recent Orders */}
       <div style={{ background: 'white', borderRadius: 20, border: '1px solid var(--border)', padding: 28 }}>
         <h2 style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: 20 }}>Recent Orders</h2>
-        {loading ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>{[...Array(5)].map((_, i) => <div key={i} className="skeleton" style={{ height: 56, borderRadius: 10 }} />)}</div>
-        ) : data?.recentOrders?.length > 0 ? (
+        {data?.recentOrders?.length > 0 ? (
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', minWidth: 700, borderCollapse: 'collapse' }}>
               <thead>

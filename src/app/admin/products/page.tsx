@@ -121,8 +121,17 @@ export default function AdminProductsPage() {
     } catch { toast.error('Delete failed'); }
   };
 
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)', marginBottom: 16 }} />
+        <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', fontSize: '0.9rem', textTransform: 'uppercase' }}>Loading Products...</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className="animate-fadeIn">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
         <div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 700 }}>Products</h1>
@@ -153,8 +162,7 @@ export default function AdminProductsPage() {
               </tr>
             </thead>
             <tbody>
-              {loading ? [...Array(5)].map((_, i) => <tr key={i}><td colSpan={5} style={{ padding: 20 }}><div className="skeleton" style={{ height: 40 }} /></td></tr>) : 
-                products.map(p => (
+              {products.map(p => (
                 <tr key={p.id} style={{ borderBottom: '1px solid var(--border)' }}>
                   <td style={{ padding: '12px 20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

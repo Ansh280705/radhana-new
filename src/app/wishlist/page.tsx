@@ -37,7 +37,10 @@ export default function WishlistPage() {
             </div>
           )}
           {loading ? (
-            <div className="products-grid">{[...Array(4)].map((_, i) => <div key={i} className="skeleton" style={{ height: 380, borderRadius: 16 }} />)}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '50vh' }}>
+              <div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)', marginBottom: 16 }} />
+              <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', fontSize: '0.9rem', textTransform: 'uppercase' }}>Loading Wishlist...</p>
+            </div>
           ) : products.length > 0 ? (
             <div className="products-grid">{products.map(p => <ProductCard key={p.id} product={p} />)}</div>
           ) : (

@@ -37,7 +37,10 @@ export default function OrdersPage() {
           </div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, marginBottom: 24 }}>My Orders</h1>
           {loading ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>{[...Array(4)].map((_, i) => <div key={i} className="skeleton" style={{ height: 100, borderRadius: 16 }} />)}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '50vh' }}>
+              <div className="spinner" style={{ width: 40, height: 40, borderColor: 'rgba(201,168,76,0.3)', borderTopColor: 'var(--gold)', marginBottom: 16 }} />
+              <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '1px', fontSize: '0.9rem', textTransform: 'uppercase' }}>Loading Orders...</p>
+            </div>
           ) : orders.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: selectedOrder ? '1fr 400px' : '1fr', gap: 20, alignItems: 'start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>

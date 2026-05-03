@@ -93,12 +93,12 @@ export default function HomePage() {
 
   const slide = HERO_SLIDES[heroIdx];
 
-  if (loading) return <Loading />;
-
   return (
     <>
-      <Navbar />
-      <main className="no-overflow" style={{ background: 'var(--cream)' }}>
+      {loading && <Loading />}
+      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.8s ease-in-out', pointerEvents: loading ? 'none' : 'auto' }}>
+        <Navbar />
+        <main className="no-overflow" style={{ background: 'var(--cream)' }}>
         {/* Hero Section */}
         <section style={{ position: 'relative', minHeight: '75vh', background: slide.bg, display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.6 }}>
@@ -503,6 +503,7 @@ export default function HomePage() {
         </button>
       </main>
       <Footer />
+      </div>
 
       <style jsx>{`
         .hover-scale { transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
