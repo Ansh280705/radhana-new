@@ -379,7 +379,7 @@ export default function HomePage() {
           .category-grid, .products-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 480px) {
-          .category-grid { grid-template-columns: 1fr !important; }
+          .category-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
           .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
         }
       `}</style>
