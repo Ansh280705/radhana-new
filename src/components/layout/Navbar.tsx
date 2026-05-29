@@ -82,36 +82,28 @@ export default function Navbar() {
       }} />
 
       {/* Top Bar - Hidden on Mobile */}
-      <div className="hidden-mobile" style={{ background: 'var(--dark)', color: 'white', padding: '10px 0', fontSize: '0.78rem', textAlign: 'center', letterSpacing: '0.5px' }}>
-        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>Sawariya10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
+      <div className="top-bar hidden-mobile">
+        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>Sanwaria10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
       </div>
 
       {/* Main Navbar */}
-      <nav style={{
-        position: 'sticky', top: 0, zIndex: 1000,
-        background: scrolled ? 'rgba(253,250,246,0.95)' : 'var(--cream)',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: '1px solid var(--border)',
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-      }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 70 : 90, transition: 'height 0.4s ease' }}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container navbar-container">
 
           {/* Left: Hamburger (Mobile) */}
           <button 
-            className="show-mobile"
+            className="show-mobile nav-action-btn"
             onClick={() => setMenuOpen(true)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'var(--text-primary)', marginRight: 16 }}
           >
             <Menu size={24} />
           </button>
 
           {/* Logo */}
-          <Link href="/" className="navbar-logo-link" style={{ textDecoration: 'none', zIndex: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+          <Link href="/" className="navbar-logo-link" style={{ textDecoration: 'none', zIndex: 10, display: 'flex', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.02)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.03em' }}>Sawariya</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic', marginLeft: '2px' }}>Fashion</span>
+              <img src="/logo.png" alt="Sanwaria Fashion Logo" style={{ height: 'clamp(70px, 10vw, 100px)', width: 'auto', objectFit: 'contain' }} />
             </div>
           </Link>
 
@@ -224,9 +216,8 @@ export default function Navbar() {
         <div className={`drawer-overlay ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)} />
         <div className={`drawer ${menuOpen ? 'open' : ''}`}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--dark)' }}>Sawariya</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 400, color: 'var(--gold)', fontStyle: 'italic' }}>Fashion</span>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="/logo.png" alt="Sanwaria Fashion Logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
             </div>
             <button onClick={() => setMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
               <X size={24} />

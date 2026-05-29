@@ -33,6 +33,6 @@ export const useAuthStore = create<AuthStore>()(
       isAdmin: () => get().user?.role === 'ADMIN',
       isAuthenticated: () => !!get().user,
     }),
-    { name: 'Sawariya-auth' }
+    { name: 'Sanwaria-auth' }
   )
 );

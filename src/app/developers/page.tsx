@@ -195,7 +195,7 @@ export default function DevelopersPage() {
         {/* Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '80px', position: 'relative' }}>
           <h1 style={{ color: 'white', fontSize: '48px', fontWeight: 'bold', marginBottom: '16px' }}>The Dev Team</h1>
-          <p style={{ color: '#8e8e93', fontSize: '18px' }}>People behind Sawariya Fashion</p>
+          <p style={{ color: '#8e8e93', fontSize: '18px' }}>People behind Sanwaria Fashion</p>
           
           {/* Connector Line */}
           <div style={{
