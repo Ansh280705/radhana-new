@@ -234,7 +234,7 @@ export default function AdminProductsPage() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Brand</label>
-                  <input className="input-field" value={form.brand} onChange={e => setForm({...form, brand: e.target.value})} placeholder="e.g. Sanwaria" />
+                  <input className="input-field" value={form.brand} onChange={e => setForm({...form, brand: e.target.value})} placeholder="e.g. RADHANA" />
                 </div>
                 <div>
                   <label style={{ fontWeight: 600, display: 'block', marginBottom: 6 }}>Sizes (Comma separated)</label>

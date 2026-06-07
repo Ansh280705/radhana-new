@@ -61,7 +61,7 @@ function CheckoutContent() {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: rzpOrder.data.amount,
         currency: 'INR',
-        name: 'Sanwaria Fashion',
+        name: 'RADHANA Clothing',
         description: `Order for ${items.length} item(s)`,
         order_id: rzpOrder.data.id,
         handler: async (response: any) => {

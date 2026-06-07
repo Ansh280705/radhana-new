@@ -27,7 +27,7 @@ export default function ContactPage() {
                 <div style={{ background: 'var(--gold)', padding: 12, borderRadius: '50%', color: 'var(--dark)' }}><Mail size={20} /></div>
                 <div>
                   <p style={{ fontWeight: 700 }}>Email Us</p>
-                  <p style={{ color: 'var(--text-secondary)' }}>sanwariafashionofficial@gmail.com</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>radhanaclothingofficial@gmail.com</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>

@@ -82,7 +82,7 @@ export default function AboutPage() {
                 borderLeft: '4px solid var(--gold)',
                 paddingLeft: 30
               }}>
-                Sanwaria Fashion was born from a vision — to redefine contemporary style through timeless elegance and uncompromising quality. What began as a humble idea, crafted with passion and precision, has evolved into a brand that celebrates sophistication in every detail.
+                RADHANA Clothing was born from a vision — to redefine contemporary style through timeless elegance and uncompromising quality. What began as a humble idea, crafted with passion and precision, has evolved into a brand that celebrates sophistication in every detail.
               </p>
             </motion.div>
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
                   From the very beginning, our focus has been clear: to create garments that blend modern aesthetics with refined craftsmanship. Each collection is thoughtfully designed, each fabric carefully selected, and every stitch perfected to deliver an experience of true luxury.
                 </p>
                 <p style={{ fontSize: '1.15rem', lineHeight: 2, color: 'var(--text-secondary)' }}>
-                  Today, Sanwaria Fashion proudly extends its presence across Ratlam, Dhar, and Manasa, with each store reflecting our commitment to excellence and our journey of growth.
+                  Today, RADHANA Clothing proudly extends its presence across Ratlam, Dhar, and Manasa, with each store reflecting our commitment to excellence and our journey of growth.
                 </p>
               </div>
               <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'var(--beige)', borderRadius: '50%', zIndex: 0, opacity: 0.5 }} />
@@ -124,7 +124,7 @@ export default function AboutPage() {
             <div style={{ position: 'absolute', top: '-50%', left: '-10%', width: '40%', height: '200%', background: 'var(--gold)', opacity: 0.1, filter: 'blur(100px)', borderRadius: '50%' }} />
             <h2 className="font-serif" style={{ fontSize: '2.8rem', marginBottom: 24, position: 'relative', zIndex: 1 }}>A Statement of Individuality</h2>
             <p style={{ fontSize: '1.2rem', lineHeight: 2, opacity: 0.8, maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-              More than a fashion label, Sanwaria Fashion is a statement — of confidence, grace, and individuality. We believe style is not just worn, but experienced.
+              More than a fashion label, RADHANA Clothing is a statement — of confidence, grace, and individuality. We believe style is not just worn, but experienced.
             </p>
           </motion.div>
 

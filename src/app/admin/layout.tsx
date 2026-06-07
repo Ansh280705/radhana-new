@@ -58,7 +58,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div style={{ padding: '28px 24px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', color: 'white', marginBottom: 4 }}>
-              Sanwaria <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
+              RADHANA <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Admin</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem' }}>Control Panel</p>
           </div>

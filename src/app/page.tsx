@@ -107,109 +107,142 @@ export default function HomePage() {
         {/* Collections Section */}
         <section 
           style={{ 
-            padding: '120px 0', 
-            background: '#F8F6F2',
-            position: 'relative'
+            padding: '140px 0', 
+            background: '#FAF9F6',
+            position: 'relative',
+            overflow: 'hidden'
           }}
         >
-          {/* Subtle noise/texture background effect */}
-          <div style={{ position: 'absolute', inset: 0, opacity: 0.02, backgroundImage: 'radial-gradient(#000 1px, transparent 0), radial-gradient(#000 1px, transparent 0)', backgroundSize: '8px 8px', backgroundPosition: '0 0, 4px 4px', pointerEvents: 'none' }} />
+          {/* Elegant Background Accents */}
+          <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', bottom: '-15%', left: '-10%', width: '50%', height: '70%', background: 'radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
           
-          <div className="container">
+          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
             {/* Header */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center', marginBottom: '64px' }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ textAlign: 'center', marginBottom: '80px' }}
             >
-              <span 
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 style={{ 
-                  color: '#D4AF37', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 800, 
-                  letterSpacing: '6px', 
-                  textTransform: 'uppercase', 
-                  marginBottom: 16, 
-                  display: 'block' 
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  background: 'rgba(212,175,55,0.08)',
+                  border: '1px solid rgba(212,175,55,0.2)',
+                  padding: '8px 24px',
+                  borderRadius: '50px',
+                  marginBottom: '24px'
                 }}
               >
-                OUR COLLECTIONS
-              </span>
+                <Sparkles size={14} style={{ color: '#D4AF37' }} />
+                <span 
+                  style={{ 
+                    color: '#D4AF37', 
+                    fontSize: '0.7rem', 
+                    fontWeight: 700, 
+                    letterSpacing: '4px', 
+                    textTransform: 'uppercase' 
+                  }}
+                >
+                  OUR COLLECTIONS
+                </span>
+              </motion.div>
+              
               <h2 
                 style={{ 
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                   fontWeight: 600,
-                  color: 'var(--dark)',
-                  marginBottom: 16,
-                  letterSpacing: '-0.01em'
+                  color: '#1a1a1a',
+                  marginBottom: '20px',
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1
                 }}
               >
-                Discover Timeless Elegance
+                Discover Timeless <span style={{ color: '#D4AF37', fontStyle: 'italic' }}>Elegance</span>
               </h2>
+              
               <p 
                 style={{ 
-                  color: 'var(--text-secondary)', 
-                  maxWidth: '600px', 
+                  color: '#666666', 
+                  maxWidth: '580px', 
                   margin: '0 auto', 
-                  fontSize: '1.05rem',
-                  lineHeight: 1.6
+                  fontSize: '1.1rem',
+                  lineHeight: 1.8,
+                  fontWeight: 400
                 }}
               >
-                Curated ethnic couture crafted for modern celebrations and timeless traditions.
+                Curated ethnic couture crafted for modern celebrations and timeless traditions. Each piece tells a story of heritage and sophistication.
               </p>
             </motion.div>
             
-            {/* Collections Grid/Slider */}
+            {/* Collections Grid */}
             <div 
               style={{ 
                 display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
-                gap: '32px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+                gap: '40px'
               }}
               className="collections-grid-responsive"
             >
               {CATEGORIES.map((cat, i) => (
                 <motion.div
                   key={cat.slug}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: i * 0.15 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link href={`/products?category=${cat.slug}`} style={{ textDecoration: 'none' }}>
                     <motion.div 
                       whileHover={{ 
-                        y: -10,
-                        transition: { duration: 0.4, ease: "easeOut" }
+                        y: -12,
+                        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
                       }}
                       style={{ 
                         position: 'relative', 
-                        height: '550px',
+                        height: '580px',
                         overflow: 'hidden',
-                        borderRadius: '20px',
+                        borderRadius: '24px',
                         cursor: 'pointer',
-                        border: '1px solid transparent',
-                        transition: 'border-color 0.4s ease'
+                        background: '#fff',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                        transition: 'box-shadow 0.5s ease'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                        e.currentTarget.style.boxShadow = '0 20px 60px rgba(212,175,55,0.15)';
                         const img = e.currentTarget.querySelector('.col-img') as HTMLImageElement;
-                        if (img) img.style.transform = 'scale(1.08)';
+                        if (img) img.style.transform = 'scale(1.1)';
+                        const overlay = e.currentTarget.querySelector('.col-overlay') as HTMLDivElement;
+                        if (overlay) overlay.style.background = 'linear-gradient(to top, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.4) 40%, transparent 100%)';
                         const line = e.currentTarget.querySelector('.col-line') as HTMLDivElement;
-                        if (line) line.style.width = '60px';
+                        if (line) line.style.width = '80px';
+                        const arrow = e.currentTarget.querySelector('.col-arrow') as HTMLDivElement;
+                        if (arrow) arrow.style.opacity = '1';
+                        if (arrow) arrow.style.transform = 'translateX(0)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'transparent';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
                         const img = e.currentTarget.querySelector('.col-img') as HTMLImageElement;
                         if (img) img.style.transform = 'scale(1)';
+                        const overlay = e.currentTarget.querySelector('.col-overlay') as HTMLDivElement;
+                        if (overlay) overlay.style.background = 'linear-gradient(to top, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.3) 50%, transparent 100%)';
                         const line = e.currentTarget.querySelector('.col-line') as HTMLDivElement;
                         if (line) line.style.width = '0px';
+                        const arrow = e.currentTarget.querySelector('.col-arrow') as HTMLDivElement;
+                        if (arrow) arrow.style.opacity = '0';
+                        if (arrow) arrow.style.transform = 'translateX(10px)';
                       }}
                     >
-                      {/* Background Image with Slow Zoom transition */}
+                      {/* Background Image */}
                       <img 
                         src={cat.img} 
                         alt={cat.name}
@@ -218,42 +251,44 @@ export default function HomePage() {
                           width: '100%', 
                           height: '100%', 
                           objectFit: 'cover', 
-                          transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)' 
+                          transition: 'transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)' 
                         }}
                       />
                       
-                      {/* Premium Luxury Gradient Overlay */}
+                      {/* Premium Gradient Overlay */}
                       <div 
+                        className="col-overlay"
                         style={{ 
                           position: 'absolute', 
                           inset: 0, 
-                          background: 'linear-gradient(to top, rgba(7, 7, 8, 0.85) 0%, rgba(7, 7, 8, 0.3) 50%, transparent 100%)', 
-                          transition: 'background 0.4s ease'
+                          background: 'linear-gradient(to top, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.3) 50%, transparent 100%)', 
+                          transition: 'background 0.5s ease'
                         }} 
                       />
                       
-                      {/* Bottom-Aligned Elegant Content */}
+                      {/* Content */}
                       <div 
                         style={{ 
                           position: 'absolute', 
                           left: 0,
                           right: 0,
                           bottom: 0,
-                          padding: '40px 32px',
+                          padding: '48px 36px',
                           display: 'flex', 
                           flexDirection: 'column',
-                          alignItems: 'center',
-                          textAlign: 'center'
+                          alignItems: 'flex-start',
+                          textAlign: 'left'
                         }}
                       >
                         <h3 
                           style={{ 
                             color: 'white', 
-                            fontSize: '2rem', 
+                            fontSize: '2.5rem', 
                             fontFamily: "'Cormorant Garamond', serif",
                             fontWeight: 600,
-                            letterSpacing: '1px',
-                            marginBottom: '8px'
+                            letterSpacing: '0.5px',
+                            marginBottom: '12px',
+                            lineHeight: 1.1
                           }}
                         >
                           {cat.name}
@@ -264,25 +299,41 @@ export default function HomePage() {
                           className="col-line"
                           style={{
                             width: '0px',
-                            height: '1.5px',
+                            height: '2px',
                             background: '#D4AF37',
-                            margin: '4px 0 14px',
-                            transition: 'width 0.4s ease'
+                            margin: '0 0 16px',
+                            transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                           }}
                         />
 
-                        <p 
-                          style={{ 
-                            color: '#D4AF37', 
-                            fontSize: '0.75rem', 
-                            fontWeight: 700, 
-                            letterSpacing: '3px', 
-                            textTransform: 'uppercase',
-                            margin: 0
-                          }}
-                        >
-                          {cat.subtitle}
-                        </p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <p 
+                            style={{ 
+                              color: '#D4AF37', 
+                              fontSize: '0.8rem', 
+                              fontWeight: 700, 
+                              letterSpacing: '3px', 
+                              textTransform: 'uppercase',
+                              margin: 0
+                            }}
+                          >
+                            {cat.subtitle}
+                          </p>
+                          
+                          {/* Arrow Icon */}
+                          <motion.div
+                            className="col-arrow"
+                            style={{
+                              opacity: 0,
+                              transform: 'translateX(10px)',
+                              transition: 'all 0.4s ease',
+                              display: 'flex',
+                              alignItems: 'center'
+                            }}
+                          >
+                            <ChevronRight size={18} style={{ color: '#D4AF37' }} />
+                          </motion.div>
+                        </div>
                       </div>
                     </motion.div>
                   </Link>
@@ -316,49 +367,414 @@ export default function HomePage() {
         </section>
 
 
-        {/* Newsletter: Exclusive Access */}
-        // Premium Newsletter & Brand Experience Section
-<section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', color: 'white', position: 'relative' }}>
-  <div className="container" style={{ maxWidth: 1000, display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center', justifyContent: 'center' }}>
-    {/* Left Campaign Image */}
-    <div style={{ flex: '1 1 400px', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
-      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80" alt="RADHANA Couture" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }} />
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 70%)' }}
-      />
-    </div>
-    {/* Right Content */}
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
-      viewport={{ once: true, margin: '-100px' }}
-      style={{ flex: '1 1 400px', maxWidth: '500px' }}
-    >
-      <span style={{ color: '#D4AF37', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', display: 'block', marginBottom: '12px' }}>
-        EXCLUSIVE MEMBERSHIP
-      </span>
-      <h2 style={{ color: 'white', marginBottom: '16px', fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)' }}>
-        Become a Part of the RADHANA Circle
-      </h2>
-      <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '24px', lineHeight: 1.6 }}>
-        Access private sales, early arrivals, curated editorial stories, and bespoke styling tips.
-      </p>
-      {/* Glass‑morphic Subscription Form */}
-      <form style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(12px)', border: '1px solid rgba(212,175,55,0.2)', borderRadius: '8px', padding: '16px' }}>
-        <input
-          type="email"
-          placeholder="EMAIL ADDRESS"
-          required
-          style={{ flex: '1 1 200px', background: 'transparent', border: 'none', outline: 'none', color: 'white', fontSize: '0.9rem', padding: '12px', fontFamily: "'Inter', sans-serif" }}
-        />
-        <button type="submit" style={{ background: '#D4AF37', color: 'var(--dark)', border: 'none', padding: '12px 24px', fontWeight: 700, letterSpacing: '1px', cursor: 'pointer', transition: 'background 0.3s' }}>
-          SUBSCRIBE
-        </button>
-      </form>
-    </motion.div>
-  </div>
-</section>
+        {/* Newsletter: Exclusive Access - Ultra-Premium Luxury Redesign */}
+        <section style={{ padding: '160px 0', background: '#070707', color: '#F7F3EE', position: 'relative', overflow: 'hidden' }}>
+          {/* Premium Grain Texture Overlay */}
+          <div style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            opacity: 0.03, 
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E")',
+            pointerEvents: 'none' 
+          }} />
+          
+          {/* Soft Vignette */}
+          <div style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(7,7,7,0.4) 100%)', 
+            pointerEvents: 'none' 
+          }} />
+          
+          {/* Luxury Spotlight Lighting */}
+          <div style={{ 
+            position: 'absolute', 
+            top: '-30%', 
+            right: '10%', 
+            width: '60%', 
+            height: '80%', 
+            background: 'radial-gradient(ellipse at center, rgba(201,164,106,0.04) 0%, transparent 60%)', 
+            filter: 'blur(100px)', 
+            pointerEvents: 'none' 
+          }} />
+          
+          <div className="container" style={{ maxWidth: 1400, display: 'flex', flexWrap: 'wrap', gap: '100px', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
+            
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }}
+              viewport={{ once: true, margin: '-100px' }}
+              style={{ flex: '1 1 480px', maxWidth: '580px' }}
+            >
+              {/* Exclusive Membership Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.2 } }}
+                viewport={{ once: true }}
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '14px', 
+                  background: 'rgba(201,164,106,0.06)', 
+                  border: '1px solid rgba(201,164,106,0.15)', 
+                  padding: '12px 28px', 
+                  borderRadius: '2px', 
+                  marginBottom: '40px'
+                }}
+              >
+                <div style={{ 
+                  width: '8px', 
+                  height: '8px', 
+                  background: '#C9A46A', 
+                  borderRadius: '50%',
+                  boxShadow: '0 0 12px rgba(201,164,106,0.4)'
+                }} />
+                <span style={{ 
+                  color: '#C9A46A', 
+                  fontSize: '0.65rem', 
+                  fontWeight: 600, 
+                  letterSpacing: '5px', 
+                  textTransform: 'uppercase' 
+                }}>
+                  EXCLUSIVE MEMBERSHIP
+                </span>
+              </motion.div>
+
+              {/* Editorial Heading */}
+              <h1 style={{ 
+                color: '#F7F3EE', 
+                marginBottom: '28px', 
+                fontFamily: "'Cormorant Garamond', serif", 
+                fontSize: 'clamp(3rem, 6vw, 4.5rem)', 
+                fontWeight: 400,
+                lineHeight: 1.05,
+                letterSpacing: '-0.03em'
+              }}>
+                Enter the World of <span style={{ color: '#C9A46A', fontStyle: 'italic', fontWeight: 500 }}>RADHANA</span>
+              </h1>
+
+              {/* Refined Description */}
+              <p style={{ 
+                color: 'rgba(247,243,238,0.6)', 
+                marginBottom: '48px', 
+                lineHeight: 1.9,
+                fontSize: '1.05rem',
+                fontWeight: 300,
+                letterSpacing: '0.02em',
+                maxWidth: '520px'
+              }}>
+                Private access, curated experiences, exclusive collections, and timeless style reserved for members.
+              </p>
+
+              {/* Membership Benefits with Elegant Minimal Icons */}
+              <div style={{ marginBottom: '48px', display: 'grid', gap: '18px' }}>
+                {[
+                  { icon: '◇', text: 'Private Collection Access' },
+                  { icon: '◇', text: 'Priority New Arrivals' },
+                  { icon: '◇', text: 'Personal Style Concierge' },
+                  { icon: '◇', text: 'Members-Only Events' },
+                  { icon: '◇', text: 'Birthday Privileges' },
+                  { icon: '◇', text: 'Exclusive Editorial Content' }
+                ].map((benefit, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.3 + idx * 0.08 } }}
+                    viewport={{ once: true }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '16px' }}
+                  >
+                    <span style={{ 
+                      color: '#C9A46A', 
+                      fontSize: '0.9rem', 
+                      fontWeight: 200,
+                      letterSpacing: '2px'
+                    }}>
+                      {benefit.icon}
+                    </span>
+                    <span style={{ 
+                      color: 'rgba(247,243,238,0.75)', 
+                      fontSize: '0.9rem', 
+                      fontWeight: 300,
+                      letterSpacing: '0.05em'
+                    }}>
+                      {benefit.text}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Luxury Frosted Glass Signup Component */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.7 } }}
+                viewport={{ once: true }}
+                style={{ position: 'relative' }}
+              >
+                <form style={{ 
+                  display: 'flex', 
+                  gap: '16px', 
+                  background: 'rgba(247,243,238,0.02)', 
+                  backdropFilter: 'blur(40px)', 
+                  border: '1px solid rgba(201,164,106,0.12)', 
+                  borderRadius: '4px', 
+                  padding: '8px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}>
+                  {/* Subtle metallic reflection */}
+                  <div style={{ 
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    right: 0, 
+                    height: '1px', 
+                    background: 'linear-gradient(90deg, transparent, rgba(201,164,106,0.3), transparent)',
+                    pointerEvents: 'none' 
+                  }} />
+                  
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                    style={{ 
+                      flex: 1, 
+                      background: 'transparent', 
+                      border: 'none', 
+                      outline: 'none', 
+                      color: '#F7F3EE', 
+                      fontSize: '0.95rem', 
+                      padding: '18px 24px', 
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 300,
+                      letterSpacing: '0.02em',
+                      position: 'relative',
+                      zIndex: 1
+                    }}
+                  />
+                  <motion.button
+                    type="submit"
+                    whileHover={{ 
+                      backgroundColor: '#D4B078',
+                      boxShadow: '0 0 30px rgba(201,164,106,0.2)'
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{ 
+                      background: '#C9A46A', 
+                      color: '#070707', 
+                      border: 'none', 
+                      padding: '18px 36px', 
+                      fontWeight: 500, 
+                      letterSpacing: '2px', 
+                      cursor: 'pointer', 
+                      fontSize: '0.75rem',
+                      borderRadius: '2px',
+                      position: 'relative',
+                      zIndex: 1,
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    Request Membership
+                  </motion.button>
+                </form>
+                
+                {/* Privacy Note */}
+                <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(247,243,238,0.3)', fontSize: '0.7rem', fontWeight: 300, letterSpacing: '0.05em' }}>
+                  <div style={{ width: '4px', height: '4px', background: '#C9A46A', borderRadius: '50%', opacity: 0.5 }} />
+                  <span>Private & Secure</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side: 3D Floating Black Metal Membership Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 60, rotateY: 15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0, transition: { duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+              viewport={{ once: true, margin: '-100px' }}
+              style={{ 
+                flex: '1 1 420px', 
+                position: 'relative', 
+                display: 'flex', 
+                justifyContent: 'center',
+                alignItems: 'center',
+                perspective: '1000px'
+              }}
+            >
+              {/* Soft Spotlight Glow Behind Card */}
+              <div style={{ 
+                position: 'absolute', 
+                width: '400px', 
+                height: '500px', 
+                background: 'radial-gradient(ellipse at center, rgba(201,164,106,0.08) 0%, transparent 70%)', 
+                filter: 'blur(60px)',
+                pointerEvents: 'none'
+              }} />
+              
+              {/* 3D Floating Black Metal Membership Card */}
+              <motion.div
+                animate={{ 
+                  y: [0, -15, 0],
+                  rotateX: [0, 2, 0],
+                  rotateY: [0, -2, 0]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: 'easeInOut' 
+                }}
+                style={{ 
+                  position: 'relative',
+                  width: '360px',
+                  height: '460px',
+                  background: 'linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 50%, #070707 100%)',
+                  borderRadius: '16px',
+                  boxShadow: 
+                    '0 50px 100px rgba(0,0,0,0.8), ' +
+                    '0 30px 60px rgba(0,0,0,0.6), ' +
+                    'inset 0 1px 0 rgba(255,255,255,0.05), ' +
+                    'inset 0 -1px 0 rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(201,164,106,0.15)',
+                  overflow: 'hidden',
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                {/* Metallic Foil Texture Overlay */}
+                <div style={{ 
+                  position: 'absolute', 
+                  inset: 0, 
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(0,0,0,0.2) 100%)',
+                  pointerEvents: 'none' 
+                }} />
+                
+                {/* Subtle Grain Texture */}
+                <div style={{ 
+                  position: 'absolute', 
+                  inset: 0, 
+                  opacity: 0.04,
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E")',
+                  pointerEvents: 'none' 
+                }} />
+                
+                {/* Elegant Decorative Lines */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '40px', 
+                  left: '40px', 
+                  right: '40px', 
+                  height: '1px', 
+                  background: 'linear-gradient(90deg, transparent, rgba(201,164,106,0.3), transparent)' 
+                }} />
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '40px', 
+                  left: '40px', 
+                  right: '40px', 
+                  height: '1px', 
+                  background: 'linear-gradient(90deg, transparent, rgba(201,164,106,0.3), transparent)' 
+                }} />
+                
+                {/* Embossed Gold R Logo */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '50%', 
+                  left: '50%', 
+                  transform: 'translate(-50%, -50%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '24px'
+                }}>
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.02, 1],
+                      opacity: [0.9, 1, 0.9]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity, 
+                      ease: 'easeInOut' 
+                    }}
+                    style={{
+                      fontSize: '120px',
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontWeight: 300,
+                      color: '#C9A46A',
+                      letterSpacing: '-8px',
+                      textShadow: 
+                        '0 2px 4px rgba(0,0,0,0.8), ' +
+                        '0 0 40px rgba(201,164,106,0.3), ' +
+                        'inset 0 -2px 4px rgba(0,0,0,0.3)',
+                      filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
+                    }}
+                  >
+                    R
+                  </motion.div>
+                  
+                  {/* Membership Card Text */}
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      fontSize: '0.6rem', 
+                      fontWeight: 500, 
+                      letterSpacing: '4px', 
+                      color: 'rgba(201,164,106,0.7)', 
+                      textTransform: 'uppercase',
+                      marginBottom: '8px'
+                    }}>
+                      Membership Card
+                    </div>
+                    <div style={{ 
+                      fontSize: '0.5rem', 
+                      fontWeight: 300, 
+                      letterSpacing: '2px', 
+                      color: 'rgba(247,243,238,0.4)',
+                      textTransform: 'uppercase'
+                    }}>
+                      Exclusive Access
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Corner Accents */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '20px', 
+                  left: '20px', 
+                  width: '12px', 
+                  height: '12px', 
+                  borderLeft: '1px solid rgba(201,164,106,0.3)', 
+                  borderTop: '1px solid rgba(201,164,106,0.3)' 
+                }} />
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '20px', 
+                  right: '20px', 
+                  width: '12px', 
+                  height: '12px', 
+                  borderRight: '1px solid rgba(201,164,106,0.3)', 
+                  borderTop: '1px solid rgba(201,164,106,0.3)' 
+                }} />
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '20px', 
+                  left: '20px', 
+                  width: '12px', 
+                  height: '12px', 
+                  borderLeft: '1px solid rgba(201,164,106,0.3)', 
+                  borderBottom: '1px solid rgba(201,164,106,0.3)' 
+                }} />
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '20px', 
+                  right: '20px', 
+                  width: '12px', 
+                  height: '12px', 
+                  borderRight: '1px solid rgba(201,164,106,0.3)', 
+                  borderBottom: '1px solid rgba(201,164,106,0.3)' 
+                }} />
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* Dynamic Promotional Banners */}
         {banners.length > 0 && (
@@ -398,117 +814,153 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* Premium Static CTA Banner */}
-        <section style={{ padding: 'var(--s12) 0', background: 'var(--dark)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '40%', height: '80%', background: 'var(--gold)', filter: 'blur(120px)', opacity: 0.1, borderRadius: '50%' }} />
-          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--gold)', padding: '8px 24px', borderRadius: 0, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '4px', marginBottom: 32, textTransform: 'uppercase' }}>
-              <Sparkles size={14} /> Season Finale
-            </span>
-            <h2 style={{ color: 'white', marginBottom: 24, fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>The Summer Collection Sale</h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48, maxWidth: 600, margin: '0 auto 48px', fontSize: '1.1rem' }}>
-              Exceptional silhouettes for a refined wardrobe. Now available with curated seasonal pricing.
-            </p>
-            <Link href="/products" style={{ textDecoration: 'none' }}>
-              <button className="btn-gold" style={{ padding: '18px 48px', borderRadius: 0 }}>Shop the Sale</button>
-            </Link>
-          </div>
-        </section>
-
-        {/* The House of Sanwaria: Editorial Story */}
-        <section style={{ padding: 'var(--s10) 0', background: 'white' }}>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="mobile-stack">
-              <div style={{ position: 'relative' }}>
-                <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative', zIndex: 2 }}>
-                   <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1200" alt="Craftsmanship" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div style={{ position: 'absolute', top: -30, left: -30, width: '100%', height: '100%', border: '1px solid var(--gold)', zIndex: 1 }} />
-              </div>
-              <div>
-                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>The Atelier India</span>
-                <h2 style={{ marginBottom: 32 }}>Legacy of the Loom</h2>
-                <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-primary)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic' }}>
-                  "We believe that fashion is a dialogue between the artisan and the individual. Our Indian ateliers preserve centuries of textile heritage."
-                </p>
-                <p style={{ marginBottom: 40, color: 'var(--text-secondary)' }}>
-                  From the intricate hand-embroidery of Lucknow to the timeless silks of Varanasi, Sanwaria represents the pinnacle of Indian artisanal excellence.
-                </p>
-                <Link href="/about" style={{ textDecoration: 'none', color: 'var(--dark)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid var(--gold)', paddingBottom: 4 }}>
-                  The Artisan Story
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Client Voices */}
-        <section style={{ padding: 'var(--s12) 0', background: 'var(--cream)', textAlign: 'center' }}>
-          <div className="container">
-            <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Client Voices</span>
-            <h2 style={{ marginBottom: 24 }}>The Sanwaria Experience</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 64, maxWidth: 600, margin: '0 auto 64px' }}>
-              Real perspectives from our global community of discerning clients.
-            </p>
+        {/* Premium Static CTA Banner - Ultra-Premium Luxury Campaign */}
+        <section style={{ padding: '200px 0', background: '#111111', color: '#F7F3EE', position: 'relative', overflow: 'hidden' }}>
+          {/* Premium Grain Texture */}
+          <div style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            opacity: 0.02, 
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E")',
+            pointerEvents: 'none' 
+          }} />
+          
+          {/* Soft Vignette */}
+          <div style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(17,17,17,0.6) 100%)', 
+            pointerEvents: 'none' 
+          }} />
+          
+          {/* Subtle Metallic Reflection */}
+          <div style={{ 
+            position: 'absolute', 
+            top: '-50%', 
+            left: '-20%', 
+            width: '80%', 
+            height: '100%', 
+            background: 'linear-gradient(135deg, rgba(201,164,106,0.03) 0%, transparent 50%)', 
+            filter: 'blur(80px)', 
+            pointerEvents: 'none' 
+          }} />
+          
+          <div className="container" style={{ maxWidth: 1000, position: 'relative', zIndex: 2 }}>
+            {/* Elegant Divider Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: '80px', transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }}
+              viewport={{ once: true }}
+              style={{ 
+                height: '1px', 
+                background: 'linear-gradient(90deg, transparent, #C9A46A, transparent)', 
+                margin: '0 auto 60px'
+              }} 
+            />
             
-            {reviews.length > 0 ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, marginBottom: 64 }} className="mobile-stack">
-                {reviews.map((r, i) => (
-                  <div key={r.id || i} style={{ padding: 40, background: 'white', textAlign: 'left', position: 'relative' }}>
-                    <div style={{ display: 'flex', gap: 4, color: 'var(--gold)', marginBottom: 20 }}>
-                      {[...Array(5)].map((_, idx) => (
-                        <Sparkles key={idx} size={12} fill={idx < r.rating ? 'var(--gold)' : 'transparent'} opacity={idx < r.rating ? 1 : 0.2} />
-                      ))}
-                    </div>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'var(--dark)', marginBottom: 24, fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', minHeight: '80px' }}>
-                      "{r.comment}"
-                    </p>
-                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20 }}>
-                      <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)', marginBottom: 4 }}>{r.user?.name?.toUpperCase()}</p>
-                      <p style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>RE: {r.product?.name}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div style={{ padding: '60px 0', color: 'var(--text-secondary)', fontStyle: 'italic' }}>
-                <p>No reviews yet. Be the first to share your experience.</p>
-              </div>
-            )}
-
-            <Link href="/products" style={{ textDecoration: 'none' }}>
-              <button className="btn-gold" style={{ padding: '16px 48px', borderRadius: 0 }}>Share Your Experience</button>
-            </Link>
-          </div>
-        </section>
-
-        {/* Boutique Services */}
-        <section style={{ padding: 'var(--s10) 0', background: 'var(--dark)', color: 'white' }}>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="mobile-stack">
-              <div>
-                <span style={{ color: 'var(--gold)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, display: 'block' }}>Concierge</span>
-                <h2 style={{ color: 'white', marginBottom: 32 }}>The Boutique Experience</h2>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 48, fontSize: '1.1rem' }}>
-                  Enjoy a personalized journey with our exclusive client services designed to bring the Sanwaria atelier to your doorstep.
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-                  {[
-                    { title: 'Private Styling', desc: 'Book a session with our master stylists for a curated wardrobe update.' },
-                    { title: 'Virtual Consultation', desc: 'Experience the collection from anywhere with our digital atelier services.' },
-                    { title: 'Tailoring & Alterations', desc: 'Ensure the perfect fit with our bespoke hand-finishing services.' },
-                  ].map((s, i) => (
-                    <div key={i} style={{ borderLeft: '2px solid var(--gold)', paddingLeft: 32 }}>
-                      <h4 style={{ color: 'white', fontSize: '1rem', marginBottom: 8 }}>{s.title}</h4>
-                      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>{s.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Concierge" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-              </div>
-            </div>
+            {/* Campaign Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.2 } }}
+              viewport={{ once: true }}
+              style={{ textAlign: 'center', marginBottom: '48px' }}
+            >
+              <span style={{ 
+                display: 'inline-block',
+                color: '#C9A46A', 
+                fontSize: '0.6rem', 
+                fontWeight: 500, 
+                letterSpacing: '6px', 
+                textTransform: 'uppercase',
+                opacity: 0.7
+              }}>
+                Summer 2026
+              </span>
+            </motion.div>
+            
+            {/* Massive Editorial Typography */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+              viewport={{ once: true }}
+              style={{ 
+                color: '#F7F3EE', 
+                marginBottom: '32px', 
+                fontFamily: "'Cormorant Garamond', serif", 
+                fontSize: 'clamp(3.5rem, 8vw, 6rem)', 
+                fontWeight: 300,
+                lineHeight: 1.05,
+                letterSpacing: '-0.04em',
+                textAlign: 'center'
+              }}
+            >
+              The Summer Edit
+            </motion.h1>
+            
+            {/* Elegant Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.5 } }}
+              viewport={{ once: true }}
+              style={{ 
+                color: 'rgba(247,243,238,0.5)', 
+                marginBottom: '72px', 
+                maxWidth: '580px',
+                margin: '0 auto 72px',
+                fontSize: '1.1rem',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                letterSpacing: '0.03em',
+                textAlign: 'center'
+              }}
+            >
+              A curated selection of timeless pieces crafted for the modern gentleman.
+            </motion.p>
+            
+            {/* Elegant CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.7 } }}
+              viewport={{ once: true }}
+              style={{ textAlign: 'center' }}
+            >
+              <Link href="/products" style={{ textDecoration: 'none' }}>
+                <motion.button
+                  whileHover={{ 
+                    backgroundColor: '#D4B078',
+                    letterSpacing: '3px'
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ 
+                    background: '#C9A46A', 
+                    color: '#070707', 
+                    border: 'none', 
+                    padding: '20px 56px', 
+                    fontWeight: 500, 
+                    letterSpacing: '2px', 
+                    cursor: 'pointer', 
+                    fontSize: '0.75rem',
+                    borderRadius: '2px',
+                    textTransform: 'uppercase',
+                    transition: 'all 0.4s ease'
+                  }}
+                >
+                  Explore Collection
+                </motion.button>
+              </Link>
+            </motion.div>
+            
+            {/* Bottom Elegant Divider Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: '80px', transition: { duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] } }}
+              viewport={{ once: true }}
+              style={{ 
+                height: '1px', 
+                background: 'linear-gradient(90deg, transparent, #C9A46A, transparent)', 
+                margin: '80px auto 0'
+              }} 
+            />
           </div>
         </section>
 

@@ -37,10 +37,10 @@ export default function FounderPage() {
             className="font-serif" 
             style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', marginBottom: 16 }}
           >
-            The Minds Behind <span style={{ color: 'var(--gold)' }}>Sanwaria</span>
+            The Minds Behind <span style={{ color: 'var(--gold)' }}>RADHANA</span>
           </motion.h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: 600, margin: '0 auto' }}>
-            Meet the visionaries who brought Sanwaria Fashion to life from the heart of Ratlam.
+            Meet the visionaries who brought RADHANA Clothing to life from the heart of Ratlam.
           </p>
         </div>
       </section>
@@ -111,7 +111,7 @@ export default function FounderPage() {
           
           <div style={{ fontSize: '1.25rem', lineHeight: 2, opacity: 0.9, display: 'flex', flexDirection: 'column', gap: 32 }}>
             <p>
-              Sanwaria Fashion was founded with a vision to bring refined elegance and modern style to everyday fashion. What started as a small initiative has grown into a trusted name, built on dedication, craftsmanship, and a deep understanding of style.
+              RADHANA Clothing was founded with a vision to bring refined elegance and modern style to everyday fashion. What started as a small initiative has grown into a trusted name, built on dedication, craftsmanship, and a deep understanding of style.
             </p>
             <p>
               Our journey began from the ground up, driven by passion and a commitment to quality. Today, with our presence in Ratlam, Dhar, and Manasa, we continue to evolve while staying true to our roots.
@@ -122,7 +122,7 @@ export default function FounderPage() {
             
             <div style={{ marginTop: 40, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 40 }}>
               <p style={{ fontStyle: 'italic', color: 'var(--gold)', fontSize: '1.4rem' }}>
-                — Founder, Sanwaria Fashion
+                — Founder, RADHANA Clothing
               </p>
             </div>
           </div>

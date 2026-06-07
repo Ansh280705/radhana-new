@@ -83,7 +83,7 @@ export default function Navbar() {
 
       {/* Top Bar - Hidden on Mobile */}
       <div className="top-bar hidden-mobile">
-        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>Sanwaria10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
+        <span style={{ color: 'var(--gold)' }}>✨</span> <span style={{ opacity: 0.9 }}>Free shipping on orders above ₹999 &nbsp;|&nbsp; Use code</span> <strong className="text-shimmer" style={{ fontWeight: 800 }}>RADHANA10</strong> <span style={{ opacity: 0.9 }}>for 10% off</span>
       </div>
 
       {/* Main Navbar */}
@@ -103,7 +103,7 @@ export default function Navbar() {
             <div style={{ display: 'flex', alignItems: 'center', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} 
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.02)'} 
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
-              <img src="/logo.png" alt="Sanwaria Fashion Logo" style={{ height: 'clamp(70px, 10vw, 100px)', width: 'auto', objectFit: 'contain' }} />
+              <img src="/logo.png" alt="RADHANA Clothing Logo" style={{ height: 'clamp(70px, 10vw, 100px)', width: 'auto', objectFit: 'contain' }} />
             </div>
           </Link>
 
@@ -217,7 +217,7 @@ export default function Navbar() {
         <div className={`drawer ${menuOpen ? 'open' : ''}`}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="/logo.png" alt="Sanwaria Fashion Logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
+              <img src="/logo.png" alt="RADHANA Clothing Logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
             </div>
             <button onClick={() => setMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
               <X size={24} />

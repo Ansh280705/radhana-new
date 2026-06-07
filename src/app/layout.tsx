@@ -3,15 +3,15 @@ import { Toaster } from 'react-hot-toast';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Sanwaria Fashion — Premium Clothing & Style',
-  description: 'Discover the latest fashion trends at Sanwaria Fashion. Shop premium clothing, accessories and more with fast delivery across India.',
-  keywords: 'fashion, clothing, premium, online shopping, Sanwaria',
+  title: 'RADHANA Clothing — Premium Clothing & Style',
+  description: 'Discover the latest fashion trends at RADHANA Clothing. Shop premium clothing, accessories and more with fast delivery across India.',
+  keywords: 'fashion, clothing, premium, online shopping, RADHANA',
   icons: {
     icon: '/logo-icon.png',
     apple: '/logo-icon.png',
   },
   openGraph: {
-    title: 'Sanwaria Fashion',
+    title: 'RADHANA Clothing',
     description: 'Premium Clothing & Style',
     type: 'website',
   },
