@@ -27,12 +27,33 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params;
     const admin = requireAdmin(req);
-    if (!admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const data = await req.json();
-    const product = await prisma.product.update({ where: { id }, data, include: { category: true } });
+    if (!admin) return NextResponse.json({ error: 'Unauthorized. Please log in again as admin.' }, { status: 401 });
+
+    const body = await req.json();
+    const { name, description, categoryId, price, comparePrice, stock, images, sizes, colors, brand, isFeatured, isNewArrival } = body;
+
+    const product = await prisma.product.update({
+      where: { id },
+      data: {
+        ...(name != null && { name: String(name).trim() }),
+        ...(description != null && { description: String(description).trim() }),
+        ...(categoryId != null && { categoryId }),
+        ...(price != null && { price: Number(price) }),
+        ...(comparePrice !== undefined && { comparePrice: comparePrice != null && comparePrice !== '' ? Number(comparePrice) : null }),
+        ...(stock != null && { stock: Number(stock) }),
+        ...(images != null && { images: Array.isArray(images) ? images : [] }),
+        ...(sizes != null && { sizes: Array.isArray(sizes) ? sizes : [] }),
+        ...(colors != null && { colors: Array.isArray(colors) ? colors : [] }),
+        ...(brand !== undefined && { brand: brand?.trim() || null }),
+        ...(isFeatured != null && { isFeatured: Boolean(isFeatured) }),
+        ...(isNewArrival != null && { isNewArrival: Boolean(isNewArrival) }),
+      },
+      include: { category: true },
+    });
     return NextResponse.json(product);
   } catch (error) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Products PUT error:', error);
+    return NextResponse.json({ error: 'Failed to update product' }, { status: 500 });
   }
 }
 

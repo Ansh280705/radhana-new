@@ -20,6 +20,6 @@ export const useWishlistStore = create<WishlistStore>()(
       isWishlisted: (id) => get().ids.includes(id),
       setWishlist: (ids) => set({ ids }),
     }),
-    { name: 'Sanwaria-wishlist' }
+    { name: 'Radhana-wishlist' }
   )
 );

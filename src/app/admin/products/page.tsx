@@ -18,6 +18,7 @@ export default function AdminProductsPage() {
     isFeatured: false, isNewArrival: false
   });
   const [uploading, setUploading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -93,16 +94,34 @@ export default function AdminProductsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!form.categoryId) {
+      toast.error('Please select a category');
+      return;
+    }
+
+    const price = parseFloat(form.price);
+    const stock = parseInt(form.stock, 10);
+    if (!Number.isFinite(price) || price <= 0) {
+      toast.error('Enter a valid price');
+      return;
+    }
+    if (!Number.isFinite(stock) || stock < 0) {
+      toast.error('Enter a valid stock quantity');
+      return;
+    }
+
     const { sizesInput, colorsInput, ...restForm } = form;
     const data = {
       ...restForm,
-      price: parseFloat(form.price),
+      price,
       comparePrice: form.comparePrice ? parseFloat(form.comparePrice) : null,
-      stock: parseInt(form.stock),
+      stock,
       sizes: form.sizesInput.split(',').map(s => s.trim()).filter(Boolean),
-      colors: form.colorsInput.split(',').map(s => s.trim()).filter(Boolean)
+      colors: form.colorsInput.split(',').map(s => s.trim()).filter(Boolean),
     };
 
+    setSubmitting(true);
     try {
       if (editingProduct) {
         await productsAPI.update(editingProduct.id, data);
@@ -113,7 +132,12 @@ export default function AdminProductsPage() {
       }
       setIsModalOpen(false);
       fetchData();
-    } catch { toast.error('Operation failed'); }
+    } catch (err: any) {
+      const message = err.response?.data?.error || 'Operation failed. Try logging out and back in.';
+      toast.error(message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -286,7 +310,9 @@ export default function AdminProductsPage() {
                 </label>
               </div>
 
-              <button type="submit" className="btn-gold" style={{ marginTop: 20, padding: 16, fontSize: '1rem' }}>{editingProduct ? 'Update Product' : 'Create Product'}</button>
+              <button type="submit" className="btn-gold" disabled={submitting || uploading} style={{ marginTop: 20, padding: 16, fontSize: '1rem', opacity: submitting || uploading ? 0.7 : 1, cursor: submitting || uploading ? 'not-allowed' : 'pointer' }}>
+                {submitting ? 'Saving...' : editingProduct ? 'Update Product' : 'Create Product'}
+              </button>
             </form>
           </div>
         </div>,

@@ -52,6 +52,14 @@ export default function HomePage() {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 600);
@@ -368,7 +376,7 @@ export default function HomePage() {
 
 
         {/* Newsletter: Exclusive Access - Ultra-Premium Luxury Redesign */}
-        <section style={{ padding: '160px 0', background: '#070707', color: '#F7F3EE', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ padding: isMobile ? '80px 0' : '160px 0', background: '#070707', color: '#F7F3EE', position: 'relative', overflow: 'hidden' }}>
           {/* Premium Grain Texture Overlay */}
           <div style={{ 
             position: 'absolute', 
@@ -398,14 +406,14 @@ export default function HomePage() {
             pointerEvents: 'none' 
           }} />
           
-          <div className="container" style={{ maxWidth: 1400, display: 'flex', flexWrap: 'wrap', gap: '100px', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
+          <div className="container" style={{ maxWidth: 1400, display: 'flex', flexWrap: 'wrap', gap: isMobile ? '48px' : '100px', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
             
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }}
               viewport={{ once: true, margin: '-100px' }}
-              style={{ flex: '1 1 480px', maxWidth: '580px' }}
+              style={{ flex: '1 1 280px', maxWidth: isMobile ? '100%' : '580px', width: '100%' }}
             >
               {/* Exclusive Membership Badge */}
               <motion.div
@@ -446,7 +454,7 @@ export default function HomePage() {
                 color: '#F7F3EE', 
                 marginBottom: '28px', 
                 fontFamily: "'Cormorant Garamond', serif", 
-                fontSize: 'clamp(3rem, 6vw, 4.5rem)', 
+                fontSize: isMobile ? 'clamp(2.2rem, 8vw, 3rem)' : 'clamp(3rem, 6vw, 4.5rem)', 
                 fontWeight: 400,
                 lineHeight: 1.05,
                 letterSpacing: '-0.03em'
@@ -459,10 +467,10 @@ export default function HomePage() {
                 color: 'rgba(247,243,238,0.6)', 
                 marginBottom: '48px', 
                 lineHeight: 1.9,
-                fontSize: '1.05rem',
+                fontSize: isMobile ? '0.92rem' : '1.05rem',
                 fontWeight: 300,
                 letterSpacing: '0.02em',
-                maxWidth: '520px'
+                maxWidth: isMobile ? '100%' : '520px'
               }}>
                 Private access, curated experiences, exclusive collections, and timeless style reserved for members.
               </p>
@@ -513,7 +521,8 @@ export default function HomePage() {
               >
                 <form style={{ 
                   display: 'flex', 
-                  gap: '16px', 
+                  flexDirection: isMobile ? 'column' : 'row',
+                  gap: isMobile ? '0' : '16px', 
                   background: 'rgba(247,243,238,0.02)', 
                   backdropFilter: 'blur(40px)', 
                   border: '1px solid rgba(201,164,106,0.12)', 
@@ -563,7 +572,7 @@ export default function HomePage() {
                       background: '#C9A46A', 
                       color: '#070707', 
                       border: 'none', 
-                      padding: '18px 36px', 
+                      padding: isMobile ? '16px 24px' : '18px 36px', 
                       fontWeight: 500, 
                       letterSpacing: '2px', 
                       cursor: 'pointer', 
@@ -571,7 +580,8 @@ export default function HomePage() {
                       borderRadius: '2px',
                       position: 'relative',
                       zIndex: 1,
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      width: isMobile ? '100%' : 'auto'
                     }}
                   >
                     Request Membership
@@ -592,9 +602,9 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0, transition: { duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] } }}
               viewport={{ once: true, margin: '-100px' }}
               style={{ 
-                flex: '1 1 420px', 
+                flex: '1 1 280px', 
                 position: 'relative', 
-                display: 'flex', 
+                display: isMobile ? 'none' : 'flex', 
                 justifyContent: 'center',
                 alignItems: 'center',
                 perspective: '1000px'

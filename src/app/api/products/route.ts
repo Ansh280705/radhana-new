@@ -62,19 +62,48 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { authenticateRequest, requireAdmin } = await import('@/lib/auth');
+    const { requireAdmin } = await import('@/lib/auth');
     const user = requireAdmin(req);
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!user) return NextResponse.json({ error: 'Unauthorized. Please log in again as admin.' }, { status: 401 });
 
-    const data = await req.json();
-    const slug = data.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-' + Date.now();
+    const body = await req.json();
+    const { name, description, categoryId, price, comparePrice, stock, images, sizes, colors, brand, isFeatured, isNewArrival } = body;
+
+    if (!name?.trim()) return NextResponse.json({ error: 'Product name is required' }, { status: 400 });
+    if (!description?.trim()) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
+    if (!categoryId) return NextResponse.json({ error: 'Category is required' }, { status: 400 });
+
+    const parsedPrice = Number(price);
+    const parsedStock = Number(stock);
+    if (!Number.isFinite(parsedPrice) || parsedPrice <= 0) {
+      return NextResponse.json({ error: 'Enter a valid price' }, { status: 400 });
+    }
+    if (!Number.isFinite(parsedStock) || parsedStock < 0) {
+      return NextResponse.json({ error: 'Enter a valid stock quantity' }, { status: 400 });
+    }
+
+    const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-' + Date.now();
     const product = await prisma.product.create({
-      data: { ...data, slug },
+      data: {
+        name: name.trim(),
+        slug,
+        description: description.trim(),
+        categoryId,
+        price: parsedPrice,
+        comparePrice: comparePrice != null && comparePrice !== '' ? Number(comparePrice) : null,
+        stock: parsedStock,
+        images: Array.isArray(images) ? images : [],
+        sizes: Array.isArray(sizes) ? sizes : [],
+        colors: Array.isArray(colors) ? colors : [],
+        brand: brand?.trim() || null,
+        isFeatured: Boolean(isFeatured),
+        isNewArrival: Boolean(isNewArrival),
+      },
       include: { category: true },
     });
     return NextResponse.json(product, { status: 201 });
   } catch (error) {
     console.error('Products POST error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create product. Check all fields and try again.' }, { status: 500 });
   }
 }

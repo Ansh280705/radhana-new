@@ -36,7 +36,7 @@ export default function LoginPage() {
         <div style={{ width: '100%', maxWidth: 460, background: 'white', borderRadius: 24, padding: 40, boxShadow: '0 20px 60px rgba(0,0,0,0.08)', border: '1px solid var(--border)' }}>
           <div style={{ textAlign: 'center', marginBottom: 32 }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: 8 }}>
-              <span style={{ color: 'var(--dark)' }}>Sanwaria</span>
+              <span style={{ color: 'var(--dark)' }}>Radhana</span>
               <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}> Fashion</span>
             </div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 6 }}>Welcome Back</h1>

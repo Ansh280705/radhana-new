@@ -67,7 +67,7 @@ function ResetPasswordForm() {
 
             <h1 style={{ fontSize: '2rem', color: 'var(--dark)', marginBottom: 12, fontWeight: 700 }}>Reset Password</h1>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 40, fontSize: '0.95rem' }}>
-              Create a new secure password for your Sanwaria Fashion account.
+              Create a new secure password for your Radhana Fashion account.
             </p>
 
             <form onSubmit={handleSubmit} style={{ textAlign: 'left' }}>

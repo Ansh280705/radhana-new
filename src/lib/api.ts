@@ -1,19 +1,28 @@
 import axios from 'axios';
+import { useAuthStore } from '@/store/authStore';
 
 const api = axios.create({
   baseURL: '/api',
   withCredentials: true,
 });
 
-// Attach token from localStorage
-api.interceptors.request.use((config) => {
-  if (typeof window !== 'undefined') {
-    try {
-      const auth = JSON.parse(localStorage.getItem('Sanwaria-auth') || '{}');
-      const token = auth?.state?.token;
-      if (token) config.headers.Authorization = `Bearer ${token}`;
-    } catch {}
+function getAuthToken(): string | null {
+  const token = useAuthStore.getState().token;
+  if (token) return token;
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem('Radhana-auth');
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.state?.token ?? null;
+  } catch {
+    return null;
   }
+}
+
+api.interceptors.request.use((config) => {
+  const token = getAuthToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 

@@ -21,22 +21,44 @@ function CheckoutContent() {
   const [selectedAddress, setSelectedAddress] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [savingAddress, setSavingAddress] = useState(false);
   const [newAddr, setNewAddr] = useState({ name: '', phone: '', line1: '', line2: '', city: '', state: '', pincode: '', isDefault: false });
 
   useEffect(() => {
     if (!user) { router.push('/login'); return; }
-    userAPI.getAddresses().then(r => { setAddresses(r.data); if (r.data.length > 0) setSelectedAddress(r.data.find((a: any) => a.isDefault)?.id || r.data[0].id); }).catch(() => {});
+    userAPI.getAddresses()
+      .then(r => {
+        setAddresses(r.data);
+        if (r.data.length > 0) setSelectedAddress(r.data.find((a: any) => a.isDefault)?.id || r.data[0].id);
+      })
+      .catch((err: any) => {
+        if (err.response?.status === 401) router.push('/login');
+      });
   }, [user]);
 
   const handleAddAddress = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) {
+      toast.error('Please log in to save an address');
+      router.push('/login');
+      return;
+    }
+
+    setSavingAddress(true);
     try {
       const res = await userAPI.addAddress(newAddr);
       setAddresses(prev => [...prev, res.data]);
       setSelectedAddress(res.data.id);
       setShowAddForm(false);
+      setNewAddr({ name: '', phone: '', line1: '', line2: '', city: '', state: '', pincode: '', isDefault: false });
       toast.success('Address added!');
-    } catch { toast.error('Failed to add address'); }
+    } catch (err: any) {
+      const message = err.response?.data?.error || 'Failed to add address. Try logging out and back in.';
+      toast.error(message);
+      if (err.response?.status === 401) router.push('/login');
+    } finally {
+      setSavingAddress(false);
+    }
   };
 
   const loadRazorpay = () => new Promise<boolean>(resolve => {
@@ -48,17 +70,27 @@ function CheckoutContent() {
     document.body.appendChild(script);
   });
 
+  const subtotal = totalPrice();
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const total = subtotal + shipping;
+
   const handlePlaceOrder = async () => {
     if (!selectedAddress) { toast.error('Please select a delivery address'); return; }
     if (items.length === 0) { toast.error('Your cart is empty'); return; }
+
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    if (!razorpayKey || razorpayKey.includes('xxxxxxxx')) {
+      toast.error('Payment gateway is not configured. Contact the store admin.');
+      return;
+    }
+
     setLoading(true);
     try {
-      const total = totalPrice();
       const loaded = await loadRazorpay();
       if (!loaded) { toast.error('Payment gateway failed to load'); setLoading(false); return; }
       const rzpOrder = await paymentAPI.createOrder(total);
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: razorpayKey,
         amount: rzpOrder.data.amount,
         currency: 'INR',
         name: 'RADHANA Clothing',
@@ -84,13 +116,11 @@ function CheckoutContent() {
       };
       new window.Razorpay(options).open();
     } catch (err: any) {
-      toast.error(err.response?.data?.error || 'Failed to initiate payment');
+      const message = err.response?.data?.error || 'Failed to initiate payment';
+      toast.error(message);
+      if (err.response?.status === 401) router.push('/login');
     } finally { setLoading(false); }
   };
-
-  const subtotal = totalPrice();
-  const shipping = subtotal >= 999 ? 0 : 99;
-  const total = subtotal + shipping;
 
   if (!user) return null;
 
@@ -136,7 +166,9 @@ function CheckoutContent() {
                       <input type="checkbox" checked={newAddr.isDefault} onChange={e => setNewAddr(n => ({ ...n, isDefault: e.target.checked }))} /> Set as default address
                     </label>
                     <div style={{ display: 'flex', gap: 10 }}>
-                      <button type="submit" className="btn-gold" style={{ flex: 1, padding: '10px' }}>Save Address</button>
+                      <button type="submit" className="btn-gold" disabled={savingAddress} style={{ flex: 1, padding: '10px', opacity: savingAddress ? 0.7 : 1, cursor: savingAddress ? 'not-allowed' : 'pointer' }}>
+                        {savingAddress ? 'Saving...' : 'Save Address'}
+                      </button>
                       <button type="button" className="btn-outline" onClick={() => setShowAddForm(false)} style={{ flex: 1, padding: '10px' }}>Cancel</button>
                     </div>
                   </form>

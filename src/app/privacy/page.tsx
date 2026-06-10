@@ -8,7 +8,7 @@ export default function PrivacyPage() {
       <div className="container" style={{ padding: '100px 20px', maxWidth: 800 }}>
         <h1 className="font-serif" style={{ marginBottom: 40, borderBottom: '2px solid var(--gold)', paddingBottom: 20 }}>Privacy Policy</h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 30, color: 'var(--text-secondary)' }}>
-          <p>At Sanwaria Fashion, we value your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
+          <p>At Radhana Fashion, we value your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
           <section>
             <h2 style={{ fontSize: '1.5rem', marginBottom: 16, color: 'var(--dark)' }}>Data Collection</h2>
             <p>We collect information such as your name, email, shipping address, and payment details when you place an order or create an account.</p>
