@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Discover the latest fashion trends at RADHANA Klothing. Shop premium clothing, accessories and more with fast delivery across India.',
   keywords: 'fashion, clothing, premium, online shopping, RADHANA',
   icons: {
-    icon: '/logo-icon.png',
+    icon: '/Favicon.ico',
     apple: '/logo-icon.png',
   },
   openGraph: {
