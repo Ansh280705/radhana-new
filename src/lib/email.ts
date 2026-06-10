@@ -71,7 +71,7 @@ export async function sendOrderConfirmationEmail(email: string, name: string, or
           <p style="color: #555;">You'll receive shipping updates via email. Track your order from your dashboard.</p>
         </div>
         <div style="background: #1a1a2e; padding: 20px; text-align: center;">
-          <p style="color: #666; font-size: 12px; margin: 0;">© 2024 RADHANA Clothing. All rights reserved.</p>
+          <p style="color: #666; font-size: 12px; margin: 0;">© 2024 RADHANA Klothing. All rights reserved.</p>
         </div>
       </div>
     `,
