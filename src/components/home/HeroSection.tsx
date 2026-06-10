@@ -17,13 +17,13 @@ const HERO_SLIDES = [
     img: '/hero-new.jpg',
   },
   {
-    title: 'Modern Festive',
-    subtitle: 'Celebrate tradition with our exclusive range of contemporary ethnic wear.',
-    cta: 'Shop Now',
-    ctaLink: '/products?sort=price_asc',
-    badge: 'NEW SEASON',
+    title: 'Timeless Rose',
+    subtitle: 'Draped in grace and embroidered in gold — a festive silhouette crafted for the modern muse.',
+    cta: 'Shop The Collection',
+    ctaLink: '/products?category=ethnic-wear',
+    badge: 'FESTIVE EDIT',
     bg: '#0a0a0b',
-    img: '/hero-new.jpg',
+    img: '/hero-2.jpg',
   },
 ];
 
