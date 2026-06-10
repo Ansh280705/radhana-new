@@ -22,15 +22,21 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 64, marginBottom: 80 }}>
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 24 }}>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 8 }}>
               RADHANA<span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>Klothing</span>
             </div>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: 32 }}>
-              Redefining contemporary style with premium quality klothing crafted for the modern soul.
+            <p style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: 20, opacity: 0.8 }}>
+              Ethnic Couture &amp; Lehengas
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: 1.85, marginBottom: 16 }}>
+              Founded in Ratlam, MP in 2019, RADHANA Klothing is a celebration of Indian heritage and contemporary elegance. We craft lehengas, ethnic couture, and everyday silhouettes that make every woman feel extraordinary.
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem', lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic' }}>
+              Stores in Ratlam · Dhar · Manasa
             </p>
             
             {/* Contact Info */}
-            <div style={{ marginBottom: 32 }}>
+            <div style={{ marginBottom: 28 }}>
               <a href="mailto:RadhanaKlothing@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '0.85rem', marginBottom: 12, transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                 <Mail size={16} />
                 RadhanaKlothing@gmail.com
