@@ -14,7 +14,7 @@ const HERO_SLIDES = [
     ctaLink: '/products?category=ethnic-wear',
     badge: 'HANDCRAFTED IN INDIA',
     bg: '#0a0a0b',
-    img: '/cat-ethnic.png',
+    img: '/hero-new.jpg',
   },
   {
     title: 'Modern Festive',
@@ -23,7 +23,7 @@ const HERO_SLIDES = [
     ctaLink: '/products?sort=price_asc',
     badge: 'NEW SEASON',
     bg: '#0a0a0b',
-    img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=1200',
+    img: '/hero-new.jpg',
   },
 ];
 
