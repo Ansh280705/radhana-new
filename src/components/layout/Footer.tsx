@@ -23,21 +23,21 @@ export default function Footer() {
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 24 }}>
-              RADHANA<span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>Clothing</span>
+              RADHANA<span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>Klothing</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: 32 }}>
-              Redefining contemporary style with premium quality clothing crafted for the modern soul.
+              Redefining contemporary style with premium quality klothing crafted for the modern soul.
             </p>
             
             {/* Contact Info */}
             <div style={{ marginBottom: 32 }}>
-              <a href="mailto:hello@radhana.com" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '0.85rem', marginBottom: 12, transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+              <a href="mailto:RadhanaKlothing@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '0.85rem', marginBottom: 12, transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                 <Mail size={16} />
-                hello@radhana.com
+                RadhanaKlothing@gmail.com
               </a>
-              <a href="tel:+919876543210" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '0.85rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+              <a href="tel:+918719922789" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '0.85rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                 <Phone size={16} />
-                +91 98765 43210
+                +91 8719922789
               </a>
             </div>
 
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
           <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', letterSpacing: '1px' }}>
-            © 2026 RADHANA CLOTHING. ALL RIGHTS RESERVED.
+            © 2026 RADHANA KLOTHING. ALL RIGHTS RESERVED.
           </p>
           
           {/* Payment Methods */}

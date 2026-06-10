@@ -93,7 +93,7 @@ function CheckoutContent() {
         key: razorpayKey,
         amount: rzpOrder.data.amount,
         currency: 'INR',
-        name: 'RADHANA Clothing',
+        name: 'RADHANA Klothing',
         description: `Order for ${items.length} item(s)`,
         order_id: rzpOrder.data.id,
         handler: async (response: any) => {

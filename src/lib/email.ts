@@ -17,13 +17,13 @@ export async function sendPasswordResetEmail(email: string, token: string, name:
   const resetUrl = `${process.env.APP_URL}/reset-password?token=${token}`;
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM || 'RADHANA Clothing <noreply@sanwaria.com>',
+      from: process.env.EMAIL_FROM || 'RADHANA Klothing <noreply@sanwaria.com>',
       to: email,
-      subject: 'Reset Your RADHANA Clothing Password',
+      subject: 'Reset Your RADHANA Klothing Password',
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff;">
           <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 40px; text-align: center;">
-            <h1 style="color: #d4af37; font-size: 28px; margin: 0; letter-spacing: 2px;">RADHANA CLOTHING</h1>
+            <h1 style="color: #d4af37; font-size: 28px; margin: 0; letter-spacing: 2px;">RADHANA KLOTHING</h1>
           </div>
           <div style="padding: 40px; background: #fafafa;">
             <h2 style="color: #1a1a2e; margin-bottom: 16px;">Hello, ${name}!</h2>
@@ -39,7 +39,7 @@ export async function sendPasswordResetEmail(email: string, token: string, name:
             <p style="color: #999; font-size: 13px;">If you didn't request this, please ignore this email. Your password won't change.</p>
           </div>
           <div style="background: #1a1a2e; padding: 20px; text-align: center;">
-            <p style="color: #666; font-size: 12px; margin: 0;">© 2024 RADHANA Clothing. All rights reserved.</p>
+            <p style="color: #666; font-size: 12px; margin: 0;">© 2024 RADHANA Klothing. All rights reserved.</p>
           </div>
         </div>
       `,
@@ -53,13 +53,13 @@ export async function sendPasswordResetEmail(email: string, token: string, name:
 
 export async function sendOrderConfirmationEmail(email: string, name: string, orderId: string, total: number) {
   await transporter.sendMail({
-    from: process.env.EMAIL_FROM || 'RADHANA Clothing <noreply@sanwaria.com>',
+    from: process.env.EMAIL_FROM || 'RADHANA Klothing <noreply@sanwaria.com>',
     to: email,
-    subject: `Order Confirmed #${orderId.slice(-8).toUpperCase()} — RADHANA Clothing`,
+    subject: `Order Confirmed #${orderId.slice(-8).toUpperCase()} — RADHANA Klothing`,
     html: `
       <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 40px; text-align: center;">
-          <h1 style="color: #d4af37; font-size: 28px; margin: 0; letter-spacing: 2px;">RADHANA CLOTHING</h1>
+          <h1 style="color: #d4af37; font-size: 28px; margin: 0; letter-spacing: 2px;">RADHANA KLOTHING</h1>
         </div>
         <div style="padding: 40px; background: #fafafa;">
           <h2 style="color: #1a1a2e;">Thank you, ${name}! 🎉</h2>

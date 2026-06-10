@@ -23,7 +23,7 @@ export default function RegisterPage() {
     try {
       const res = await authAPI.register(form);
       setUser(res.data.user, res.data.token);
-      toast.success(`Welcome to RADHANA Clothing, ${res.data.user.name}!`);
+      toast.success(`Welcome to RADHANA Klothing, ${res.data.user.name}!`);
       router.push('/');
     } catch (err: any) {
       toast.error(err.response?.data?.error || 'Registration failed');
@@ -38,7 +38,7 @@ export default function RegisterPage() {
           <div style={{ textAlign: 'center', marginBottom: 32 }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: 8 }}>
               <span style={{ color: 'var(--dark)' }}>RADHANA</span>
-              <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}> Clothing</span>
+              <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}> Klothing</span>
             </div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 6 }}>Create Account</h1>
             <p style={{ color: 'var(--text-secondary)' }}>Join the RADHANA community</p>
