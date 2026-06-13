@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--dark)', color: 'white', padding: 'var(--s12) 0 var(--s6)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 64, marginBottom: 80 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 64, marginBottom: 80 }}>
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: 8 }}>
@@ -27,12 +27,6 @@ export default function Footer() {
             </div>
             <p style={{ color: 'var(--gold)', fontSize: '0.65rem', letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: 20, opacity: 0.8 }}>
               Ethnic Couture &amp; Lehengas
-            </p>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', lineHeight: 1.85, marginBottom: 16 }}>
-              Founded in Ratlam, MP in 2019, RADHANA Klothing is a celebration of Indian heritage and contemporary elegance. We craft lehengas, ethnic couture, and everyday silhouettes that make every woman feel extraordinary.
-            </p>
-            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem', lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic' }}>
-              Stores in Ratlam · Dhar · Manasa
             </p>
             
             {/* Contact Info */}
@@ -59,7 +53,6 @@ export default function Footer() {
 
           {/* Link Columns */}
           {[
-            { title: 'The Collections', links: [{ label: "New Arrivals", href: '/products?newArrival=true' }, { label: "Women", href: '/products?category=women' }, { label: "Men", href: '/products?category=men' }, { label: "Accessories", href: '/products?category=accessories' }] },
             { title: 'Company', links: [{ label: "About Us", href: '/#about-us' }, { label: "Our Story", href: '/about' }, { label: "Sustainability", href: '/sustainability' }, { label: "Developers", href: '/developers' }] },
             { title: 'Client Service', links: [{ label: "Contact Us", href: '/contact' }, { label: "Shipping Policy", href: '/shipping' }, { label: "No Returns Policy", href: '/returns' }, { label: "Size Guide", href: '/sizing' }, { label: "Privacy Policy", href: '/privacy' }] },
           ].map(({ title, links }) => (
